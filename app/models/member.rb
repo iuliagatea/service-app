@@ -2,7 +2,9 @@ class Member < ActiveRecord::Base
    
   belongs_to :user
   acts_as_tenant
-
+  has_many :products
+  accepts_nested_attributes_for :products
+  
   DEFAULT_ADMIN = {
     first_name: "Admin",
     last_name:  "Please edit me"

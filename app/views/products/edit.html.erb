@@ -1,0 +1,11 @@
+<h3><%= @product.code %> - <%= @product.name %></h3>
+<% @product.statuses do |s| %>
+<div class="well col-md-12" style="background-color: <%= s.color %>">
+  <li class="status-title">
+    <%= link_to "#{s.name}", edit_status_path(s.statuses) %>
+    <small>
+      <% #pluralize(s.products.count, "product") %>
+    </small>
+  </li>
+</div>
+<% end %>

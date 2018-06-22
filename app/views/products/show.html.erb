@@ -1,0 +1,12 @@
+<h3><%= @product.code %> - <%= @product.name %></h3>
+<ul class="listing">
+    <% @statuses.each do |s| %>
+      <div class="row">
+        <div class="well col-md-12" style="background-color: <%= s.color %>">
+          <li class="status-title">
+            <%= link_to "#{s.name}", edit_status_path(s) %>
+          </li>
+        </div>
+      </div>
+    <% end %>
+  </ul>

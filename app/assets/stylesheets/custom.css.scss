@@ -134,3 +134,24 @@
   color: #fff !important;
   padding-bottom: 5px;
 }
+
+.status-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #000;
+  a {
+    color: #000 !important;
+    margin: 0 !important;
+    padding: 5px!important;
+  }
+  
+  a:hover, a:focus {
+    color: #fff !important;
+    text-decoration: none;
+  }
+}
+
+.listing {
+  list-style: none;
+  padding-left: 0;
+}

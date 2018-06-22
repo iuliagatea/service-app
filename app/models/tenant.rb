@@ -3,10 +3,13 @@ class Tenant < ActiveRecord::Base
   acts_as_universal_and_determines_tenant
   has_many :members, dependent: :destroy
   has_one :payment
+  has_many :statuses
   accepts_nested_attributes_for :payment
   validates_presence_of :name
   validates_uniqueness_of :name
-  
+  has_many :user_tenants
+  has_many :users, through: :user_tenants
+
     def self.create_new_tenant(tenant_params, user_params, coupon_params)
 
       tenant = Tenant.new(tenant_params)
@@ -47,5 +50,12 @@ class Tenant < ActiveRecord::Base
       #
     end
 
-   
+    def self.by_user_type(tenant_id, user)
+      tenant = Tenant.find(tenant_id)
+      if user.is_admin?
+        tenant.users
+      else
+        UserTenant.where(user_id: user).ids
+      end
+    end
 end

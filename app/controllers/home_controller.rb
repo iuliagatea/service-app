@@ -8,8 +8,15 @@ class HomeController < ApplicationController
       else
         Tenant.set_current_tenant current_user.tenants.first
       end
-      @tenant = Tenant.current_tenant
-      params[:tenant_id] = @tenant.id
+      @user = User.find(current_user)
+      if current_user.is_admin?
+        @tenant = Tenant.current_tenant
+        params[:tenant_id] = @tenant.id
+        @products = Product.where(tenant_id: @tenant)
+      else
+        @tenants = @user.tenants
+        @products = @user.products
+      end
     end
   end
 end

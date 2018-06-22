@@ -1,0 +1,15 @@
+<% @user_tenants.each do |user_tenant| %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><h3><small><%= tenant_name(user_tenant.tenant_id) %></small></h3></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user_products.where(tenant: user_tenant.tenant_id).each do |user_product| %>
+        <tr>
+          <td><%= user_product.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+<% end %>

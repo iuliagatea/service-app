@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+//= require bootstrap-colorpicker
+
+$(document).ready(function (){
+  $('#status_color').colorpicker({
+				format: 'hex'
+			});
+});

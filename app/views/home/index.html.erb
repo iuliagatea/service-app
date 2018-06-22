@@ -1,5 +1,16 @@
-<% if current_user %>
-  <h3>Organization: <%= @tenant.name %></h3>
+<% if current_user && !current_user.is_admin? %>
+  <% if @tenants.size > 0 %>
+    <% @tenants.each do |t| %>
+      <h3><%= t.name %></h3>
+      
+    <% end %>
+  <% end %>
+<% elsif current_user && current_user.is_admin? %>
+  <% @products.each do |p| %>
+    <h2><%= link_to p.code, product_path(p.id) %></h2>
+    <% user = User.find(p.user_id) %>
+    <small><%= user.email %></small>
+  <% end %>
 <% else %>
   <div class="row">
     <div class="plans clearfix">
@@ -13,7 +24,7 @@
             <li>Unlimited file uploads</li>
             <li>Responsive design</li>
             <li>Access anywhere</li>
-            <li>1000 customers</li>
+            <li>500 customers</li>
           </ul>
         </div>
         <p>

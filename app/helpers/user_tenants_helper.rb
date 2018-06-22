@@ -1,0 +1,2 @@
+module UserTenantsHelper
+end

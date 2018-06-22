@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  resources :user_tenants
+  resources :product_statuses
+  resources :user_products
   resources :members
-  get 'home/index'
+  resources :statuses
+  resources :products
 
-   root :to => "home#index"
+  # get 'home/index'
+
+  root :to => "home#index"
 
   # *MUST* come *BEFORE* devise's definitions (below)
   as :user do   

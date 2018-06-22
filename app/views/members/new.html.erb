@@ -49,10 +49,27 @@
     <%= f.label :last_name, :class => "control-label" %>
     <%= f.text_field :last_name, :class => "form-control" %>
   </div>
+  <hr />
+  <%= fields_for( :product ) do |p| %>
+    <div class="control-group">
+      <div class="form-group col-md-6 no-left-padding">
+        <%= p.label :code, "Product Code" %>
+        <%= p.text_field :code, class: "form-control", required: true %>
+      </div>
+      <div class="form-group col-md-6 no-right-padding">
+        <%= p.label :name, "Product Name" %>
+        <%= p.text_field :name, class: "form-control", required: true %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= p.label :status_id, "Status", :class => "control-label" %>
+      <%= p.collection_select :status_id, @statuses, :id, :name, include_blank: true, class: "form-control", required: true %>
+    </div>
+  <% end %>
   <br />
   <div class="control-group">
     <button class="btn btn-primary" type="submit">
-      Create user and invite
+      Create user and send mail
     </button>
   </div>
 <% end %>

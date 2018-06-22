@@ -1,0 +1,21 @@
+<h2>Statuses  <%= link_to ("<i class='fa fa-plus-circle'></i> ").html_safe, new_status_path %></h2>
+<% if @statuses.size > 0 %>
+  
+  <ul class="listing">
+    <% @statuses.each do |s| %>
+      <div class="row">
+        <div class="well col-md-12" style="background-color: <%= s.color %>">
+          <li class="status-title">
+            <%= link_to "#{s.name}", edit_status_path(s) %>
+            <small>
+              <% #pluralize(s.products.count, "product") %>
+            </small>
+          </li>
+        </div>
+      </div>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p>Your company has no statuses added.</p>
+<% end %>
