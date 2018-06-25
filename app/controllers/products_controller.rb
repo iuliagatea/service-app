@@ -20,23 +20,24 @@ class ProductsController < ApplicationController
   
   def index
     @product = Product.find(params[:id])
-    @statuses = @product.statuses
+    @product_statuses = @product.statuses
   end
   
   def show
     @product = Product.find(params[:id])
-    @statuses = @product.statuses
+    @product_statuses = @product.statuses
   end
   
   def edit
     @product = Product.find(params[:id])
+    @statuses = Status.where("tenant_id = :tenant", { tenant: @tenant.id })
   end
   
   def update
-    @product.statuses << product_params[:status]
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to root_url, notice: 'Product was successfully updated.' }
+        # @product_status = ProductStatus.create(product: @product, status: product_params[:status])
       else
         format.html { render :edit }
       end

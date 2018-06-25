@@ -63,7 +63,7 @@
     </div>
     <div class="control-group">
       <%= p.label :status_id, "Status", :class => "control-label" %>
-      <%= p.collection_select :status_id, @statuses, :id, :name, include_blank: true, class: "form-control", required: true %>
+      <%= p.collection_select :status_id, @statuses, :id, :name, {include_blank: true}, { class: "form-control" } %>
     </div>
   <% end %>
   <br />

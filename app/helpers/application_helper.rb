@@ -32,4 +32,5 @@ module ApplicationHelper
     return "cc_form" if tenant.payment.blank?
     ""
   end
+  
 end
