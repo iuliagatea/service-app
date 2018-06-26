@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180621083112) do
+ActiveRecord::Schema.define(version: 20180625105613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 20180621083112) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+
+  create_table "statuses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "color"
+    t.integer  "tenant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "statuses", ["tenant_id"], name: "index_statuses_on_tenant_id", using: :btree
 
   create_table "tenants", force: :cascade do |t|
     t.integer  "tenant_id"
@@ -95,5 +105,6 @@ ActiveRecord::Schema.define(version: 20180621083112) do
   add_foreign_key "members", "tenants"
   add_foreign_key "members", "users"
   add_foreign_key "payments", "tenants"
+  add_foreign_key "statuses", "tenants"
   add_foreign_key "tenants", "tenants"
 end

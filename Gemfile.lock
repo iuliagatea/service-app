@@ -59,6 +59,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    colorpicker (0.0.5)
     commonjs (0.2.7)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
@@ -208,6 +209,7 @@ DEPENDENCIES
   activerecord-session_store!
   byebug
   coffee-rails (~> 4.1.0)
+  colorpicker
   devise
   devise-bootstrap-views
   jbuilder (~> 2.0)

@@ -134,3 +134,35 @@
   color: #fff !important;
   padding-bottom: 5px;
 }
+
+.table-status {
+  tr {
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px
+  }
+  a {
+    color: #fff !important;
+    margin: 85px !important;
+    padding: 5px!important;
+  }
+  
+  a:hover, a:focus {
+    color: #7d7d7d !important;
+    background: transparent;
+    text-decoration: none;
+  }
+}
+.status-delete {
+  a {
+    color: red !important;
+    margin: 0 !important;
+    text-decoration: bold;
+  }
+  
+  a:hover, a:focus {
+    color: #7d7d7d !important;
+    background: transparent;
+    text-decoration: bold;
+  }
+}

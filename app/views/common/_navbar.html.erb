@@ -27,7 +27,7 @@
         <% if current_user %>
           <li class="col-md-8 user-name">
             <% if current_user && current_user.is_admin? %>
-              <%= link_to ('<i class="fa fa-building"></i> ' + truncate(current_user.tenants.first.name, length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile' %>
+              <%= link_to ('<i class="fa fa-building"></i> ' + truncate(tenant_name(params[:tenant_id]), length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile' %>
             <% else %>
               <%= link_to ('<i class="fa fa-user"></i> ' + truncate(current_user.email, length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile' %>
             <% end %>

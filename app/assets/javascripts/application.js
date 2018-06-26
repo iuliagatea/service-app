@@ -13,4 +13,26 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require colorpicker
 //= require_tree .
+
+$(document).ready(function () {
+  options = {
+      trigger_event: "click",
+      color: {
+          r: 0,
+          g: 0,
+          b: 0
+      },
+      onChange: function(colorHSB) {
+          // do stuff with color
+          // console.log(colorHSB.toRGB());
+          // console.log(colorHSB.toHex());
+          if(colorHSB.toHex()!="000000")
+          {
+            $("#status_color").val('#'+colorHSB.toHex());
+          }
+      }
+  }
+  new ColorPicker($("#status_color"), options);
+});
