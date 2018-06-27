@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  resources :members
   # get 'home/index'
   resources :tenants do
     resources :statuses
+    resources :products
+    
   end
+  resources :members
+  resources :products
    root :to => "home#index"
-
+  get '/get_name', to: 'members#get_name'
   # *MUST* come *BEFORE* devise's definitions (below)
   as :user do   
     match '/user/confirmation' => 'confirmations#update', :via => :put, :as => :update_user_confirmation

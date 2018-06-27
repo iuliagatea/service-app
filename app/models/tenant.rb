@@ -3,6 +3,7 @@ class Tenant < ActiveRecord::Base
   acts_as_universal_and_determines_tenant
   has_many :members, dependent: :destroy
   has_many :statuses, dependent: :destroy
+  has_many :products, dependent: :destroy
   has_one :payment
   accepts_nested_attributes_for :payment
   validates_presence_of :name

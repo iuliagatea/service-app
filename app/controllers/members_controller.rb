@@ -10,7 +10,7 @@ class MembersController < ApplicationController
 
   def create()
     @user   = User.new( user_params )
-
+  
     # ok to create user, member
     if @user.save_and_invite_member() && @user.create_member( member_params )
       flash[:notice] = "New member added and invitation email sent to #{@user.email}."
@@ -23,6 +23,18 @@ class MembersController < ApplicationController
 
   end
 
+  def get_name 
+    if params[:email].present? 
+        @user = User.find_by_email(params[:email]).first
+        @member = Member.where("user_id = #{@user.id}")
+        @data = Hash.new 
+        # @data["first_name"] = @member.first_name
+        # @data["last_name"] = @member.last_name 
+        @data["first_name"] = "Iulia"
+        @data["last_name"] = "B"
+        render json: @data and return false 
+    end 
+  end
 
   private
 

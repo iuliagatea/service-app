@@ -1,0 +1,70 @@
+<%= form_for [@tenant, @product], :html => { :class => "form-horizontal product" } do |f| %>
+
+  <% if @product.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h3>
+      <div class="panel-body">
+        <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :code, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :code, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:code) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :expected_completion_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :expected_completion_date, :class => 'form-control datepicker' %>
+    </div>
+    <%=f.error_span(:expected_completion_date) %>
+  </div>
+  <%= f.hidden_field :tenant_id, value: params[:tenant_id], :class => 'form-control' %>
+  <%= fields_for(:user) do |u| %>
+    <div class="form-group">
+      <%= u.label :email, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= u.text_field :email, :class => 'form-control' %>
+      </div>
+    </div>
+  <% end %>
+  <%= fields_for(:member) do |m| %>
+    <div class="form-group member">
+      <h5>Add new member</h5>
+      <hr />
+      <%= m.label :first_name, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-4">
+        <%= m.text_field :first_name, :class => 'form-control' %>
+      </div>
+       <%= m.label :last_name, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-4">
+        <%= m.text_field :last_name, :class => 'form-control' %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                tenant_products_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

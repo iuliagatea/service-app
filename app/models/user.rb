@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   def is_admin?
     is_admin
   end
+  
+  def self.find_by_email(email)
+    where("email = :email", { email: email })
+  end
 end
