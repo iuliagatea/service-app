@@ -58,7 +58,12 @@ class StatusesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  def products
+    @status = Status.find(params[:status_id])
+    @products = @status.products_with_status
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_status

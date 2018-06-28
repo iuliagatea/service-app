@@ -1,6 +1,6 @@
 <%- model_class = Product -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> with Status: <%= @status.name %></h1>
 </div>
 <table class="table table-striped">
   <thead>
@@ -9,7 +9,6 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:expected_completion_date) %></th>
       <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th>Status</th>
       <th><%= model_class.human_attribute_name(:updated_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -18,10 +17,9 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.code %></td>
-        <td><%= link_to product.name, tenant_product_path(product, tenant_id: product.tenant_id) %></td>
+        <td><%= product.name %></td>
         <td><%= product.expected_completion_date %></td>
         <td><%= product.user.email %></td>
-        <td><%= product.last_status.name %></td>
         <td><%= format_date(product.updated_at) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

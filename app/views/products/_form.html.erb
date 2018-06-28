@@ -35,6 +35,14 @@
     </div>
     <%=f.error_span(:expected_completion_date) %>
   </div>
+  <%= fields_for(:status) do |s| %>
+    <div class="form-group">
+      <%= s.label :status, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= s.collection_select :id, @statuses, :id, :name, {}, {class: 'form-control'} %>
+      </div>
+    </div>
+  <% end %>
   <%= f.hidden_field :tenant_id, value: params[:tenant_id], :class => 'form-control' %>
   <%= fields_for(:user) do |u| %>
     <div class="form-group">

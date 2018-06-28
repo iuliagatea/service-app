@@ -12,16 +12,20 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @statuses = Status.by_product(params[:id])
   end
 
   # GET /products/new
   def new
     @product = Product.new
+    @statuses = Status.by_tenant(params[:tenant_id])
   end
 
   # GET /products/1/edit
   def edit
     @user = Product.find(params[:id]).user
+    @status = Status.find(ProductStatus.last_by_product(params[:id]))
+    @statuses = Status.by_tenant(params[:tenant_id])
   end
 
   # POST /products
@@ -42,6 +46,7 @@ class ProductsController < ApplicationController
       user = @user.id
     end
     @product.user_id = user
+    @product.statuses << params[:status]["id"]
     respond_to do |format|
       if @product.save
         format.html { redirect_to tenant_products_url, notice: 'Product was successfully created.' }
@@ -56,6 +61,8 @@ class ProductsController < ApplicationController
   def update
     user = User.find_by_email(params[:user]["email"]).ids.first
     @product.user_id = user
+    status = Status.find(params[:status]["id"])
+    @product.statuses << status
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to tenant_products_url, notice: 'Product was successfully updated.'}

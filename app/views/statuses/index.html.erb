@@ -15,8 +15,13 @@
       <tr>
         <td style="background-color: <%= status.color %>">
           <h4>
-             <%= link_to status.name, edit_tenant_status_path(status, tenant_id: status.tenant_id) %>
+             <%= link_to status.name, edit_tenant_status_path(status, tenant_id: status.tenant_id) %> 
           </h4>
+        </td>
+        <td style="background-color: <%= status.color %>">
+          <h5>
+             <%= link_to pluralize(status.products_with_status.count, "product"), tenant_status_products_path(status_id: status.id, tenant_id: status.tenant_id) %>
+          </h5>
         </td>
         <!-- <td><%=l status.created_at %></td> 
         <td>

@@ -20,6 +20,10 @@
             <%= link_to "<i class='fa fa-briefcase'></i> Change plan".html_safe, edit_plan_path, 
                                                         class: "btn btn-primary navbar-link" %>
           </li>
+          <li>
+            <%= link_to "<i class='fa fa-list'></i> Statuses".html_safe, tenant_statuses_path(tenant_id: params[:tenant_id]), 
+                                                        class: "btn btn-primary navbar-link" %>
+          </li>
         <% end %>
       </ul>
       <ul class="nav nav-list">

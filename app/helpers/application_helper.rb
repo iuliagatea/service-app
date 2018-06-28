@@ -36,4 +36,8 @@ module ApplicationHelper
     return "cc_form" if tenant.payment.blank?
     ""
   end
+  
+  def format_date(date)
+    date.strftime("%m.%d.%Y %I:%M:%S")
+  end
 end
