@@ -1,6 +1,12 @@
 <% if current_user %>
   <h3><%= @tenant.name %></h3>
   <%= render 'products/list', obj: @products %>
+  <% if current_user.is_admin %>
+    Products by month
+      <%= column_chart @products.group_by_month(:created_at, format: "%b").count %>
+    Products by user
+    <%= bar_chart @products.group(:user).count %>
+  <% end %>
 <% else %>
   <div class="row">
     <div class="plans clearfix">

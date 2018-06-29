@@ -7,7 +7,7 @@ class StatusesController < ApplicationController
   # GET /statuses
   # GET /statuses.json
   def index
-    @statuses = Status.by_tenant(params[:tenant_id])
+    @statuses = Status.by_tenant(params[:tenant_id]).paginate(page: params[:page], per_page: 10)
   end
 
   # GET /statuses/1
@@ -64,9 +64,9 @@ class StatusesController < ApplicationController
     @user = User.find(current_user)
     @status = Status.find(params[:status_id])
     if @user.is_admin
-      @products = @status.products_with_status
+      @products = @status.products_with_status.paginate(page: params[:page], per_page: 10)
     else
-      @products = @status.products_with_status_by_user(@user)
+      @products = @status.products_with_status_by_user(@user).paginate(page: params[:page], per_page: 10)
     end
   end
   
@@ -98,4 +98,5 @@ class StatusesController < ApplicationController
             flash: { error: 'You are not authorized to do this action' }
       end
     end
+
 end

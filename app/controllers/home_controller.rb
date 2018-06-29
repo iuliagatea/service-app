@@ -11,9 +11,9 @@ class HomeController < ApplicationController
       @tenant = Tenant.current_tenant
       params[:tenant_id] = @tenant.id
       if current_user.is_admin
-        @products = Product.by_tenant(params[:tenant_id])
+        @products = Product.by_tenant(params[:tenant_id]).paginate(page: params[:page], per_page: 5)
       else
-        @products = current_user.products
+        @products = current_user.products.paginate(page: params[:page], per_page: 5)
       end
     end
   end

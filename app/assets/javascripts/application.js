@@ -16,6 +16,8 @@
 //= require colorpicker
 //= require_tree .
 //= require bootstrap-datepicker
+//= require Chart.bundle
+//= require chartkick
 
 $(document).ready(function () {
   options = {

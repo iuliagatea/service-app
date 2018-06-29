@@ -9,9 +9,9 @@ class ProductsController < ApplicationController
   def index
     @user = User.find(current_user)
     if @user.is_admin
-      @products = Product.by_tenant(params[:tenant_id])
+      @products = Product.by_tenant(params[:tenant_id]).paginate(page: params[:page], per_page: 10)
     else
-      @products = @user.products
+      @products = @user.products.paginate(page: params[:page], per_page: 10)
     end
   end
 
