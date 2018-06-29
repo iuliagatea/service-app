@@ -46,7 +46,9 @@
   <%= f.hidden_field :tenant_id, value: params[:tenant_id], :class => 'form-control' %>
   <%= fields_for(:user) do |u| %>
     <div class="form-group">
-      <%= u.label :email, :class => 'control-label col-lg-2' %>
+
+      <hr />
+      <%= u.label :customer_email, :class => 'control-label col-lg-2' %>
       <div class="col-lg-10">
         <%= u.text_field :email, :class => 'form-control' %>
       </div>
@@ -54,7 +56,7 @@
   <% end %>
   <%= fields_for(:member) do |m| %>
     <div class="form-group member">
-      <h5>Add new member</h5>
+      <h5><div class="group-title">Add new customer</div></h5>
       <hr />
       <%= m.label :first_name, :class => 'control-label col-lg-2' %>
       <div class="col-lg-4">

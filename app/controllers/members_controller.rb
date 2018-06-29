@@ -2,7 +2,8 @@ class MembersController < ApplicationController
 
   # uncomment to ensure common layout for forms
   # layout  "sign", :only => [:new, :edit, :create]
-
+  before_action :verify_admin
+  
   def new()
     @member = Member.new()
     @user   = User.new()
@@ -44,6 +45,13 @@ class MembersController < ApplicationController
 
   def user_params()
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+  
+  def verify_admin
+    unless current_user.is_admin
+      redirect_to :root, 
+          flash: { error: 'You are not authorized to do this action' }
+    end
   end
 
 end

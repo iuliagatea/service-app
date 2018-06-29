@@ -1,5 +1,6 @@
 <% if current_user %>
   <h3><%= @tenant.name %></h3>
+  <%= render 'products/list', obj: @products %>
 <% else %>
   <div class="row">
     <div class="plans clearfix">

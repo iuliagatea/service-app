@@ -1,40 +1,44 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:code) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:expected_completion_date) %></th>
-      <th><%= model_class.human_attribute_name(:tenant_id) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Expected completion date</th>
+      <% if current_user.is_admin %>
+        <th>User</th>
+      <% end %>
+      <th>Status</th>
+      <th>Updated at</th>
+      <% if current_user.is_admin %>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
-    <% @products.each do |product| %>
+    <% obj.each do |product| %>
       <tr>
-        <td><%= link_to product.id, tenant_product_path(product, tenant_id: product.tenant_id) %></td>
-        <td><%= product.code %></td>
-        <td><%= product.name %></td>
-        <td><%= product.expected_completion_date %></td>
-        <td><%= product.tenant_id %></td>
-        <td><%= product.user_id %></td>
-        <td><%=l product.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_tenant_product_path(product, tenant_id: product.tenant_id), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      tenant_product_path(product, tenant_id: product.tenant_id),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
+        <td><%= link_to product.code, tenant_product_path(product, tenant_id: product.tenant_id) %></td>
+        <td><%= link_to product.name, tenant_product_path(product, tenant_id: product.tenant_id) %></td>
+        <td><%= format_date(product.expected_completion_date) %></td>
+        <% if current_user.is_admin %>
+          <td>
+            <%= link_to product.user.email, tenant_user_products_path(user_id: product.user, tenant_id: product.tenant_id)  %>
+          </td>
+        <% end %>
+        <td style="color: <%= product.last_status.color %>;"><%= link_to product.last_status.name, tenant_status_products_path(status_id: product.last_status, tenant_id: product.tenant_id) %></td>
+        <td><%= format_date_time(product.updated_at) %></td>
+        <% if current_user.is_admin %>
+          <td>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_tenant_product_path(product, tenant_id: product.tenant_id), :class => 'btn btn-default btn-xs' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        tenant_product_path(product, tenant_id: product.tenant_id),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-xs btn-danger' %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_tenant_product_path,
-            :class => 'btn btn-primary' %>

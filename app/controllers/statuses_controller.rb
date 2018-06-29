@@ -2,6 +2,7 @@ class StatusesController < ApplicationController
   before_action :set_status, only: [:show, :edit, :update, :destroy]
   before_action :set_tenant, only: [:show, :edit, :update, :destroy, :new, :create]
   before_action :verify_tenant
+  before_action :verify_user, except: [:products]
 
   # GET /statuses
   # GET /statuses.json
@@ -60,8 +61,13 @@ class StatusesController < ApplicationController
   end
   
   def products
+    @user = User.find(current_user)
     @status = Status.find(params[:status_id])
-    @products = @status.products_with_status
+    if @user.is_admin
+      @products = @status.products_with_status
+    else
+      @products = @status.products_with_status_by_user(@user)
+    end
   end
   
   private
@@ -83,6 +89,13 @@ class StatusesController < ApplicationController
       unless params[:tenant_id] == Tenant.current_tenant_id.to_s
         redirect_to :root, 
             flash: { error: 'You are not authorized to acces any organization other than your own' }
+      end
+    end
+    
+    def verify_user
+      unless params[:user_id] == current_user.to_s or current_user.is_admin
+        redirect_to :root, 
+            flash: { error: 'You are not authorized to do this action' }
       end
     end
 end

@@ -179,12 +179,19 @@
   a {
     color: red !important;
     margin: 0 !important;
-    text-decoration: bold;
+    font-weight: bold;
   }
   
   a:hover, a:focus {
     color: #7d7d7d !important;
     background: transparent;
-    text-decoration: bold;
+    font-weight: bold;
   }
+}
+
+.group-title {
+  width: 16.66666667%;
+  text-align: right;
+  font-weight: bold;
+  color: #666;
 }

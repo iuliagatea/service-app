@@ -11,7 +11,9 @@ class HomeController < ApplicationController
       @tenant = Tenant.current_tenant
       params[:tenant_id] = @tenant.id
       if current_user.is_admin
-        
+        @products = Product.by_tenant(params[:tenant_id])
+      else
+        @products = current_user.products
       end
     end
   end

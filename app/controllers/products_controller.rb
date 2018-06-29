@@ -2,11 +2,17 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_tenant, only: [:show, :edit, :update, :destroy, :new, :create]
   before_action :verify_tenant
+  before_action :verify_user, except: [:show, :index]
   
   # GET /products
   # GET /products.json
   def index
-    @products = Product.by_tenant(params[:tenant_id])
+    @user = User.find(current_user)
+    if @user.is_admin
+      @products = Product.by_tenant(params[:tenant_id])
+    else
+      @products = @user.products
+    end
   end
 
   # GET /products/1
@@ -105,6 +111,13 @@ class ProductsController < ApplicationController
       unless params[:tenant_id] == Tenant.current_tenant_id.to_s
         redirect_to :root, 
             flash: { error: 'You are not authorized to acces any organization other than your own' }
+      end
+    end
+    
+    def verify_user
+      unless params[:user_id] == current_user.to_s or current_user.is_admin
+        redirect_to :root, 
+            flash: { error: 'You are not authorized to do this action' }
       end
     end
     

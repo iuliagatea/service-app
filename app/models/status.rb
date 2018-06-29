@@ -17,6 +17,18 @@ class Status < ActiveRecord::Base
     prods.uniq
   end
   
+  def products_with_status_by_user(user)
+    prods = []
+    pss = ProductStatus.where(status_id: id)
+    pss.each do |ps|
+      p = Product.find(ps.product_id)
+      if ps.status_id == p.last_status.id and p.user_id == user.id
+        prods << p
+      end
+    end
+    prods.uniq
+  end
+  
   def self.by_tenant(tenant_id)
     tenant = Tenant.find(tenant_id)
     tenant.statuses
