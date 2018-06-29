@@ -29,6 +29,13 @@
     </div>
     <%=f.error_span(:color) %>
   </div>
+  <div class="form-group">
+    <%= f.label :is_Active, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-1">
+      <%= f.check_box :is_active, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:color) %>
+  </div>
   <%= f.hidden_field :tenant_id, value: params[:tenant_id], :class => 'form-control' %>
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">

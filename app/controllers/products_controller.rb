@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @statuses = Status.by_product(params[:id])
+    @statuses = Status.by_product(params[:id]).uniq
   end
 
   # GET /products/new
@@ -79,6 +79,11 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tenant_products_url, notice: 'Product was successfully destroyed.' }
     end
+  end
+  
+  def by_member
+    @user = User.find(params[:user_id])
+    @products = @user.products
   end
 
   private

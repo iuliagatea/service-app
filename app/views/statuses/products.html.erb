@@ -16,11 +16,11 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.code %></td>
-        <td><%= product.name %></td>
+        <td><%= link_to product.code, tenant_product_path(product, tenant_id: product.tenant_id) %></td>
+        <td><%= link_to product.name, tenant_product_path(product, tenant_id: product.tenant_id) %></td>
         <td><%= product.expected_completion_date %></td>
         <td><%= product.user.email %></td>
-        <td><%= format_date(product.updated_at) %></td>
+        <td><%= format_date_time(product.updated_at) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_tenant_product_path(product, tenant_id: product.tenant_id), :class => 'btn btn-default btn-xs' %>

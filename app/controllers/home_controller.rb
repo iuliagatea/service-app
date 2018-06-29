@@ -10,6 +10,9 @@ class HomeController < ApplicationController
       end
       @tenant = Tenant.current_tenant
       params[:tenant_id] = @tenant.id
+      if current_user.is_admin
+        
+      end
     end
   end
 end

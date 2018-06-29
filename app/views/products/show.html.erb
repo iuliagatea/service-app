@@ -9,26 +9,32 @@
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @product.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:expected_completion_date) %>:</strong></dt>
-  <dd><%= @product.expected_completion_date %></dd>
+  <dd><%= format_date(@product.expected_completion_date) %></dd>
+  <dt><strong>Current status:</strong></dt>
+  <dd><%= @product.last_status.name %></dd>
 </dl>
-
+<% if @statuses.count > 0 %>
+<h4>History</h4>
 <table class="table table-striped">
   <tbody>
     <% @statuses.each do |status| %>
       <tr style="background-color: <%= status.color %>">
         <td><%= status.name %></td>
-        <td><%= format_date(status.created_at) %></td>
+        <td><%= format_date_time(status.created_at) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<% end %>
+<hr />
 <%= link_to t('.back', :default => t("helpers.links.back")),
               tenant_products_path(@product, tenant_id: params[:tenant_id]), :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_tenant_product_path(@product, tenant_id: params[:tenant_id]), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              tenant_product_path(@product, tenant_id: params[:tenant_id]),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+<% if current_user.is_admin %>              
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_tenant_product_path(@product, tenant_id: params[:tenant_id]), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                tenant_product_path(@product, tenant_id: params[:tenant_id]),
+                :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-danger' %>
+<% end %>

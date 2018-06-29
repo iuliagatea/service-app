@@ -38,6 +38,10 @@ module ApplicationHelper
   end
   
   def format_date(date)
-    date.strftime("%m.%d.%Y %I:%M:%S")
+    date.strftime("%d.%m.%Y")
+  end
+  
+  def format_date_time(date)
+    date.strftime("%d.%m.%Y %I:%M:%S")
   end
 end

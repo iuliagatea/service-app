@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :products
     resources :product_statuses
     get '/status_products', to: 'statuses#products'
+    get '/user_products', to: 'products#by_member'
   end
   resources :members
   resources :products
