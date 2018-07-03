@@ -20,6 +20,15 @@ class ProductsController < ApplicationController
   def show
     @statuses = Status.by_product(params[:id]).uniq
     @estimates = @product.estimates
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name",   # Excluding ".pdf" extension.
+               template: 'products/show_pdf.html.erb',
+               layout: 'layouts/pdf.html.erb',
+               show_as_html: params[:debug].present?
+      end
+    end
   end
 
   # GET /products/new
