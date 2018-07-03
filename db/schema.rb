@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180629074249) do
+ActiveRecord::Schema.define(version: 20180702140115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "estimates", force: :cascade do |t|
+    t.string   "name"
+    t.float    "quantity"
+    t.float    "price"
+    t.float    "value"
+    t.integer  "tenant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "product_id"
+  end
+
+  add_index "estimates", ["product_id"], name: "index_estimates_on_product_id", using: :btree
+  add_index "estimates", ["tenant_id"], name: "index_estimates_on_tenant_id", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.integer  "tenant_id"
@@ -56,6 +70,7 @@ ActiveRecord::Schema.define(version: 20180629074249) do
     t.integer  "user_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.text     "comments"
   end
 
   add_index "products", ["tenant_id"], name: "index_products_on_tenant_id", using: :btree
@@ -127,6 +142,8 @@ ActiveRecord::Schema.define(version: 20180629074249) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "estimates", "products"
+  add_foreign_key "estimates", "tenants"
   add_foreign_key "members", "tenants"
   add_foreign_key "members", "users"
   add_foreign_key "payments", "tenants"

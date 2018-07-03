@@ -18,6 +18,7 @@
 //= require bootstrap-datepicker
 //= require Chart.bundle
 //= require chartkick
+//= require cocoon
 
 $(document).ready(function () {
   options = {
@@ -41,29 +42,29 @@ $(document).ready(function () {
 });
 $(document).ready(function() { 
   $(".member").hide();
-    $("#user_email").bind("change",function() { 
-        if ($(this).val() != undefined) { 
-            $.ajax({ 
-                url : "/get_name", 
-                data: {'email': $(this).val()}, 
-                dataType: "json", 
-                type: "GET", 
-                success : function(data) { 
-                    // $('#member_first_name').val(data["first_name"]); 
-                    // $('#member_last_name').val(data["last_name"]);
-                    // $('#member_first_name').prop('readonly', true);
-                    // $('#member_last_name').prop('readonly', true);
-                    $(".member").hide();
-                    $("#member_first_name").prop('required',false);
-                  $("#member_last_name").prop('required',false);
-                    // console.log(data);
-                },
-                error : function() {
-                  $(".member").show();
-                  $("#member_first_name").prop('required',true);
-                  $("#member_last_name").prop('required',true);
-                }
-            }) 
-        } 
-    }) 
+  $("#user_email").bind("change",function() { 
+      if ($(this).val() != undefined) { 
+          $.ajax({ 
+              url : "/get_name", 
+              data: {'email': $(this).val()}, 
+              dataType: "json", 
+              type: "GET", 
+              success : function(data) { 
+                  // $('#member_first_name').val(data["first_name"]); 
+                  // $('#member_last_name').val(data["last_name"]);
+                  // $('#member_first_name').prop('readonly', true);
+                  // $('#member_last_name').prop('readonly', true);
+                  $(".member").hide();
+                  $("#member_first_name").prop('required',false);
+                $("#member_last_name").prop('required',false);
+                  // console.log(data);
+              },
+              error : function() {
+                $(".member").show();
+                $("#member_first_name").prop('required',true);
+                $("#member_last_name").prop('required',true);
+              }
+          }) 
+      } 
+  })
 })

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Estimates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Value</th>
+      <th>Tenant</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estimates.each do |estimate| %>
+      <tr>
+        <td><%= estimate.name %></td>
+        <td><%= estimate.quantity %></td>
+        <td><%= estimate.price %></td>
+        <td><%= estimate.value %></td>
+        <td><%= estimate.tenant %></td>
+        <td><%= link_to 'Show', estimate %></td>
+        <td><%= link_to 'Edit', edit_estimate_path(estimate) %></td>
+        <td><%= link_to 'Destroy', estimate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Estimate', new_estimate_path %>

@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @statuses = Status.by_product(params[:id]).uniq
+    @estimates = @product.estimates
   end
 
   # GET /products/new
@@ -32,6 +33,7 @@ class ProductsController < ApplicationController
     @user = Product.find(params[:id]).user
     @status = Status.find(ProductStatus.last_by_product(params[:id]))
     @statuses = Status.by_tenant(params[:tenant_id])
+    @estimates = @product.estimates
   end
 
   # POST /products
@@ -52,7 +54,8 @@ class ProductsController < ApplicationController
       user = @user.id
     end
     @product.user_id = user
-    @product.statuses << params[:status]["id"]
+    status = Status.find(params[:status]["id"])
+    @product.statuses << status
     respond_to do |format|
       if @product.save
         format.html { redirect_to tenant_products_url, notice: 'Product was successfully created.' }
@@ -104,7 +107,7 @@ class ProductsController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:code, :name, :expected_completion_date, :tenant_id)
+      params.require(:product).permit(:code, :name, :expected_completion_date, :tenant_id, :comments, estimates_attributes: [:id, :name, :quantity, :price, :value, :_destroy])
     end
 
     def verify_tenant

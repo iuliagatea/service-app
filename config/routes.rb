@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :estimates
   # get 'home/index'
   resources :tenants do
     resources :statuses
