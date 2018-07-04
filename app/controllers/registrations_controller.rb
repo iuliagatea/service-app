@@ -43,9 +43,10 @@ class RegistrationsController < Milia::RegistrationsController
               render :new and return
             end
           end
-          @statuses = [[name: "Received", color: "#428bca"] ,[name: "In progress", color: "#d9534f"], [name: "Completed", color: "#3c763d"], [name: "Canceled", color: "#ad2f21"], [name: "Waiting", color: "#d9cf14"]]
+          @statuses = [{name: "Received", color: "#428bca"} ,{name: "In progress", color: "#d9534f"}, {name: "Completed", color: "#3c763d"}, {name: "Canceled", color: "#ad2f21"}, {name: "Waiting", color: "#d9cf14"}]
           @statuses.each do |s|
-            Status.new(name: s.name, color: s.color, tenant_id: @tenant, can_be_deleted: false)
+            @status = Status.new(name: s[:name], color: s[:color], tenant_id: @tenant.id, can_be_deleted: false)
+            @status.save
           end
         else
           resource.valid?
