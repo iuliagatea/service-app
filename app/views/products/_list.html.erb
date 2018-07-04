@@ -1,5 +1,6 @@
 <%= will_paginate @products %>
-<table class="table table-striped">
+<% if @products.size > 0 %>
+  <table class="table table-striped">
   <thead>
     <tr>
       <th>Code - Name</th>
@@ -43,4 +44,13 @@
     <% end %>
   </tbody>
 </table>
+<% else %> 
+  <p>There are no products to display</p>
+  <div>
+    <%= link_to "<i class='fa fa-user-plus'></i> Add Customer Product".html_safe,
+                        new_tenant_product_path(tenant_id: params[:tenant_id]),  
+                        class: 'navbar-link' %>
+  </div>
+ 
+<% end %>
 <%= will_paginate @products %>
