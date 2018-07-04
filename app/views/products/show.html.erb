@@ -5,7 +5,13 @@
   <%= wicked_pdf_stylesheet_link_tag 'application' %>
 <% end %>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %> Card</h1> <%= link_to 'Download Pdf', tenant_product_path(@product, tenant_id: @product.tenant_id, format: :pdf) %>
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %> 
+               <span class="pdf-download">
+                 <%= link_to "<i class='fa fa-download'></i> ".html_safe, 
+                    tenant_product_path(@product, tenant_id: @product.tenant_id, format: :pdf),
+                    title: 'Download' %>
+                </span>
+  </h1> 
 </div>
 
 <dl class="dl-horizontal">

@@ -20,18 +20,20 @@
   <dt><strong><%= model_class.human_attribute_name(:comments) %>:</strong></dt>
   <dd><%= @product.comments %></dd>
 </dl>
-<% if @statuses.count > 0 %>
-<h4>History</h4>
-<table class="table table-striped">
-  <tbody>
-    <% @statuses.each do |status| %>
-      <tr style="background-color: <%= status.color %>">
-        <td><%= status.name %></td>
-        <td><%= format_date_time(status.created_at) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if current_user.is_admin? %>
+  <% if @statuses.count > 0 %>
+    <h4>History</h4>
+    <table class="table table-striped">
+      <tbody>
+        <% @statuses.each do |status| %>
+          <tr style="background-color: <%= status.color %>">
+            <td><%= status.name %></td>
+            <td><%= format_date_time(status.created_at) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 <% end %>
 <hr />
 <% if @estimates.count > 0 %>

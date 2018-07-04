@@ -15,7 +15,8 @@ Rails.application.configure do
     :authentication => :plain,
     :user_name => "do-not-reply@service-app.com",
     :password => ENV["SMTP_ENTRY"],
-    :enable_starttls_auto => true
+    :enable_starttls_auto => true,
+    :openssl_verify_mode => 'none'
   }
 
   # Settings specified here will take precedence over those in config/application.rb.

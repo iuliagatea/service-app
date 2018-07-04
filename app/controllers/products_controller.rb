@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
       format.html
       format.pdf do
         render pdf: "file_name",   # Excluding ".pdf" extension.
-               template: 'products/show_pdf.html.erb',
+               template: 'products/product_pdf.html.erb',
                layout: 'layouts/pdf.html.erb',
                show_as_html: params[:debug].present?
       end
