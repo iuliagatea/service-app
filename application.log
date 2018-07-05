@@ -1,0 +1,539 @@
+# Logfile created on 2018-07-05 08:46:27 +0000 by logger.rb/56438
+D, [2018-07-05T08:47:15.661981 #3452] DEBUG -- : 
+D, [2018-07-05T08:47:15.662100 #3452] DEBUG -- : 
+I, [2018-07-05T08:47:15.662378 #3452]  INFO -- : Started GET "/" for 92.84.60.177 at 2018-07-05 08:47:15 +0000
+I, [2018-07-05T08:47:15.663283 #3452]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+D, [2018-07-05T08:47:15.710297 #3452] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2018-07-05T08:47:15.741395 #3452]  INFO -- : Processing by HomeController#index as HTML
+D, [2018-07-05T08:47:15.772409 #3452] DEBUG -- :   [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 12]]
+D, [2018-07-05T08:47:15.806422 #3452] DEBUG -- : MILIA >>>>> [Tenant#change_tenant] new: 1	old:%
+D, [2018-07-05T08:47:15.811802 #3452] DEBUG -- :   [1m[36mTenant Load (0.8ms)[0m  [1mSELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1[0m  [["id", 1]]
+D, [2018-07-05T08:47:15.871635 #3452] DEBUG -- :   [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "products" WHERE "products"."user_id" = $1  [["user_id", 12]]
+D, [2018-07-05T08:47:15.872628 #3452] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products" WHERE "products"."user_id" = $1[0m  [["user_id", 12]]
+D, [2018-07-05T08:47:15.875063 #3452] DEBUG -- :   [1m[35mProduct Load (0.4ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."user_id" = $1 LIMIT 10 OFFSET 0  [["user_id", 12]]
+D, [2018-07-05T08:47:15.897756 #3452] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 9]]
+D, [2018-07-05T08:47:15.901398 #3452] DEBUG -- :   [1m[35m (1.0ms)[0m  SELECT SUM(price * quantity) FROM "estimates" WHERE "estimates"."product_id" = $1  [["product_id", 9]]
+D, [2018-07-05T08:47:15.909635 #3452] DEBUG -- :   [1m[36mProductStatus Load (0.6ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 9]]
+D, [2018-07-05T08:47:15.923699 #3452] DEBUG -- :   [1m[35mStatus Load (0.4ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T08:47:15.928951 #3452] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 9]]
+D, [2018-07-05T08:47:15.929441 #3452] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T08:47:15.930253 #3452] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 9]]
+D, [2018-07-05T08:47:15.930546 #3452] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+I, [2018-07-05T08:47:15.931597 #3452]  INFO -- :   Rendered products/_list.html.erb (64.5ms)
+I, [2018-07-05T08:47:15.931744 #3452]  INFO -- :   Rendered home/index.html.erb within layouts/application (71.9ms)
+I, [2018-07-05T08:47:16.725029 #3452]  INFO -- :   Rendered common/_navbar.html.erb (4.8ms)
+I, [2018-07-05T08:47:16.725741 #3452]  INFO -- : Completed 200 OK in 984ms (Views: 873.6ms | ActiveRecord: 18.8ms)
+D, [2018-07-05T08:47:47.198446 #3452] DEBUG -- : 
+D, [2018-07-05T08:47:47.198722 #3452] DEBUG -- : 
+I, [2018-07-05T08:47:47.198919 #3452]  INFO -- : Started GET "/tenants/1/products/9" for 92.84.60.177 at 2018-07-05 08:47:47 +0000
+I, [2018-07-05T08:47:47.199651 #3452]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T08:47:47.216326 #3452]  INFO -- : Processing by ProductsController#show as HTML
+I, [2018-07-05T08:47:47.216437 #3452]  INFO -- :   Parameters: {"tenant_id"=>"1", "id"=>"9"}
+D, [2018-07-05T08:47:47.219195 #3452] DEBUG -- :   [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 12]]
+D, [2018-07-05T08:47:47.244771 #3452] DEBUG -- :   [1m[35mTenant Load (0.7ms)[0m  SELECT "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  [["user_id", 12]]
+D, [2018-07-05T08:47:47.245395 #3452] DEBUG -- : MILIA >>>>> [change tenant] new: 1	old: %
+D, [2018-07-05T08:47:47.308231 #3452] DEBUG -- :   [1m[36mProduct Load (0.5ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 9]]
+D, [2018-07-05T08:47:47.310205 #3452] DEBUG -- :   [1m[35mTenant Load (0.4ms)[0m  SELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T08:47:47.310803 #3452] DEBUG -- : Showing products of 1 for user test@t.com
+D, [2018-07-05T08:47:47.311124 #3452] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", "9"]]
+D, [2018-07-05T08:47:47.318143 #3452] DEBUG -- :   [1m[35mStatus Load (0.5ms)[0m  SELECT "statuses".* FROM "statuses" INNER JOIN "product_statuses" ON "statuses"."id" = "product_statuses"."status_id" WHERE "product_statuses"."product_id" = $1  [["product_id", 9]]
+D, [2018-07-05T08:47:47.462774 #3452] DEBUG -- :   [1m[36mProductStatus Load (0.6ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 9]]
+D, [2018-07-05T08:47:47.463773 #3452] DEBUG -- :   [1m[35mStatus Load (0.3ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T08:47:47.465505 #3452] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 9]]
+D, [2018-07-05T08:47:47.467066 #3452] DEBUG -- :   [1m[35mEstimate Load (0.3ms)[0m  SELECT "estimates".* FROM "estimates" WHERE "estimates"."product_id" = $1  [["product_id", 9]]
+D, [2018-07-05T08:47:47.474189 #3452] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 9]]
+D, [2018-07-05T08:47:47.475462 #3452] DEBUG -- :   [1m[35m (0.5ms)[0m  SELECT SUM(price * quantity) FROM "estimates" WHERE "estimates"."product_id" = $1  [["product_id", 9]]
+I, [2018-07-05T08:47:47.476394 #3452]  INFO -- :   Rendered products/show.html.erb within layouts/application (149.6ms)
+I, [2018-07-05T08:47:47.690576 #3452]  INFO -- :   Rendered common/_navbar.html.erb (0.4ms)
+I, [2018-07-05T08:47:47.691380 #3452]  INFO -- : Completed 200 OK in 475ms (Views: 369.1ms | ActiveRecord: 6.7ms)
+D, [2018-07-05T11:17:30.385185 #3452] DEBUG -- : 
+D, [2018-07-05T11:17:30.385314 #3452] DEBUG -- : 
+I, [2018-07-05T11:17:30.385577 #3452]  INFO -- : Started DELETE "/users/sign_out" for 92.84.60.177 at 2018-07-05 11:17:30 +0000
+I, [2018-07-05T11:17:30.386432 #3452]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T11:17:30.475504 #3452]  INFO -- : Processing by Milia::SessionsController#destroy as HTML
+I, [2018-07-05T11:17:30.475633 #3452]  INFO -- :   Parameters: {"authenticity_token"=>"PNeMbllLZobZxvQrZIc48+Cbx1BmY9vXyKFImgVqLRQY6PuyA8w95Ef+TI2oLCZEBIzzriBO6iflM6YjSJM7RA=="}
+D, [2018-07-05T11:17:30.512309 #3452] DEBUG -- :   [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 12]]
+D, [2018-07-05T11:17:30.523402 #3452] DEBUG -- : MILIA >>>>> [change tenant] new: %	old: %
+D, [2018-07-05T11:17:30.523525 #3452] DEBUG -- : MILIA >>>>> [reset tenant] 
+D, [2018-07-05T11:17:30.528117 #3452] DEBUG -- :   [1m[35m (0.6ms)[0m  BEGIN
+D, [2018-07-05T11:17:30.531650 #3452] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+I, [2018-07-05T11:17:30.533614 #3452]  INFO -- : Redirected to https://rubyonrailstraining-iuliagatea.c9users.io/
+I, [2018-07-05T11:17:30.534053 #3452]  INFO -- : Completed 302 Found in 58ms (ActiveRecord: 32.5ms)
+D, [2018-07-05T11:17:30.594283 #3452] DEBUG -- : 
+D, [2018-07-05T11:17:30.594472 #3452] DEBUG -- : 
+I, [2018-07-05T11:17:30.594703 #3452]  INFO -- : Started GET "/" for 92.84.60.177 at 2018-07-05 11:17:30 +0000
+I, [2018-07-05T11:17:30.595715 #3452]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T11:17:30.655923 #3452]  INFO -- : Processing by HomeController#index as HTML
+I, [2018-07-05T11:17:30.668729 #3452]  INFO -- :   Rendered home/index.html.erb within layouts/application (0.9ms)
+I, [2018-07-05T11:17:30.860766 #3452]  INFO -- :   Rendered common/_navbar.html.erb (0.6ms)
+I, [2018-07-05T11:17:30.861532 #3452]  INFO -- : Completed 200 OK in 205ms (Views: 201.1ms | ActiveRecord: 0.0ms)
+D, [2018-07-05T11:17:34.768697 #3452] DEBUG -- : 
+D, [2018-07-05T11:17:34.768849 #3452] DEBUG -- : 
+I, [2018-07-05T11:17:34.769137 #3452]  INFO -- : Started GET "/users/sign_in" for 92.84.60.177 at 2018-07-05 11:17:34 +0000
+I, [2018-07-05T11:17:34.769911 #3452]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T11:17:34.776684 #3452]  INFO -- : Processing by Milia::SessionsController#new as HTML
+I, [2018-07-05T11:17:34.822588 #3452]  INFO -- :   Rendered devise/shared/_links.html.erb (2.1ms)
+I, [2018-07-05T11:17:34.822808 #3452]  INFO -- :   Rendered devise/sessions/new.html.erb within layouts/application (29.5ms)
+I, [2018-07-05T11:17:35.073484 #3452]  INFO -- :   Rendered common/_navbar.html.erb (0.7ms)
+I, [2018-07-05T11:17:35.074386 #3452]  INFO -- : Completed 200 OK in 297ms (Views: 293.4ms | ActiveRecord: 0.0ms)
+D, [2018-07-05T11:17:40.208318 #3452] DEBUG -- : 
+D, [2018-07-05T11:17:40.208438 #3452] DEBUG -- : 
+I, [2018-07-05T11:17:40.208756 #3452]  INFO -- : Started GET "/users/sign_up?plan=free" for 92.84.60.177 at 2018-07-05 11:17:40 +0000
+I, [2018-07-05T11:17:40.209392 #3452]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T11:17:40.227926 #3452]  INFO -- : Processing by RegistrationsController#new as HTML
+I, [2018-07-05T11:17:40.228038 #3452]  INFO -- :   Parameters: {"plan"=>"free"}
+I, [2018-07-05T11:17:40.258660 #3452]  INFO -- :   Rendered devise/shared/_links.html.erb (1.0ms)
+I, [2018-07-05T11:17:40.258844 #3452]  INFO -- :   Rendered devise/registrations/new.html.erb within layouts/application (15.3ms)
+I, [2018-07-05T11:17:40.534262 #3452]  INFO -- :   Rendered common/_navbar.html.erb (0.6ms)
+I, [2018-07-05T11:17:40.535000 #3452]  INFO -- : Completed 200 OK in 307ms (Views: 305.0ms | ActiveRecord: 0.0ms)
+D, [2018-07-05T11:17:49.969124 #3452] DEBUG -- : 
+D, [2018-07-05T11:17:49.969462 #3452] DEBUG -- : 
+I, [2018-07-05T11:17:49.969845 #3452]  INFO -- : Started GET "/get_name?email=t%40t.t" for 92.84.60.177 at 2018-07-05 11:17:49 +0000
+I, [2018-07-05T11:17:49.971107 #3452]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T11:17:49.987483 #3452]  INFO -- : Processing by MembersController#get_name as JSON
+I, [2018-07-05T11:17:49.987647 #3452]  INFO -- :   Parameters: {"email"=>"t@t.t"}
+I, [2018-07-05T11:17:49.997417 #3452]  INFO -- : Completed 401 Unauthorized in 10ms (ActiveRecord: 0.0ms)
+D, [2018-07-05T11:18:02.949768 #3452] DEBUG -- : 
+D, [2018-07-05T11:18:02.949884 #3452] DEBUG -- : 
+I, [2018-07-05T11:18:02.950267 #3452]  INFO -- : Started POST "/users" for 92.84.60.177 at 2018-07-05 11:18:02 +0000
+I, [2018-07-05T11:18:02.951205 #3452]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T11:18:02.959174 #3452]  INFO -- : Processing by RegistrationsController#create as HTML
+I, [2018-07-05T11:18:02.959309 #3452]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"93B6h5254Mc3nFfbtILlsEhPBWxgbKxoZZx3uKLuClRoO6vfYE0YXhgeibDpDufj0x+LfDAq6SvPGBSdA0g1zw==", "user"=>{"email"=>"t@t.t", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "tenant"=>{"name"=>"testc", "plan"=>"free"}, "payment"=>{"card_number"=>"", "card_cvc"=>"", "card_expires_month"=>"", "card_expires_year"=>""}, "commit"=>"Sign up"}
+D, [2018-07-05T11:18:03.067821 #3452] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2018-07-05T11:18:03.112802 #3452] DEBUG -- :   [1m[36mTenant Exists (1.2ms)[0m  [1mSELECT  1 AS one FROM "tenants" WHERE "tenants"."name" = 'testc' LIMIT 1[0m
+D, [2018-07-05T11:18:03.116821 #3452] DEBUG -- :   [1m[35mSQL (1.1ms)[0m  INSERT INTO "tenants" ("plan", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["plan", "free"], ["name", "testc"], ["created_at", "2018-07-05 11:18:03.113420"], ["updated_at", "2018-07-05 11:18:03.113420"]]
+D, [2018-07-05T11:18:03.117703 #3452] DEBUG -- : Creating tenant: {"id"=>10, "tenant_id"=>nil, "name"=>"testc", "created_at"=>Thu, 05 Jul 2018 11:18:03 UTC +00:00, "updated_at"=>Thu, 05 Jul 2018 11:18:03 UTC +00:00, "plan"=>"free"}
+D, [2018-07-05T11:18:03.121289 #3452] DEBUG -- :   [1m[36mTenant Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "tenants" WHERE ("tenants"."name" = 'testc' AND "tenants"."id" != 10) LIMIT 1[0m
+D, [2018-07-05T11:18:03.121398 #3452] DEBUG -- : Tenant should be valid: true
+D, [2018-07-05T11:18:03.121462 #3452] DEBUG -- : Saving initial statuses
+D, [2018-07-05T11:18:03.139003 #3452] DEBUG -- :   [1m[35mStatus Exists (0.9ms)[0m  SELECT  1 AS one FROM "statuses" WHERE ("statuses"."name" = 'Received' AND "statuses"."tenant_id" = 10) LIMIT 1
+D, [2018-07-05T11:18:03.142428 #3452] DEBUG -- :   [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "statuses" ("name", "color", "tenant_id", "can_be_deleted", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Received"], ["color", "#428bca"], ["tenant_id", 10], ["can_be_deleted", "f"], ["created_at", "2018-07-05 11:18:03.139325"], ["updated_at", "2018-07-05 11:18:03.139325"]]
+D, [2018-07-05T11:18:03.144928 #3452] DEBUG -- :   [1m[35mStatus Exists (0.5ms)[0m  SELECT  1 AS one FROM "statuses" WHERE ("statuses"."name" = 'Received' AND "statuses"."id" != 16 AND "statuses"."tenant_id" = 10) LIMIT 1
+D, [2018-07-05T11:18:03.146899 #3452] DEBUG -- :   [1m[36mStatus Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "statuses" WHERE ("statuses"."name" = 'In progress' AND "statuses"."tenant_id" = 10) LIMIT 1[0m
+D, [2018-07-05T11:18:03.148732 #3452] DEBUG -- :   [1m[35mSQL (0.6ms)[0m  INSERT INTO "statuses" ("name", "color", "tenant_id", "can_be_deleted", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "In progress"], ["color", "#d9534f"], ["tenant_id", 10], ["can_be_deleted", "f"], ["created_at", "2018-07-05 11:18:03.147052"], ["updated_at", "2018-07-05 11:18:03.147052"]]
+D, [2018-07-05T11:18:03.150465 #3452] DEBUG -- :   [1m[36mStatus Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "statuses" WHERE ("statuses"."name" = 'In progress' AND "statuses"."id" != 17 AND "statuses"."tenant_id" = 10) LIMIT 1[0m
+D, [2018-07-05T11:18:03.151942 #3452] DEBUG -- :   [1m[35mStatus Exists (0.4ms)[0m  SELECT  1 AS one FROM "statuses" WHERE ("statuses"."name" = 'Completed' AND "statuses"."tenant_id" = 10) LIMIT 1
+D, [2018-07-05T11:18:03.153697 #3452] DEBUG -- :   [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "statuses" ("name", "color", "tenant_id", "can_be_deleted", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Completed"], ["color", "#3c763d"], ["tenant_id", 10], ["can_be_deleted", "f"], ["created_at", "2018-07-05 11:18:03.152055"], ["updated_at", "2018-07-05 11:18:03.152055"]]
+D, [2018-07-05T11:18:03.155282 #3452] DEBUG -- :   [1m[35mStatus Exists (0.5ms)[0m  SELECT  1 AS one FROM "statuses" WHERE ("statuses"."name" = 'Completed' AND "statuses"."id" != 18 AND "statuses"."tenant_id" = 10) LIMIT 1
+D, [2018-07-05T11:18:03.156796 #3452] DEBUG -- :   [1m[36mStatus Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "statuses" WHERE ("statuses"."name" = 'Canceled' AND "statuses"."tenant_id" = 10) LIMIT 1[0m
+D, [2018-07-05T11:18:03.158465 #3452] DEBUG -- :   [1m[35mSQL (0.5ms)[0m  INSERT INTO "statuses" ("name", "color", "tenant_id", "can_be_deleted", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "Canceled"], ["color", "#ad2f21"], ["tenant_id", 10], ["can_be_deleted", "f"], ["created_at", "2018-07-05 11:18:03.156919"], ["updated_at", "2018-07-05 11:18:03.156919"]]
+D, [2018-07-05T11:18:03.160071 #3452] DEBUG -- :   [1m[36mStatus Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "statuses" WHERE ("statuses"."name" = 'Canceled' AND "statuses"."id" != 19 AND "statuses"."tenant_id" = 10) LIMIT 1[0m
+D, [2018-07-05T11:18:03.161648 #3452] DEBUG -- :   [1m[35mStatus Exists (0.4ms)[0m  SELECT  1 AS one FROM "statuses" WHERE ("statuses"."name" = 'Waiting' AND "statuses"."tenant_id" = 10) LIMIT 1
+D, [2018-07-05T11:18:03.163586 #3452] DEBUG -- :   [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "statuses" ("name", "color", "tenant_id", "can_be_deleted", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Waiting"], ["color", "#d9cf14"], ["tenant_id", 10], ["can_be_deleted", "f"], ["created_at", "2018-07-05 11:18:03.161760"], ["updated_at", "2018-07-05 11:18:03.161760"]]
+D, [2018-07-05T11:18:03.164986 #3452] DEBUG -- :   [1m[35mStatus Exists (0.3ms)[0m  SELECT  1 AS one FROM "statuses" WHERE ("statuses"."name" = 'Waiting' AND "statuses"."id" != 20 AND "statuses"."tenant_id" = 10) LIMIT 1
+D, [2018-07-05T11:18:03.165245 #3452] DEBUG -- : MILIA >>>>> [change tenant] new: 10	old: %
+D, [2018-07-05T11:18:03.238310 #3452] DEBUG -- :   [1m[36mUser Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 't@t.t' LIMIT 1[0m
+D, [2018-07-05T11:18:03.434903 #3452] DEBUG -- :   [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."confirmation_token" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["confirmation_token", "eb7b1e6ec1328f378e126322e738116199a3773bc670e5939e469c05c49f9c1c"]]
+D, [2018-07-05T11:18:03.438270 #3452] DEBUG -- :   [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "is_admin", "skip_confirm_change_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "t@t.t"], ["encrypted_password", "$2a$10$uTM1coQx70Lw09NITo1LyeNxh/6oxS58o7X4HQMdFOMn5zEbyHc06"], ["is_admin", "t"], ["skip_confirm_change_password", "t"], ["created_at", "2018-07-05 11:18:03.239064"], ["updated_at", "2018-07-05 11:18:03.239064"], ["confirmation_token", "UHB6yB3GPQy2gFvsUWpN"], ["confirmation_sent_at", "2018-07-05 11:18:03.435598"]]
+I, [2018-07-05T11:18:03.484957 #3452]  INFO -- :   Rendered devise/mailer/confirmation_instructions.html.erb (1.9ms)
+D, [2018-07-05T11:18:03.855702 #3452] DEBUG -- : 
+Devise::Mailer#confirmation_instructions: processed outbound mail in 389.5ms
+I, [2018-07-05T11:18:03.867476 #3452]  INFO -- : 
+Sent mail to t@t.t (11.4ms)
+D, [2018-07-05T11:18:03.867579 #3452] DEBUG -- : Date: Thu, 05 Jul 2018 11:18:03 +0000
+From: do-not-reply@service-app.com
+Reply-To: do-not-reply@service-app.com
+To: t@t.t
+Message-ID: <5b3dfe6bd2a3c_d7c3fc657865300606df@iuliagatea-rubyonrailstraining-6038560.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome t@t.t!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="https://rubyonrailstraining-iuliagatea.c9users.io/users/confirmation?confirmation_token=UHB6yB3GPQy2gFvsUWpN&amp;locale=en">Confirm my account</a></p>
+
+D, [2018-07-05T11:18:03.869628 #3452] DEBUG -- :   [1m[35mTenant Load (0.5ms)[0m  SELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1  [["id", 10]]
+D, [2018-07-05T11:18:03.886851 #3452] DEBUG -- :   [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "tenants_users" ON "users"."id" = "tenants_users"."user_id" WHERE (users.tenant_id IS NULL) AND "tenants_users"."tenant_id" = $1 AND "users"."id" = $2 LIMIT 1[0m  [["tenant_id", 10], ["id", 13]]
+D, [2018-07-05T11:18:03.893720 #3452] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO "tenants_users" ("tenant_id", "user_id") VALUES ($1, $2)  [["tenant_id", 10], ["user_id", 13]]
+D, [2018-07-05T11:18:03.894902 #3452] DEBUG -- : MILIA >>>>> [register user/org] devise: signup user success - 
+I, [2018-07-05T11:18:03.908845 #3452]  INFO -- : Redirected to https://rubyonrailstraining-iuliagatea.c9users.io/
+D, [2018-07-05T11:18:03.908985 #3452] DEBUG -- : MILIA >>>>> [register user/org] signup user/tenant success - 
+D, [2018-07-05T11:18:03.909059 #3452] DEBUG -- : Signup user/tenant success #<User:0x007f8cadf93fa8>
+D, [2018-07-05T11:18:03.928463 #3452] DEBUG -- :   [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "members" ("first_name", "last_name", "user_id", "tenant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Admin"], ["last_name", "Please edit me"], ["user_id", 13], ["tenant_id", 10], ["created_at", "2018-07-05 11:18:03.925799"], ["updated_at", "2018-07-05 11:18:03.925799"]]
+D, [2018-07-05T11:18:03.930874 #3452] DEBUG -- :   [1m[35mMember Load (0.4ms)[0m  SELECT  "members".* FROM "members" WHERE (members.tenant_id = 10) AND "members"."user_id" = $1 LIMIT 1  [["user_id", 13]]
+D, [2018-07-05T11:18:03.935547 #3452] DEBUG -- :   [1m[36m (3.9ms)[0m  [1mCOMMIT[0m
+I, [2018-07-05T11:18:03.935894 #3452]  INFO -- : Completed 302 Found in 976ms (ActiveRecord: 29.0ms)
+D, [2018-07-05T11:18:04.020410 #3452] DEBUG -- : 
+D, [2018-07-05T11:18:04.020536 #3452] DEBUG -- : 
+I, [2018-07-05T11:18:04.020730 #3452]  INFO -- : Started GET "/" for 92.84.60.177 at 2018-07-05 11:18:04 +0000
+I, [2018-07-05T11:18:04.021435 #3452]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T11:18:04.027624 #3452]  INFO -- : Processing by HomeController#index as HTML
+I, [2018-07-05T11:18:04.032436 #3452]  INFO -- :   Rendered home/index.html.erb within layouts/application (0.6ms)
+I, [2018-07-05T11:18:04.236584 #3452]  INFO -- :   Rendered common/_navbar.html.erb (0.5ms)
+I, [2018-07-05T11:18:04.237285 #3452]  INFO -- : Completed 200 OK in 209ms (Views: 208.3ms | ActiveRecord: 0.0ms)
+D, [2018-07-05T11:18:16.293885 #3452] DEBUG -- : 
+D, [2018-07-05T11:18:16.294001 #3452] DEBUG -- : 
+I, [2018-07-05T11:18:16.294312 #3452]  INFO -- : Started GET "/users/confirmation?confirmation_token=UHB6yB3GPQy2gFvsUWpN&amp;locale=en" for 92.84.60.177 at 2018-07-05 11:18:16 +0000
+I, [2018-07-05T11:18:16.294933 #3452]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T11:18:16.312725 #3452]  INFO -- : Processing by ConfirmationsController#show as HTML
+I, [2018-07-05T11:18:16.312867 #3452]  INFO -- :   Parameters: {"confirmation_token"=>"UHB6yB3GPQy2gFvsUWpN", "amp"=>nil, "locale"=>"en"}
+D, [2018-07-05T11:18:16.316631 #3452] DEBUG -- :   [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."confirmation_token" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["confirmation_token", "UHB6yB3GPQy2gFvsUWpN"]]
+D, [2018-07-05T11:18:16.317424 #3452] DEBUG -- : MILIA >>>>> [confirm user] devise pass-thru - t@t.t
+D, [2018-07-05T11:18:16.318394 #3452] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."confirmation_token" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["confirmation_token", "UHB6yB3GPQy2gFvsUWpN"]]
+D, [2018-07-05T11:18:16.319770 #3452] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2018-07-05T11:18:16.323456 #3452] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "confirmed_at" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["confirmed_at", "2018-07-05 11:18:16.319041"], ["updated_at", "2018-07-05 11:18:16.320131"], ["id", 13]]
+D, [2018-07-05T11:18:16.327324 #3452] DEBUG -- :   [1m[35m (3.0ms)[0m  COMMIT
+D, [2018-07-05T11:18:16.329893 #3452] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+D, [2018-07-05T11:18:16.332341 #3452] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2018-07-05 11:18:16.328744"], ["current_sign_in_at", "2018-07-05 11:18:16.328744"], ["last_sign_in_ip", "92.84.60.177/32"], ["current_sign_in_ip", "92.84.60.177/32"], ["sign_in_count", 1], ["updated_at", "2018-07-05 11:18:16.330209"], ["id", 13]]
+D, [2018-07-05T11:18:16.335612 #3452] DEBUG -- :   [1m[36m (2.6ms)[0m  [1mCOMMIT[0m
+D, [2018-07-05T11:18:16.347413 #3452] DEBUG -- :   [1m[35mTenant Load (0.9ms)[0m  SELECT "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  [["user_id", 13]]
+D, [2018-07-05T11:18:16.347978 #3452] DEBUG -- : MILIA >>>>> [change tenant] new: 10	old: %
+I, [2018-07-05T11:18:16.348520 #3452]  INFO -- : Redirected to https://rubyonrailstraining-iuliagatea.c9users.io/
+I, [2018-07-05T11:18:16.348883 #3452]  INFO -- : Completed 302 Found in 36ms (ActiveRecord: 8.7ms)
+D, [2018-07-05T11:18:16.432785 #3452] DEBUG -- : 
+D, [2018-07-05T11:18:16.432943 #3452] DEBUG -- : 
+I, [2018-07-05T11:18:16.433136 #3452]  INFO -- : Started GET "/" for 92.84.60.177 at 2018-07-05 11:18:16 +0000
+I, [2018-07-05T11:18:16.433836 #3452]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T11:18:16.439919 #3452]  INFO -- : Processing by HomeController#index as HTML
+D, [2018-07-05T11:18:16.442561 #3452] DEBUG -- :   [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 13]]
+D, [2018-07-05T11:18:16.443553 #3452] DEBUG -- : MILIA >>>>> [Tenant#change_tenant] new: 10	old:%
+D, [2018-07-05T11:18:16.445054 #3452] DEBUG -- :   [1m[35mTenant Load (0.5ms)[0m  SELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1  [["id", 10]]
+D, [2018-07-05T11:18:16.450744 #3452] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1[0m  [["id", 10]]
+D, [2018-07-05T11:18:16.461103 #3452] DEBUG -- :   [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "products" WHERE "products"."tenant_id" = $1  [["tenant_id", 10]]
+D, [2018-07-05T11:18:16.461974 #3452] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products" WHERE "products"."tenant_id" = $1[0m  [["tenant_id", 10]]
+I, [2018-07-05T11:18:16.462642 #3452]  INFO -- :   Rendered products/_list.html.erb (3.9ms)
+D, [2018-07-05T11:18:16.463280 #3452] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "products" WHERE "products"."tenant_id" = $1  [["tenant_id", 10]]
+I, [2018-07-05T11:18:16.463429 #3452]  INFO -- :   Rendered home/index.html.erb within layouts/application (5.4ms)
+D, [2018-07-05T11:18:16.661021 #3452] DEBUG -- :   [1m[36mTenant Load (0.6ms)[0m  [1mSELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1[0m  [["user_id", 13]]
+I, [2018-07-05T11:18:16.662294 #3452]  INFO -- :   Rendered common/_navbar.html.erb (4.9ms)
+I, [2018-07-05T11:18:16.663019 #3452]  INFO -- : Completed 200 OK in 223ms (Views: 206.7ms | ActiveRecord: 3.4ms)
+D, [2018-07-05T12:35:38.961122 #4830] DEBUG -- : 
+D, [2018-07-05T12:35:38.961233 #4830] DEBUG -- : 
+I, [2018-07-05T12:35:38.961558 #4830]  INFO -- : Started GET "/" for 92.84.60.177 at 2018-07-05 12:35:38 +0000
+I, [2018-07-05T12:35:38.962469 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+D, [2018-07-05T12:35:39.111889 #4830] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2018-07-05T12:35:39.142651 #4830]  INFO -- : Processing by HomeController#index as HTML
+D, [2018-07-05T12:35:39.171914 #4830] DEBUG -- :   [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 13]]
+D, [2018-07-05T12:35:39.206119 #4830] DEBUG -- : MILIA >>>>> [Tenant#change_tenant] new: 10	old:%
+I, [2018-07-05T12:35:39.206375 #4830]  INFO -- : Opening index..
+D, [2018-07-05T12:35:39.212222 #4830] DEBUG -- :   [1m[36mTenant Load (0.6ms)[0m  [1mSELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1[0m  [["id", 10]]
+D, [2018-07-05T12:35:39.224693 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1  [["id", 10]]
+D, [2018-07-05T12:35:39.270840 #4830] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "products" WHERE "products"."tenant_id" = $1[0m  [["tenant_id", 10]]
+D, [2018-07-05T12:35:39.271769 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "products" WHERE "products"."tenant_id" = $1  [["tenant_id", 10]]
+I, [2018-07-05T12:35:39.272519 #4830]  INFO -- :   Rendered products/_list.html.erb (6.6ms)
+D, [2018-07-05T12:35:39.273152 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products" WHERE "products"."tenant_id" = $1[0m  [["tenant_id", 10]]
+I, [2018-07-05T12:35:39.273305 #4830]  INFO -- :   Rendered home/index.html.erb within layouts/application (13.8ms)
+D, [2018-07-05T12:35:40.152249 #4830] DEBUG -- :   [1m[35mTenant Load (0.9ms)[0m  SELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1  [["user_id", 13]]
+I, [2018-07-05T12:35:40.154020 #4830]  INFO -- :   Rendered common/_navbar.html.erb (36.7ms)
+I, [2018-07-05T12:35:40.154814 #4830]  INFO -- : Completed 200 OK in 1012ms (Views: 907.9ms | ActiveRecord: 12.0ms)
+D, [2018-07-05T12:35:50.139704 #4830] DEBUG -- : 
+D, [2018-07-05T12:35:50.139810 #4830] DEBUG -- : 
+I, [2018-07-05T12:35:50.139978 #4830]  INFO -- : Started GET "/tenants/10/products/new" for 92.84.60.177 at 2018-07-05 12:35:50 +0000
+I, [2018-07-05T12:35:50.140608 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T12:35:50.163882 #4830]  INFO -- : Processing by ProductsController#new as HTML
+I, [2018-07-05T12:35:50.163998 #4830]  INFO -- :   Parameters: {"tenant_id"=>"10"}
+D, [2018-07-05T12:35:50.167168 #4830] DEBUG -- :   [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 13]]
+D, [2018-07-05T12:35:50.172021 #4830] DEBUG -- :   [1m[35mTenant Load (0.6ms)[0m  SELECT "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  [["user_id", 13]]
+D, [2018-07-05T12:35:50.172656 #4830] DEBUG -- : MILIA >>>>> [change tenant] new: 10	old: %
+D, [2018-07-05T12:35:50.174364 #4830] DEBUG -- :   [1m[36mTenant Load (0.5ms)[0m  [1mSELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1[0m  [["id", 10]]
+D, [2018-07-05T12:35:50.186620 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1  [["id", "10"]]
+D, [2018-07-05T12:35:50.477156 #4830] DEBUG -- :   [1m[36mStatus Load (0.7ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE "statuses"."tenant_id" = $1[0m  [["tenant_id", 10]]
+I, [2018-07-05T12:35:50.512862 #4830]  INFO -- :   Rendered products/_estimate_fields.html.erb (2.9ms)
+I, [2018-07-05T12:35:50.514349 #4830]  INFO -- :   Rendered products/_form.html.erb (64.8ms)
+I, [2018-07-05T12:35:50.514489 #4830]  INFO -- :   Rendered products/new.html.erb within layouts/application (188.8ms)
+I, [2018-07-05T12:35:50.744129 #4830]  INFO -- :   Rendered common/_navbar.html.erb (1.6ms)
+I, [2018-07-05T12:35:50.744808 #4830]  INFO -- : Completed 200 OK in 581ms (Views: 433.4ms | ActiveRecord: 123.8ms)
+D, [2018-07-05T12:36:00.286643 #4830] DEBUG -- : 
+D, [2018-07-05T12:36:00.286824 #4830] DEBUG -- : 
+I, [2018-07-05T12:36:00.287076 #4830]  INFO -- : Started GET "/get_name?email=tami%40example.com" for 92.84.60.177 at 2018-07-05 12:36:00 +0000
+I, [2018-07-05T12:36:00.287746 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T12:36:00.304475 #4830]  INFO -- : Processing by MembersController#get_name as JSON
+I, [2018-07-05T12:36:00.304667 #4830]  INFO -- :   Parameters: {"email"=>"tami@example.com"}
+D, [2018-07-05T12:36:00.308664 #4830] DEBUG -- :   [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 13]]
+D, [2018-07-05T12:36:00.312965 #4830] DEBUG -- :   [1m[36mTenant Load (0.7ms)[0m  [1mSELECT "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1[0m  [["user_id", 13]]
+D, [2018-07-05T12:36:00.313647 #4830] DEBUG -- : MILIA >>>>> [change tenant] new: 10	old: %
+D, [2018-07-05T12:36:00.315755 #4830] DEBUG -- :   [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND (email = 'tami@example.com')  ORDER BY "users"."id" ASC LIMIT 1
+I, [2018-07-05T12:36:00.320687 #4830]  INFO -- : Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 2.5ms)
+D, [2018-07-05T12:36:10.864099 #4830] DEBUG -- : 
+D, [2018-07-05T12:36:10.864214 #4830] DEBUG -- : 
+I, [2018-07-05T12:36:10.864461 #4830]  INFO -- : Started POST "/tenants/10/products" for 92.84.60.177 at 2018-07-05 12:36:10 +0000
+I, [2018-07-05T12:36:10.865126 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T12:36:10.872480 #4830]  INFO -- : Processing by ProductsController#create as HTML
+I, [2018-07-05T12:36:10.872666 #4830]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"hEIQ2OgJ9EMHm16lSOfLFFWG7VP4tujSiWhFPZsMi+MbCcGAFf0M2igZgM4Va8lHztZjQ6jwrZEj7CYYOqq0eA==", "product"=>{"code"=>"1234", "name"=>"1", "expected_completion_date"=>"2018-07-05", "comments"=>"213323", "tenant_id"=>"10", "estimates_attributes"=>{"1530794159850"=>{"name"=>"cee", "quantity"=>"1", "price"=>"1", "_destroy"=>"false"}}}, "status"=>{"id"=>"16"}, "user"=>{"email"=>"tami@example.com"}, "member"=>{"first_name"=>"", "last_name"=>""}, "commit"=>"Create Product", "tenant_id"=>"10"}
+D, [2018-07-05T12:36:10.875576 #4830] DEBUG -- :   [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 13]]
+D, [2018-07-05T12:36:10.879214 #4830] DEBUG -- :   [1m[35mTenant Load (0.9ms)[0m  SELECT "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  [["user_id", 13]]
+D, [2018-07-05T12:36:10.879786 #4830] DEBUG -- : MILIA >>>>> [change tenant] new: 10	old: %
+D, [2018-07-05T12:36:10.881718 #4830] DEBUG -- :   [1m[36mTenant Load (0.6ms)[0m  [1mSELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1[0m  [["id", 10]]
+D, [2018-07-05T12:36:10.885328 #4830] DEBUG -- : New product: {"id"=>nil, "code"=>"1234", "name"=>"1", "expected_completion_date"=>Thu, 05 Jul 2018, "tenant_id"=>10, "user_id"=>nil, "created_at"=>nil, "updated_at"=>nil, "comments"=>"213323"}
+D, [2018-07-05T12:36:10.885714 #4830] DEBUG -- : Product should be valid: true
+D, [2018-07-05T12:36:10.887828 #4830] DEBUG -- :   [1m[35m (1.0ms)[0m  SELECT "users"."id" FROM "users" WHERE (users.tenant_id IS NULL) AND (email = 'tami@example.com')
+D, [2018-07-05T12:36:10.907451 #4830] DEBUG -- :   [1m[36mStatus Load (14.1ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 16]]
+D, [2018-07-05T12:36:10.929192 #4830] DEBUG -- :   [1m[35m (0.4ms)[0m  BEGIN
+D, [2018-07-05T12:36:10.933497 #4830] DEBUG -- :   [1m[36mStatus Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "statuses" WHERE ("statuses"."name" = 'Received' AND "statuses"."id" != 16 AND "statuses"."tenant_id" = 10) LIMIT 1[0m
+D, [2018-07-05T12:36:10.936795 #4830] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "products" ("code", "name", "expected_completion_date", "tenant_id", "comments", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["code", "1234"], ["name", "1"], ["expected_completion_date", "2018-07-05"], ["tenant_id", 10], ["comments", "213323"], ["user_id", 2], ["created_at", "2018-07-05 12:36:10.933830"], ["updated_at", "2018-07-05 12:36:10.933830"]]
+D, [2018-07-05T12:36:10.939766 #4830] DEBUG -- :   [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "product_statuses" ("status_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["status_id", 16], ["product_id", 10], ["created_at", "2018-07-05 12:36:10.937607"], ["updated_at", "2018-07-05 12:36:10.937607"]]
+D, [2018-07-05T12:36:10.943436 #4830] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "estimates" ("name", "quantity", "price", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "cee"], ["quantity", 1.0], ["price", 1.0], ["product_id", 10], ["created_at", "2018-07-05 12:36:10.941006"], ["updated_at", "2018-07-05 12:36:10.941006"]]
+D, [2018-07-05T12:36:10.948655 #4830] DEBUG -- :   [1m[36m (4.1ms)[0m  [1mCOMMIT[0m
+D, [2018-07-05T12:36:10.948907 #4830] DEBUG -- : The product was saved and now the user is going to be redirected...
+I, [2018-07-05T12:36:10.950538 #4830]  INFO -- : Redirected to https://rubyonrailstraining-iuliagatea.c9users.io/tenants/10/products
+I, [2018-07-05T12:36:10.950975 #4830]  INFO -- : Completed 302 Found in 78ms (ActiveRecord: 28.0ms)
+D, [2018-07-05T12:36:11.525355 #4830] DEBUG -- : 
+D, [2018-07-05T12:36:11.525467 #4830] DEBUG -- : 
+I, [2018-07-05T12:36:11.525687 #4830]  INFO -- : Started GET "/tenants/10/products" for 92.84.60.177 at 2018-07-05 12:36:11 +0000
+I, [2018-07-05T12:36:11.526519 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T12:36:11.533759 #4830]  INFO -- : Processing by ProductsController#index as HTML
+I, [2018-07-05T12:36:11.533856 #4830]  INFO -- :   Parameters: {"tenant_id"=>"10"}
+D, [2018-07-05T12:36:11.537191 #4830] DEBUG -- :   [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 13]]
+D, [2018-07-05T12:36:11.541317 #4830] DEBUG -- :   [1m[36mTenant Load (0.8ms)[0m  [1mSELECT "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1[0m  [["user_id", 13]]
+D, [2018-07-05T12:36:11.541842 #4830] DEBUG -- : MILIA >>>>> [change tenant] new: 10	old: %
+W, [2018-07-05T12:36:11.542885 #4830]  WARN -- : DEPRECATION WARNING: You are passing an instance of ActiveRecord::Base to `find`. Please pass the id of the object by calling `.id`. (called from index at /home/ubuntu/rails_projects/service-app/app/controllers/products_controller.rb:10)
+D, [2018-07-05T12:36:11.544654 #4830] DEBUG -- :   [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1  [["id", 13]]
+D, [2018-07-05T12:36:11.546604 #4830] DEBUG -- :   [1m[36mTenant Load (0.5ms)[0m  [1mSELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1[0m  [["id", 10]]
+D, [2018-07-05T12:36:11.555328 #4830] DEBUG -- :   [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "products" WHERE "products"."tenant_id" = $1  [["tenant_id", 10]]
+D, [2018-07-05T12:36:11.556133 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products" WHERE "products"."tenant_id" = $1[0m  [["tenant_id", 10]]
+D, [2018-07-05T12:36:11.708294 #4830] DEBUG -- :   [1m[35mProduct Load (0.4ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."tenant_id" = $1 LIMIT 10 OFFSET 0  [["tenant_id", 10]]
+D, [2018-07-05T12:36:11.714079 #4830] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 10]]
+D, [2018-07-05T12:36:11.717098 #4830] DEBUG -- :   [1m[35m (0.3ms)[0m  SELECT SUM(price * quantity) FROM "estimates" WHERE "estimates"."product_id" = $1  [["product_id", 10]]
+D, [2018-07-05T12:36:11.721042 #4830] DEBUG -- :   [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-05T12:36:11.723676 #4830] DEBUG -- :   [1m[35mProductStatus Load (0.5ms)[0m  SELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1  [["product_id", 10]]
+D, [2018-07-05T12:36:11.724693 #4830] DEBUG -- :   [1m[36mStatus Load (0.4ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 16]]
+D, [2018-07-05T12:36:11.725579 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1  [["product_id", 10]]
+D, [2018-07-05T12:36:11.725941 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 16]]
+D, [2018-07-05T12:36:11.726976 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1  [["product_id", 10]]
+D, [2018-07-05T12:36:11.727350 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 16]]
+I, [2018-07-05T12:36:11.729448 #4830]  INFO -- :   Rendered products/_list.html.erb (175.7ms)
+I, [2018-07-05T12:36:11.729612 #4830]  INFO -- :   Rendered products/index.html.erb within layouts/application (178.0ms)
+I, [2018-07-05T12:36:11.977662 #4830]  INFO -- :   Rendered common/_navbar.html.erb (1.2ms)
+I, [2018-07-05T12:36:11.978387 #4830]  INFO -- : Completed 200 OK in 444ms (Views: 426.8ms | ActiveRecord: 6.3ms)
+D, [2018-07-05T12:36:18.549957 #4830] DEBUG -- : 
+D, [2018-07-05T12:36:18.550069 #4830] DEBUG -- : 
+I, [2018-07-05T12:36:18.550468 #4830]  INFO -- : Started GET "/tenants/10/user_products?user_id=2" for 92.84.60.177 at 2018-07-05 12:36:18 +0000
+I, [2018-07-05T12:36:18.551108 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T12:36:18.557741 #4830]  INFO -- : Processing by ProductsController#by_member as HTML
+I, [2018-07-05T12:36:18.557832 #4830]  INFO -- :   Parameters: {"user_id"=>"2", "tenant_id"=>"10"}
+D, [2018-07-05T12:36:18.560573 #4830] DEBUG -- :   [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 13]]
+D, [2018-07-05T12:36:18.564199 #4830] DEBUG -- :   [1m[36mTenant Load (0.7ms)[0m  [1mSELECT "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1[0m  [["user_id", 13]]
+D, [2018-07-05T12:36:18.564720 #4830] DEBUG -- : MILIA >>>>> [change tenant] new: 10	old: %
+D, [2018-07-05T12:36:18.566524 #4830] DEBUG -- :   [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1  [["id", 2]]
+D, [2018-07-05T12:36:18.582164 #4830] DEBUG -- :   [1m[36mProduct Load (0.6ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."user_id" = $1[0m  [["user_id", 2]]
+I, [2018-07-05T12:36:18.712508 #4830]  INFO -- :   Rendered products/_list.html.erb (137.2ms)
+I, [2018-07-05T12:36:18.712705 #4830]  INFO -- :   Rendered products/by_member.html.erb within layouts/application (139.5ms)
+I, [2018-07-05T12:36:18.713077 #4830]  INFO -- : Completed 500 Internal Server Error in 155ms (ActiveRecord: 2.4ms)
+F, [2018-07-05T12:36:18.714401 #4830] FATAL -- : 
+ActionView::Template::Error (undefined method `total_pages' for #<Product::ActiveRecord_Associations_CollectionProxy:0x007f2a87394500>):
+    1: <%= will_paginate @products %>
+    2: <% if @products.size > 0 %>
+    3:   <table class="table table-striped">
+    4:   <thead>
+  app/views/products/_list.html.erb:1:in `_app_views_products__list_html_erb__805092696916334793_29972660'
+  app/views/products/by_member.html.erb:5:in `_app_views_products_by_member_html_erb___3618159921355735283_69910309454580'
+
+
+I, [2018-07-05T12:36:18.858985 #4830]  INFO -- :   Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.3ms)
+I, [2018-07-05T12:36:18.870857 #4830]  INFO -- :   Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+I, [2018-07-05T12:36:18.879997 #4830]  INFO -- :   Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+I, [2018-07-05T12:36:18.880156 #4830]  INFO -- :   Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (36.7ms)
+D, [2018-07-05T12:38:10.946545 #4830] DEBUG -- : 
+D, [2018-07-05T12:38:10.946676 #4830] DEBUG -- : 
+I, [2018-07-05T12:38:10.947011 #4830]  INFO -- : Started GET "/tenants/6/user_products?user_id=2" for 92.84.60.177 at 2018-07-05 12:38:10 +0000
+I, [2018-07-05T12:38:10.947651 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T12:38:10.954618 #4830]  INFO -- : Processing by ProductsController#by_member as HTML
+I, [2018-07-05T12:38:10.954805 #4830]  INFO -- :   Parameters: {"user_id"=>"2", "tenant_id"=>"6"}
+D, [2018-07-05T12:38:10.957503 #4830] DEBUG -- :   [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 13]]
+D, [2018-07-05T12:38:10.961093 #4830] DEBUG -- :   [1m[36mTenant Load (0.7ms)[0m  [1mSELECT "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1[0m  [["user_id", 13]]
+D, [2018-07-05T12:38:10.961665 #4830] DEBUG -- : MILIA >>>>> [change tenant] new: 10	old: %
+I, [2018-07-05T12:38:10.962454 #4830]  INFO -- : Redirected to https://rubyonrailstraining-iuliagatea.c9users.io/
+I, [2018-07-05T12:38:10.962623 #4830]  INFO -- : Filter chain halted as :verify_tenant rendered or redirected
+I, [2018-07-05T12:38:10.962918 #4830]  INFO -- : Completed 302 Found in 8ms (ActiveRecord: 1.2ms)
+D, [2018-07-05T12:38:11.023486 #4830] DEBUG -- : 
+D, [2018-07-05T12:38:11.023606 #4830] DEBUG -- : 
+I, [2018-07-05T12:38:11.023773 #4830]  INFO -- : Started GET "/" for 92.84.60.177 at 2018-07-05 12:38:11 +0000
+I, [2018-07-05T12:38:11.024405 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T12:38:11.112478 #4830]  INFO -- : Processing by HomeController#index as HTML
+D, [2018-07-05T12:38:11.115021 #4830] DEBUG -- :   [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 13]]
+D, [2018-07-05T12:38:11.115880 #4830] DEBUG -- : MILIA >>>>> [Tenant#change_tenant] new: 10	old:%
+I, [2018-07-05T12:38:11.115952 #4830]  INFO -- : Opening index..
+D, [2018-07-05T12:38:11.117528 #4830] DEBUG -- :   [1m[36mTenant Load (0.6ms)[0m  [1mSELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1[0m  [["id", 10]]
+D, [2018-07-05T12:38:11.118476 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1  [["id", 10]]
+D, [2018-07-05T12:38:11.124462 #4830] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "products" WHERE "products"."tenant_id" = $1[0m  [["tenant_id", 10]]
+D, [2018-07-05T12:38:11.125224 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "products" WHERE "products"."tenant_id" = $1  [["tenant_id", 10]]
+D, [2018-07-05T12:38:11.126528 #4830] DEBUG -- :   [1m[36mProduct Load (0.5ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."tenant_id" = $1 LIMIT 10 OFFSET 0[0m  [["tenant_id", 10]]
+D, [2018-07-05T12:38:11.129137 #4830] DEBUG -- :   [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1  [["product_id", 10]]
+D, [2018-07-05T12:38:11.130181 #4830] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mSELECT SUM(price * quantity) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 10]]
+D, [2018-07-05T12:38:11.132185 #4830] DEBUG -- :   [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1  [["id", 2]]
+D, [2018-07-05T12:38:11.134199 #4830] DEBUG -- :   [1m[36mProductStatus Load (0.5ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 10]]
+D, [2018-07-05T12:38:11.135108 #4830] DEBUG -- :   [1m[35mStatus Load (0.4ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 16]]
+D, [2018-07-05T12:38:11.135986 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 10]]
+D, [2018-07-05T12:38:11.136300 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 16]]
+D, [2018-07-05T12:38:11.136935 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 10]]
+D, [2018-07-05T12:38:11.137263 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 16]]
+I, [2018-07-05T12:38:11.138913 #4830]  INFO -- :   Rendered products/_list.html.erb (15.9ms)
+D, [2018-07-05T12:38:11.148356 #4830] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mSELECT COUNT(*) AS count_all, (DATE_TRUNC('month', (created_at::timestamptz) AT TIME ZONE 'Etc/UTC')) AT TIME ZONE 'Etc/UTC' AS date_trunc_month_created_at_timestamptz_at_time_zone_etc_utc_at FROM "products" WHERE "products"."tenant_id" = $1 AND (created_at IS NOT NULL) GROUP BY (DATE_TRUNC('month', (created_at::timestamptz) AT TIME ZONE 'Etc/UTC')) AT TIME ZONE 'Etc/UTC'[0m  [["tenant_id", 10]]
+D, [2018-07-05T12:38:11.152098 #4830] DEBUG -- :   [1m[35m (0.4ms)[0m  SELECT COUNT(*) AS count_all, "products"."user_id" AS products_user_id FROM "products" WHERE "products"."tenant_id" = $1 GROUP BY "products"."user_id"  [["tenant_id", 10]]
+D, [2018-07-05T12:38:11.153563 #4830] DEBUG -- :   [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+I, [2018-07-05T12:38:11.154364 #4830]  INFO -- :   Rendered home/index.html.erb within layouts/application (32.0ms)
+D, [2018-07-05T12:38:11.341587 #4830] DEBUG -- :   [1m[35mTenant Load (0.7ms)[0m  SELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1  [["user_id", 13]]
+I, [2018-07-05T12:38:11.342984 #4830]  INFO -- :   Rendered common/_navbar.html.erb (4.5ms)
+I, [2018-07-05T12:38:11.343677 #4830]  INFO -- : Completed 200 OK in 231ms (Views: 217.5ms | ActiveRecord: 8.0ms)
+D, [2018-07-05T12:38:15.088388 #4830] DEBUG -- : 
+D, [2018-07-05T12:38:15.088501 #4830] DEBUG -- : 
+I, [2018-07-05T12:38:15.088692 #4830]  INFO -- : Started DELETE "/users/sign_out" for 92.84.60.177 at 2018-07-05 12:38:15 +0000
+I, [2018-07-05T12:38:15.089317 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T12:38:15.096694 #4830]  INFO -- : Processing by Milia::SessionsController#destroy as HTML
+I, [2018-07-05T12:38:15.096783 #4830]  INFO -- :   Parameters: {"authenticity_token"=>"Z1aKLSDMqbsPZhwdwgWH9bQL4DS6kWsDv9Tsj95MleX4HVt13ThRIiDkwnafiYWmL1tuJOrXLkAVUI+qf+qqfg=="}
+D, [2018-07-05T12:38:15.099503 #4830] DEBUG -- :   [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 13]]
+D, [2018-07-05T12:38:15.100501 #4830] DEBUG -- : MILIA >>>>> [change tenant] new: %	old: %
+D, [2018-07-05T12:38:15.100580 #4830] DEBUG -- : MILIA >>>>> [reset tenant] 
+D, [2018-07-05T12:38:15.104193 #4830] DEBUG -- :   [1m[35m (0.4ms)[0m  BEGIN
+D, [2018-07-05T12:38:15.106261 #4830] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+I, [2018-07-05T12:38:15.107716 #4830]  INFO -- : Redirected to https://rubyonrailstraining-iuliagatea.c9users.io/
+I, [2018-07-05T12:38:15.107924 #4830]  INFO -- : Completed 302 Found in 11ms (ActiveRecord: 1.2ms)
+D, [2018-07-05T12:38:15.610609 #4830] DEBUG -- : 
+D, [2018-07-05T12:38:15.610786 #4830] DEBUG -- : 
+I, [2018-07-05T12:38:15.610959 #4830]  INFO -- : Started GET "/" for 92.84.60.177 at 2018-07-05 12:38:15 +0000
+I, [2018-07-05T12:38:15.611602 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T12:38:15.617263 #4830]  INFO -- : Processing by HomeController#index as HTML
+I, [2018-07-05T12:38:15.625168 #4830]  INFO -- :   Rendered home/index.html.erb within layouts/application (0.6ms)
+I, [2018-07-05T12:38:15.890387 #4830]  INFO -- :   Rendered common/_navbar.html.erb (0.6ms)
+I, [2018-07-05T12:38:15.891106 #4830]  INFO -- : Completed 200 OK in 274ms (Views: 269.5ms | ActiveRecord: 0.0ms)
+D, [2018-07-05T12:38:17.928233 #4830] DEBUG -- : 
+D, [2018-07-05T12:38:17.928344 #4830] DEBUG -- : 
+I, [2018-07-05T12:38:17.928543 #4830]  INFO -- : Started GET "/users/sign_in" for 92.84.60.177 at 2018-07-05 12:38:17 +0000
+I, [2018-07-05T12:38:17.929438 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T12:38:17.936310 #4830]  INFO -- : Processing by Milia::SessionsController#new as HTML
+I, [2018-07-05T12:38:17.975738 #4830]  INFO -- :   Rendered devise/shared/_links.html.erb (3.2ms)
+I, [2018-07-05T12:38:17.975933 #4830]  INFO -- :   Rendered devise/sessions/new.html.erb within layouts/application (20.3ms)
+I, [2018-07-05T12:38:18.354137 #4830]  INFO -- :   Rendered common/_navbar.html.erb (0.7ms)
+I, [2018-07-05T12:38:18.354920 #4830]  INFO -- : Completed 200 OK in 418ms (Views: 413.7ms | ActiveRecord: 0.0ms)
+D, [2018-07-05T12:38:20.133573 #4830] DEBUG -- : 
+D, [2018-07-05T12:38:20.133925 #4830] DEBUG -- : 
+I, [2018-07-05T12:38:20.134364 #4830]  INFO -- : Started GET "/get_name?email=juliagatea%40yahoo.com" for 92.84.60.177 at 2018-07-05 12:38:20 +0000
+I, [2018-07-05T12:38:20.135439 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T12:38:20.142677 #4830]  INFO -- : Processing by MembersController#get_name as JSON
+I, [2018-07-05T12:38:20.142816 #4830]  INFO -- :   Parameters: {"email"=>"juliagatea@yahoo.com"}
+I, [2018-07-05T12:38:20.143949 #4830]  INFO -- : Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+D, [2018-07-05T12:38:26.073836 #4830] DEBUG -- : 
+D, [2018-07-05T12:38:26.074063 #4830] DEBUG -- : 
+I, [2018-07-05T12:38:26.074241 #4830]  INFO -- : Started POST "/users/sign_in" for 92.84.60.177 at 2018-07-05 12:38:26 +0000
+I, [2018-07-05T12:38:26.075298 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T12:38:26.081834 #4830]  INFO -- : Processing by Milia::SessionsController#create as HTML
+I, [2018-07-05T12:38:26.081933 #4830]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"3QGx1VEjQAhAMYicVoCJogpTaiL7gSbk652EjrRgnuOBUCsnZ2P67yDkrwHg7Xio+GUykac2tyzmT8VTanu1dg==", "user"=>{"email"=>"juliagatea@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+D, [2018-07-05T12:38:26.083386 #4830] DEBUG -- : MILIA >>>>> [change tenant] new: %	old: %
+D, [2018-07-05T12:38:26.083446 #4830] DEBUG -- : MILIA >>>>> [reset tenant] 
+D, [2018-07-05T12:38:26.087552 #4830] DEBUG -- :   [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "juliagatea@yahoo.com"]]
+D, [2018-07-05T12:38:26.186106 #4830] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+D, [2018-07-05T12:38:26.191433 #4830] DEBUG -- :   [1m[35mSQL (0.8ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5  [["last_sign_in_at", "2018-07-04 11:26:50.286202"], ["current_sign_in_at", "2018-07-05 12:38:26.184117"], ["sign_in_count", 14], ["updated_at", "2018-07-05 12:38:26.186637"], ["id", 1]]
+D, [2018-07-05T12:38:26.196545 #4830] DEBUG -- :   [1m[36m (3.8ms)[0m  [1mCOMMIT[0m
+I, [2018-07-05T12:38:26.211934 #4830]  INFO -- : Redirected to https://rubyonrailstraining-iuliagatea.c9users.io/
+I, [2018-07-05T12:38:26.212844 #4830]  INFO -- : Completed 302 Found in 131ms (ActiveRecord: 5.6ms)
+D, [2018-07-05T12:38:26.270393 #4830] DEBUG -- : 
+D, [2018-07-05T12:38:26.270506 #4830] DEBUG -- : 
+I, [2018-07-05T12:38:26.270682 #4830]  INFO -- : Started GET "/" for 92.84.60.177 at 2018-07-05 12:38:26 +0000
+I, [2018-07-05T12:38:26.272257 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T12:38:26.280754 #4830]  INFO -- : Processing by HomeController#index as HTML
+D, [2018-07-05T12:38:26.284973 #4830] DEBUG -- :   [1m[35mUser Load (1.1ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.291000 #4830] DEBUG -- :   [1m[36mTenant Load (0.9ms)[0m  [1mSELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+D, [2018-07-05T12:38:26.291656 #4830] DEBUG -- : MILIA >>>>> [Tenant#change_tenant] new: 1	old:%
+I, [2018-07-05T12:38:26.291795 #4830]  INFO -- : Opening index..
+D, [2018-07-05T12:38:26.294076 #4830] DEBUG -- :   [1m[35mTenant Load (0.5ms)[0m  SELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.296108 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1[0m  [["id", 1]]
+D, [2018-07-05T12:38:26.305729 #4830] DEBUG -- :   [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "products" WHERE "products"."tenant_id" = $1  [["tenant_id", 1]]
+D, [2018-07-05T12:38:26.307626 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products" WHERE "products"."tenant_id" = $1[0m  [["tenant_id", 1]]
+D, [2018-07-05T12:38:26.309737 #4830] DEBUG -- :   [1m[35mProduct Load (0.6ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."tenant_id" = $1 LIMIT 10 OFFSET 0  [["tenant_id", 1]]
+D, [2018-07-05T12:38:26.313793 #4830] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 1]]
+D, [2018-07-05T12:38:26.317516 #4830] DEBUG -- :   [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1  [["id", 2]]
+D, [2018-07-05T12:38:26.320153 #4830] DEBUG -- :   [1m[36mProductStatus Load (0.5ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 1]]
+D, [2018-07-05T12:38:26.321064 #4830] DEBUG -- :   [1m[35mStatus Load (0.3ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.322265 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 1]]
+D, [2018-07-05T12:38:26.322972 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.323593 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 1]]
+D, [2018-07-05T12:38:26.324214 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.328174 #4830] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 3]]
+D, [2018-07-05T12:38:26.329697 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1  [["id", 2]]
+D, [2018-07-05T12:38:26.331646 #4830] DEBUG -- :   [1m[36mProductStatus Load (0.5ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 3]]
+D, [2018-07-05T12:38:26.332294 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.332863 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 3]]
+D, [2018-07-05T12:38:26.333476 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.334245 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 3]]
+D, [2018-07-05T12:38:26.334522 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.338120 #4830] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 2]]
+D, [2018-07-05T12:38:26.339575 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1  [["id", 2]]
+D, [2018-07-05T12:38:26.341529 #4830] DEBUG -- :   [1m[36mProductStatus Load (0.6ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 2]]
+D, [2018-07-05T12:38:26.342647 #4830] DEBUG -- :   [1m[35mStatus Load (0.4ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 3]]
+D, [2018-07-05T12:38:26.343727 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 2]]
+D, [2018-07-05T12:38:26.344051 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 3]]
+D, [2018-07-05T12:38:26.344924 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 2]]
+D, [2018-07-05T12:38:26.345193 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 3]]
+D, [2018-07-05T12:38:26.348606 #4830] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 5]]
+D, [2018-07-05T12:38:26.350463 #4830] DEBUG -- :   [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1  [["id", 5]]
+D, [2018-07-05T12:38:26.352331 #4830] DEBUG -- :   [1m[36mProductStatus Load (0.4ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 5]]
+D, [2018-07-05T12:38:26.352701 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.353531 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 5]]
+D, [2018-07-05T12:38:26.354075 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.354578 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 5]]
+D, [2018-07-05T12:38:26.355225 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.358140 #4830] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 4]]
+D, [2018-07-05T12:38:26.359719 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1  [["id", 2]]
+D, [2018-07-05T12:38:26.361310 #4830] DEBUG -- :   [1m[36mProductStatus Load (0.4ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 4]]
+D, [2018-07-05T12:38:26.361919 #4830] DEBUG -- :   [1m[35mCACHE (0.3ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.362507 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 4]]
+D, [2018-07-05T12:38:26.363170 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.363663 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 4]]
+D, [2018-07-05T12:38:26.364271 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.367795 #4830] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mSELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 6]]
+D, [2018-07-05T12:38:26.369552 #4830] DEBUG -- :   [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1  [["id", 6]]
+D, [2018-07-05T12:38:26.371548 #4830] DEBUG -- :   [1m[36mProductStatus Load (0.3ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 6]]
+D, [2018-07-05T12:38:26.371899 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.373015 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 6]]
+D, [2018-07-05T12:38:26.373318 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.374036 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 6]]
+D, [2018-07-05T12:38:26.374315 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.377897 #4830] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 7]]
+D, [2018-07-05T12:38:26.379328 #4830] DEBUG -- :   [1m[35m (0.5ms)[0m  SELECT SUM(price * quantity) FROM "estimates" WHERE "estimates"."product_id" = $1  [["product_id", 7]]
+D, [2018-07-05T12:38:26.380762 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-05T12:38:26.383509 #4830] DEBUG -- :   [1m[35mProductStatus Load (0.3ms)[0m  SELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1  [["product_id", 7]]
+D, [2018-07-05T12:38:26.383901 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 1]]
+D, [2018-07-05T12:38:26.384853 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1  [["product_id", 7]]
+D, [2018-07-05T12:38:26.385130 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 1]]
+D, [2018-07-05T12:38:26.386109 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1  [["product_id", 7]]
+D, [2018-07-05T12:38:26.386369 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 1]]
+D, [2018-07-05T12:38:26.390137 #4830] DEBUG -- :   [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1  [["product_id", 9]]
+D, [2018-07-05T12:38:26.391642 #4830] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mSELECT SUM(price * quantity) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 9]]
+D, [2018-07-05T12:38:26.393373 #4830] DEBUG -- :   [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1  [["id", 12]]
+D, [2018-07-05T12:38:26.395337 #4830] DEBUG -- :   [1m[36mProductStatus Load (0.3ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 9]]
+D, [2018-07-05T12:38:26.395757 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.396619 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 9]]
+D, [2018-07-05T12:38:26.396901 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-05T12:38:26.397722 #4830] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1[0m  [["product_id", 9]]
+D, [2018-07-05T12:38:26.397987 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+I, [2018-07-05T12:38:26.399897 #4830]  INFO -- :   Rendered products/_list.html.erb (96.2ms)
+D, [2018-07-05T12:38:26.401975 #4830] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) AS count_all, (DATE_TRUNC('month', (created_at::timestamptz) AT TIME ZONE 'Etc/UTC')) AT TIME ZONE 'Etc/UTC' AS date_trunc_month_created_at_timestamptz_at_time_zone_etc_utc_at FROM "products" WHERE "products"."tenant_id" = $1 AND (created_at IS NOT NULL) GROUP BY (DATE_TRUNC('month', (created_at::timestamptz) AT TIME ZONE 'Etc/UTC')) AT TIME ZONE 'Etc/UTC'[0m  [["tenant_id", 1]]
+D, [2018-07-05T12:38:26.404689 #4830] DEBUG -- :   [1m[35m (0.5ms)[0m  SELECT COUNT(*) AS count_all, "products"."user_id" AS products_user_id FROM "products" WHERE "products"."tenant_id" = $1 GROUP BY "products"."user_id"  [["tenant_id", 1]]
+D, [2018-07-05T12:38:26.406483 #4830] DEBUG -- :   [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" IN (5, 6, 12, 2)[0m
+I, [2018-07-05T12:38:26.407545 #4830]  INFO -- :   Rendered home/index.html.erb within layouts/application (105.3ms)
+D, [2018-07-05T12:38:26.614119 #4830] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1  [["user_id", 1]]
+I, [2018-07-05T12:38:26.615459 #4830]  INFO -- :   Rendered common/_navbar.html.erb (3.0ms)
+I, [2018-07-05T12:38:26.616202 #4830]  INFO -- : Completed 200 OK in 335ms (Views: 302.7ms | ActiveRecord: 17.9ms)
+D, [2018-07-05T12:38:28.740400 #4830] DEBUG -- : 
+D, [2018-07-05T12:38:28.740517 #4830] DEBUG -- : 
+I, [2018-07-05T12:38:28.740774 #4830]  INFO -- : Started GET "/tenants/1/user_products?user_id=2" for 92.84.60.177 at 2018-07-05 12:38:28 +0000
+I, [2018-07-05T12:38:28.741405 #4830]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-05T12:38:28.747863 #4830]  INFO -- : Processing by ProductsController#by_member as HTML
+I, [2018-07-05T12:38:28.747961 #4830]  INFO -- :   Parameters: {"user_id"=>"2", "tenant_id"=>"1"}
+D, [2018-07-05T12:38:28.750454 #4830] DEBUG -- :   [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+D, [2018-07-05T12:38:28.753604 #4830] DEBUG -- :   [1m[35mTenant Load (0.7ms)[0m  SELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1  [["user_id", 1]]
+D, [2018-07-05T12:38:28.754044 #4830] DEBUG -- : MILIA >>>>> [change tenant] new: 1	old: %
+D, [2018-07-05T12:38:28.755408 #4830] DEBUG -- :   [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-05T12:38:28.763442 #4830] DEBUG -- :   [1m[35mProduct Load (0.6ms)[0m  SELECT "products".* FROM "products" WHERE "products"."user_id" = $1  [["user_id", 2]]
+I, [2018-07-05T12:38:28.769643 #4830]  INFO -- :   Rendered products/_list.html.erb (9.1ms)
+I, [2018-07-05T12:38:28.769816 #4830]  INFO -- :   Rendered products/by_member.html.erb within layouts/application (10.7ms)
+I, [2018-07-05T12:38:28.770145 #4830]  INFO -- : Completed 500 Internal Server Error in 22ms (ActiveRecord: 2.2ms)
+F, [2018-07-05T12:38:28.771478 #4830] FATAL -- : 
+ActionView::Template::Error (undefined method `total_pages' for #<Product::ActiveRecord_Associations_CollectionProxy:0x007f2a80fa3eb0>):
+    1: <%= will_paginate @products %>
+    2: <% if @products.size > 0 %>
+    3:   <table class="table table-striped">
+    4:   <thead>
+  app/views/products/_list.html.erb:1:in `_app_views_products__list_html_erb__805092696916334793_29972660'
+  app/views/products/by_member.html.erb:5:in `_app_views_products_by_member_html_erb___3618159921355735283_69910309454580'
+
+
+I, [2018-07-05T12:38:29.056099 #4830]  INFO -- :   Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.4ms)
+I, [2018-07-05T12:38:29.066755 #4830]  INFO -- :   Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+I, [2018-07-05T12:38:29.075500 #4830]  INFO -- :   Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+I, [2018-07-05T12:38:29.075772 #4830]  INFO -- :   Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (35.5ms)

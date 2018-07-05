@@ -29,10 +29,9 @@ class EstimatesController < ApplicationController
     respond_to do |format|
       if @estimate.save
         format.html { redirect_to @estimate, notice: 'Estimate was successfully created.' }
-        format.json { render :show, status: :created, location: @estimate }
       else
+        logger.error "Errors occurred while creating Estimate! #{@estimate.errors}"
         format.html { render :new }
-        format.json { render json: @estimate.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,10 +43,9 @@ class EstimatesController < ApplicationController
       @estimate.value = @estimate.price * @estimate.quantity
       if @estimate.update(estimate_params)
         format.html { redirect_to @estimate, notice: 'Estimate was successfully updated.' }
-        format.json { render :show, status: :ok, location: @estimate }
       else
         format.html { render :edit }
-        format.json { render json: @estimate.errors, status: :unprocessable_entity }
+        logger.error "Errors occurred while updating Estimate! #{@estimate.errors}"
       end
     end
   end
@@ -55,10 +53,10 @@ class EstimatesController < ApplicationController
   # DELETE /estimates/1
   # DELETE /estimates/1.json
   def destroy
+   logger.debug "Destroying estimate #{@estimate.attributes.inspect}"
     @estimate.destroy
     respond_to do |format|
       format.html { redirect_to estimates_url, notice: 'Estimate was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

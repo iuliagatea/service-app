@@ -9,17 +9,20 @@ class ConfirmationsController < Milia::ConfirmationsController
 
       if resource.errors.empty?
         log_action( "invitee confirmed" )
+        logger.debug "Invitee confirmed: #{resource}"
         set_flash_message(:notice, :confirmed)
           # sign in automatically
         sign_in_tenanted_and_redirect(resource)
 
       else
         log_action( "invitee confirmation failed" )
+        logger.error "Invitee confirmation failed: #{resource.errors}"
         respond_with_navigational(resource.errors, :status => :unprocessable_entity){ render :new }
       end
 
     else
       log_action( "invitee password set failed" )
+      logger.error "Invitee password set failed"
       prep_do_show()  # prep for the form
       respond_with_navigational(resource.errors, :status => :unprocessable_entity){ render :show }
     end  # if..then..else passwords are valid
@@ -30,6 +33,7 @@ class ConfirmationsController < Milia::ConfirmationsController
       !::Milia.use_invite_member ||
       @confirmable.skip_confirm_change_password
       log_action( "devise pass-thru" )
+      logger.debug "devise pass-thru"
       self.resource = resource_class.confirm_by_token(params[:confirmation_token])
       yield resource if block_given?
       if resource.errors.empty?
@@ -40,6 +44,7 @@ class ConfirmationsController < Milia::ConfirmationsController
       end
     else
       log_action( "password set form" )
+      logger.debug "password set form"
       flash[:notice] = "Please choose a password and confirm it"
       prep_do_show() # prep for the form
     end

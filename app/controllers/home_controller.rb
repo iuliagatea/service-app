@@ -8,6 +8,7 @@ class HomeController < ApplicationController
       else
         Tenant.set_current_tenant current_user.tenants.first
       end
+      logger.info "Opening index.."
       @tenant = Tenant.current_tenant
       params[:tenant_id] = @tenant.id
       if current_user.is_admin

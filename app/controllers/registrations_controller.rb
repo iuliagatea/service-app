@@ -27,51 +27,62 @@ class RegistrationsController < Milia::RegistrationsController
   
       Tenant.transaction  do
         @tenant = Tenant.create_new_tenant( tenant_params, user_params, coupon_params)
+        logger.debug "Creating tenant: #{@tenant.attributes.inspect}"
+        logger.debug "Tenant should be valid: #{@tenant.valid?}"
         if @tenant.errors.empty?   # tenant created
+          logger.info "Saving initial statuses"
           @statuses = [{name: "Received", color: "#428bca"} ,{name: "In progress", color: "#d9534f"}, {name: "Completed", color: "#3c763d"}, {name: "Canceled", color: "#ad2f21"}, {name: "Waiting", color: "#d9cf14"}]
           @statuses.each do |s|
-             @status = Status.new(name: s[:name], color: s[:color], tenant_id: @tenant.id, can_be_deleted: false)
+            @status = Status.new(name: s[:name], color: s[:color], tenant_id: @tenant.id, can_be_deleted: false)
             @status.save
+            logger.error "Error saving status: #{@status.attributes.inspect}" unless @status.valid?
           end
           if @tenant.plan == 'premium'
             @payment = Payment.new({ email: user_params["email"],
             token: params[:payment]["token"],
             tenant: @tenant })
             flash[:error] = "Please, check registration errors" unless @payment.valid?
+            logger.error "Error saving payment: #{@payment.errors}" unless @payment.valid?
             begin
               @payment.process_payment
               @payment.save
+              logger.debug "Tenant created successfully: #{@tenant.attributes.inspect}"
             rescue Exception => e
               flash[:error] = e.message
               @tenant.destroy
               log_action('Payment failed')
+              logger.error "Error processing payment: #{e.message}"
               render :new and return
             end
           end
         else
           resource.valid?
+          logger.error "Tenant create failed: #{@tenant.errors}"
           log_action( "tenant create failed", @tenant )
           render :new and return
         end # if .. then .. else no tenant errors
         
         if flash[:error].blank? || flash[:error].empty? #payment sucessful
           initiate_tenant( @tenant )    # first time stuff for new tenant
-  
+          
           devise_create( user_params )   # devise resource(user) creation; sets resource
   
           if resource.errors.empty?   #  SUCCESS!
   
             log_action( "signup user/tenant success", resource )
+            logger.debug "Signup user/tenant success #{resource}"
               # do any needed tenant initial setup
             Tenant.tenant_signup(resource, @tenant, coupon_params)
   
           else  # user creation failed; force tenant rollback
             log_action( "signup user create failed", resource )
+            logger.error "Signup user create failed #{resource}"
             raise ActiveRecord::Rollback   # force the tenant transaction to be rolled back
           end  # if..then..else for valid user creation
         else
           resource.valid?
           log_action("Payment perocessing failed", @tenant)
+          logger.error "Payment perocessing failed #{@tenant}"
           render :new and return
         end # if .. then .. else no tenant errors
       end  #  wrap tenant/user creation in a transaction
@@ -81,6 +92,7 @@ class RegistrationsController < Milia::RegistrationsController
       resource.valid?
       @tenant.valid?
       log_action( "recaptcha failed", resource )
+      logger.error "Recaptcha failed #{resource}"
       render :new and return
     end
   
@@ -136,6 +148,7 @@ class RegistrationsController < Milia::RegistrationsController
       resource.save
       yield resource if block_given?
       log_action( "devise: signup user success", resource )
+      logger.debug "devise: signup user success #{resource}"
   
       if resource.persisted?
         if resource.active_for_authentication?
@@ -151,6 +164,7 @@ class RegistrationsController < Milia::RegistrationsController
         # re-show signup view
         clean_up_passwords resource
         log_action( "devise: signup user failure", resource )
+        logger.error "devise: signup user failure #{resource}"
         set_minimum_password_length
         prep_signup_view(  @tenant, resource, params[:coupon] )
         respond_with resource
