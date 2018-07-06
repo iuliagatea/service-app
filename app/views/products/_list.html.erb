@@ -3,6 +3,7 @@
   <table class="table table-striped">
   <thead>
     <tr>
+      <th>Tenant</th>
       <th>Code - Name</th>
       <th>Estimated price</th>
       <th>Expected completion date</th>
@@ -19,6 +20,7 @@
   <tbody>
     <% obj.each do |product| %>
       <tr>
+        <td><%= product.tenant.name %></td>
         <td><%= link_to (product.code + " - " + product.name), tenant_product_path(product, tenant_id: product.tenant_id) %></td>
         <td><%= product.estimated_value %></td>
         <td><%= format_date(product.expected_completion_date) %></td>

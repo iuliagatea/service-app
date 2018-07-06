@@ -11,6 +11,7 @@ class HomeController < ApplicationController
       logger.info "Opening index.."
       @tenant = Tenant.current_tenant
       params[:tenant_id] = @tenant.id
+      @user_tenants = current_user.tenants
       if current_user.is_admin
         @products = Product.by_tenant(params[:tenant_id]).paginate(page: params[:page], per_page: 10)
       else

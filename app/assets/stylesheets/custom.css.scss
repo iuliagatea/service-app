@@ -31,7 +31,6 @@
     }
   }
 }
-
 .nav.navbar-right {
   padding-bottom: 10px;
   padding-top: 5px;
@@ -208,4 +207,17 @@
 
 .pdf-download {
   font-size: 27px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #000;
+  color: white;
+  text-align: center;
+  ul {
+    list-style-type: none;
+  }
 }

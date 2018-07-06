@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :estimates
   # get 'home/index'
+  get 'about', to: 'pages#about'
   resources :tenants do
     resources :statuses
     resources :products

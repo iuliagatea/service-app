@@ -82,6 +82,7 @@ class StatusesController < ApplicationController
     end
     
     def set_tenant
+      Tenant.set_current_tenant(Tenant.find(params[:tenant_id])) unless current_user.is_admin?
       @tenant = Tenant.find(params[:tenant_id])
     end
     

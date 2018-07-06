@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_tenant, only: [:show, :edit, :update, :destroy, :new, :create]
   before_action :verify_tenant
   before_action :verify_user, except: [:show, :index]
-  
+
   # GET /products
   # GET /products.json
   def index
@@ -53,8 +53,8 @@ class ProductsController < ApplicationController
     logger.debug "New product: #{@product.attributes.inspect}"
     logger.debug "Product should be valid: #{@product.valid?}"
     
-    user = User.find_by_email(params[:user]["email"]).ids.first
-    if user.blank?
+    @user = User.find_by_email(params[:user]["email"]).ids.first
+    if @user.blank?
       @user   = User.new( user_params )
       logger.debug "New user,member: #{@user.attributes.inspect}"
      
@@ -68,9 +68,10 @@ class ProductsController < ApplicationController
         @member = Member.new( member_params ) # only used if need to revisit form
         render :new
       end
-      user = @user.id
+    else
+      @user.tenants << Tenant.find(Tenant.current_tenant_id)
     end
-    @product.user_id = user
+    @product.user_id = @user
     status = Status.find(params[:status]["id"])
     @product.statuses << status
     respond_to do |format|
@@ -115,7 +116,11 @@ class ProductsController < ApplicationController
   
   def by_member
     @user = User.find(params[:user_id])
-    @products = @user.products
+    if current_user.is_admin?
+      @products = @user.products.by_tenant(params[:tenant_id]).paginate(page: params[:page], per_page: 10)
+    else
+      @products = @user.products.paginate(page: params[:page], per_page: 10)
+    end
   end
 
   private
@@ -125,6 +130,7 @@ class ProductsController < ApplicationController
     end
 
     def set_tenant
+      Tenant.set_current_tenant(Tenant.find(params[:tenant_id])) unless current_user.is_admin?
       @tenant = Tenant.find(params[:tenant_id])
     end
     

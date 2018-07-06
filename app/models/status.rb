@@ -4,7 +4,7 @@ class Status < ActiveRecord::Base
   has_many :products, through: :product_statuses
   validates_presence_of :name
   validates_uniqueness_of :name, scope: :tenant
-  
+
   def products_with_status
     prods = []
     pss = ProductStatus.where(status_id: id)

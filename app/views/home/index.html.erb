@@ -1,6 +1,6 @@
 <% if current_user %>
-  <h3><%= @tenant.name %></h3>
-  <%= render 'products/list', obj: @products %>
+    <h3>Products</h3>
+    <%= render 'products/list', obj: @products %>
   <% if current_user.is_admin %>
     <% if @products.size > 0 %>
       Products by month
