@@ -184,6 +184,13 @@
     text-decoration: none;
   }
 }
+.custom-table {
+  a:hover, a:focus {
+    color: #7d7d7d !important;
+    background: transparent;
+    text-decoration: none;
+  }
+}
 .status-delete {
   a {
     color: red !important;
