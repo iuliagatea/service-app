@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180702140115) do
+ActiveRecord::Schema.define(version: 20180710123109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20180702140115) do
     t.datetime "updated_at",                    null: false
     t.boolean  "is_active",      default: true
     t.boolean  "can_be_deleted", default: true
+    t.boolean  "send_email",     default: true
   end
 
   add_index "statuses", ["tenant_id"], name: "index_statuses_on_tenant_id", using: :btree

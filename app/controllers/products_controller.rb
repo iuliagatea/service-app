@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
     @user = User.find_by_email(params[:user]["email"]).ids.first
     if @user.blank?
       @user   = User.new( user_params )
-      logger.debug "New user,member: #{@user.attributes.inspect}"
+      logger.debug "New user, member: #{@user.attributes.inspect}"
      
       # ok to create user, member
       if @user.save_and_invite_member() && @user.create_member( member_params )
@@ -95,6 +95,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(product_params)
         logger.info "The product was updated and now the user is going to be redirected..."
+        UserNotifier.send_status_change_email(User.find(user), @product, "Product updated").deliver if status.send_email
         format.html { redirect_to tenant_products_url, notice: 'Product was successfully updated.'}
       else
         logger.error "Errors occurred while updating product #{@product.attributes.inspect}."

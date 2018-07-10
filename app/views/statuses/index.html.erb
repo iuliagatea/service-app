@@ -5,11 +5,14 @@
 <%= will_paginate @statuses %>
 <table class="table table-status">
   <thead>
-   <!-- <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr> -->
+    <tr>
+     <!-- <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= 'Products count' %></th>
+      <th><%= 'Active' %></th>
+      <th><%= 'Send email' %></th>
+      <th></th>
+      -->
+    </tr> 
   </thead>
   <tbody>
     <% @statuses.each do |status| %>
@@ -22,6 +25,15 @@
         <td style="background-color: <%= status.color %>">
           <h5>
              <%= link_to pluralize(status.products_with_status.count, "product"), tenant_status_products_path(status_id: status.id, tenant_id: status.tenant_id) %>
+          </h5>
+        </td>
+        <td style="background-color: <%= status.color %>">
+          <h5>
+             <% if status.send_email %>
+               Send emails
+             <% else %>
+               No emails
+             <% end %>
           </h5>
         </td>
         <td style="background-color: <%= status.color %>">

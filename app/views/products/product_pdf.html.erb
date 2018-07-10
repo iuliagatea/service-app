@@ -8,60 +8,6 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %> Card</h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:code) %>:</strong></dt>
-  <dd><%= @product.code %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @product.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:expected_completion_date) %>:</strong></dt>
-  <dd><%= format_date(@product.expected_completion_date) %></dd>
-  <dt><strong>Current status:</strong></dt>
-  <dd><%= @product.last_status.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:comments) %>:</strong></dt>
-  <dd><%= @product.comments %></dd>
-</dl>
-<% if current_user.is_admin? %>
-  <% if @statuses.count > 0 %>
-    <h4>History</h4>
-    <table class="table table-striped">
-      <tbody>
-        <% @statuses.each do |status| %>
-          <tr style="background-color: <%= status.color %>">
-            <td><%= status.name %></td>
-            <td><%= format_date_time(status.created_at) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
-<% end %>
-<hr />
-<% if @estimates.count > 0 %>
-<h4>Estimate</h4>
-<table class="table">
-  <tbody>
-    <thead>
-      <th>Name</th>
-      <th>Quantity</th>
-      <th>Price</th>
-      <th>Value</th>
-    </thead>
-    <% @estimates.each do |estimate| %>
-      <tr>
-        <td><%= estimate.name %></td>
-        <td><%= estimate.quantity %></td>
-        <td><%= estimate.price %></td>
-        <td><%= estimate.quantity*estimate.price %></td>
-      </tr>
-    <% end %>
-    <tr>
-      <th></th>
-      <th></th>
-      <th>Total: </th>
-      <th><%= @product.estimated_value %></th>
-    </tr>
-  </tbody>
-</table>
-<% end %>
+<%= render 'show' %>
 <hr />
 
