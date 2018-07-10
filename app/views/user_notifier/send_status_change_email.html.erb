@@ -4,6 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Product <%= @product.code %> - <%= @product.name %> was updated.</h1>
+    <h1>status for product <%= link_to (@product.code + " - " + @product.name), tenant_product_path(@product, tenant_id: @product.tenant_id) %> was updated.</h1>
+    <%= render 'products/show' %>
   </body>
 </html>

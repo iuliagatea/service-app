@@ -91,8 +91,11 @@ class ProductsController < ApplicationController
     user = User.find_by_email(params[:user]["email"]).ids.first
     @product.user_id = user
     status = Status.find(params[:status]["id"])
+    if status.send_email and @product.last_status != status 
+      logger.info "Send email to customer for status change"
+      UserNotifier.send_status_change_email(User.find(user), @product, "Status updated for product #{@product.name}").deliver_now 
+    end
     @product.statuses << status unless @product.last_status == status 
-    UserNotifier.send_status_change_email(User.find(user), @product, "Product status updated").deliver if status.send_email and @product.last_status != status 
     respond_to do |format|
       if @product.update(product_params)
         logger.info "The product was updated and now the user is going to be redirected..."
