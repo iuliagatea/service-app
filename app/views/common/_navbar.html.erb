@@ -30,15 +30,15 @@
                         edit_user_registration_path, title: 'Edit Profile',  class: 'navbar-link' %>
                   </li>
                   <li><%= link_to "<i class='fa fa-user-plus'></i> Add Customer Product".html_safe,
-                        new_tenant_product_path(tenant_id: Tenant.current_tenant_id),  class: 'navbar-link' %>
+                        new_tenant_product_path(tenant_id: current_user.tenants.first),  class: 'navbar-link' %>
                   </li>
                   <li>
                     <%= link_to "<i class='fa fa-tasks'></i> Products".html_safe, 
-                        tenant_products_path(tenant_id: Tenant.current_tenant_id), class: "navbar-link" %>
+                        tenant_products_path(tenant_id: current_user.tenants.first), class: "navbar-link" %>
                   </li>
                   <li>
                     <%= link_to "<i class='fa fa-list'></i> Statuses".html_safe, 
-                        tenant_statuses_path(tenant_id: Tenant.current_tenant_id), class: "navbar-link" %>
+                        tenant_statuses_path(tenant_id: current_user.tenants.first), class: "navbar-link" %>
                   </li>
                   <li role="separator" class="divider"></li>
                   <li class="logout">

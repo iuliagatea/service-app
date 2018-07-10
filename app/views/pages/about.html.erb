@@ -3,6 +3,47 @@
 <head>
 </head>
 <body>
-<%= yield %>
+<h3>If it's broken, we will <i class="fa fa-wrench"></i> FixIT!</h3>
+<% if 1==0 %>
+  <p>FixIT este o aplicatie dedicata nevoilor entitatilor prestatoare de servicii 
+  legate de reparatii ale diverselor produse. Aceasta permite adaugarea si monitorizarea produselor 
+  si genereaza initial 5 statusuri, care sunt flexibile, insemannd ca pot fi 
+  modificate. Exista posibilitatea adaugarii de statusuri noi in functie de 
+  nevoile specifice activitatii. FixIT genereaza documentele necesare, 
+  cum ar fi devizul, si permite interactiunea dinamica cu clientul prin intermediul 
+  adresei de mail, bineinteles dupa o confirmare a acesteia.</p>
+  <br />
+  <h4><i class="fa fa-send"></i> Notificare in timp real</h4>
+  <p>Clientul este notificat pe email la schimbarea statusului produsului. 
+  Cu ajutorul aplicatiei, el poate sa monitorizeze toate produsele trimise 
+  la reparat si costul reparatiei.</p>
+  <br />
+  <h4><i class="fa fa-credit-card"></i> Planuri de preturi flexibile</h4>
+  <p>Aplicatia este disponibila in varianta FREE si permite inserarea unui 
+  maximum de 500 de produse si PREMIUM, in cuantum de 10$, care permite 
+  inserarea unui numar nelimitat de produse.</p>
+  <p>Se poate opta oricand pentru trecerea de la un plan la altul.</p>
+<% else %>
+  <p>FixIT is an application dedicated to the needs of service providers
+  related repair of various products. This allows adding and monitoring products
+  and initially generates 5 statuses that are flexible, meaning they can be
+  modified. It is possible to add new statuses depending on
+  the specific needs of the activity. FixIT generates the necessary documents,
+  such as estimate, and allows dynamic interaction with the customer through
+  mail address, of course, after a confirmation.</p>
+  <br />
+  <h4><i class="fa fa-send"></i> Real time notification</h4>
+  <p>The customer is notified by email to change the status of the product.
+  With the help of the application, he can monitor all his products and the 
+  cost of the repair.</p>
+  <br />
+  <h4><i class="fa fa-credit-card"></i> Flexible price plans</h4>
+  <p>You can use the application for FREE which allows an insertion of a
+  maximum of 500 products or, at the cost of $10, you can opt for PREMIUM, which allows
+  inserting an unlimited number of products.</p>
+  <p>You can always choose to switch from one plan to another.</p>
+<% end %>
+<br>
+<%= render 'home/plans' %>
 </body>
 </html>
