@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     logger.debug "Showing products of tenant with id #{params[:tenant_id]} for user #{current_user.email}"
-    @statuses = Status.by_product(params[:id]).uniq
+    @product_statuses = @product.product_statuses
     @estimates = @product.estimates
     respond_to do |format|
       format.html
@@ -91,11 +91,11 @@ class ProductsController < ApplicationController
     user = User.find_by_email(params[:user]["email"]).ids.first
     @product.user_id = user
     status = Status.find(params[:status]["id"])
-    @product.statuses << status
+    @product.statuses << status unless @product.last_status == status 
+    UserNotifier.send_status_change_email(User.find(user), @product, "Product status updated").deliver if status.send_email and @product.last_status != status 
     respond_to do |format|
       if @product.update(product_params)
         logger.info "The product was updated and now the user is going to be redirected..."
-        UserNotifier.send_status_change_email(User.find(user), @product, "Product updated").deliver if status.send_email
         format.html { redirect_to tenant_products_url, notice: 'Product was successfully updated.'}
       else
         logger.error "Errors occurred while updating product #{@product.attributes.inspect}."
