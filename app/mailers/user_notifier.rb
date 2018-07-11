@@ -10,7 +10,7 @@ class UserNotifier < ApplicationMailer
     test = WickedPdf.new.pdf_from_string(
       render_to_string(
           pdf: "test.pdf",
-          template: "products/product_pdf.html.erb",
+          template: "products/product_pdf_to_send.html.erb",
           layout: 'layouts/pdf.html.erb'
          )
     )

@@ -27009,3 +27009,600 @@ I, [2018-07-11T11:08:53.978241 #2576]  INFO -- :   Rendered common/_navbar.html.
 I, [2018-07-11T11:08:53.981572 #2576]  INFO -- :   Rendered common/_footer.html.erb (0.7ms)
 I, [2018-07-11T11:08:53.981965 #2576]  INFO -- : Completed 200 OK in 264ms (Views: 262.1ms | ActiveRecord: 0.0ms)
 D, [2018-07-11T11:10:54.423080 #3952] DEBUG -- :   [1m[36mMember Load (9.7ms)[0m  [1mSELECT "members".* FROM "members" WHERE (members.tenant_id = NULL)[0m
+D, [2018-07-11T11:58:04.886949 #4159] DEBUG -- : 
+D, [2018-07-11T11:58:04.887149 #4159] DEBUG -- : 
+I, [2018-07-11T11:58:04.887422 #4159]  INFO -- : Started POST "/users/sign_in" for 92.84.60.177 at 2018-07-11 11:58:04 +0000
+I, [2018-07-11T11:58:04.888304 #4159]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+D, [2018-07-11T11:58:05.017136 #4159] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2018-07-11T11:58:05.040662 #4159]  INFO -- : Processing by Milia::SessionsController#create as HTML
+I, [2018-07-11T11:58:05.040798 #4159]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"P5SWy7LKS8TbmaZ9quIHH3ncBKM2NmsxGNy/h5NHz/QL4sIhrdT/+sWHnnVNjtT1OritUPGp2MkjujE1ig7zgQ==", "user"=>{"email"=>"juliagatea@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+D, [2018-07-11T11:58:05.055877 #4159] DEBUG -- : MILIA >>>>> [change tenant] new: %	old: %
+D, [2018-07-11T11:58:05.055992 #4159] DEBUG -- : MILIA >>>>> [reset tenant] 
+D, [2018-07-11T11:58:05.074854 #4159] DEBUG -- :   [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "juliagatea@yahoo.com"]]
+I, [2018-07-11T11:58:05.182547 #4159]  INFO -- : Completed 401 Unauthorized in 141ms (ActiveRecord: 4.6ms)
+I, [2018-07-11T11:58:05.282775 #4159]  INFO -- : Processing by Milia::SessionsController#new as HTML
+I, [2018-07-11T11:58:05.282897 #4159]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"P5SWy7LKS8TbmaZ9quIHH3ncBKM2NmsxGNy/h5NHz/QL4sIhrdT/+sWHnnVNjtT1OritUPGp2MkjujE1ig7zgQ==", "user"=>{"email"=>"juliagatea@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+I, [2018-07-11T11:58:05.406653 #4159]  INFO -- :   Rendered devise/shared/_links.html.erb (1.9ms)
+I, [2018-07-11T11:58:05.406828 #4159]  INFO -- :   Rendered devise/sessions/new.html.erb within layouts/application (32.3ms)
+I, [2018-07-11T11:58:06.188030 #4159]  INFO -- :   Rendered common/_navbar.html.erb (4.6ms)
+I, [2018-07-11T11:58:06.192511 #4159]  INFO -- :   Rendered common/_footer.html.erb (1.3ms)
+I, [2018-07-11T11:58:06.192952 #4159]  INFO -- : Completed 200 OK in 910ms (Views: 837.7ms | ActiveRecord: 0.0ms)
+D, [2018-07-11T11:58:09.602281 #4159] DEBUG -- : 
+D, [2018-07-11T11:58:09.602430 #4159] DEBUG -- : 
+I, [2018-07-11T11:58:09.602700 #4159]  INFO -- : Started GET "/assets/favicon-bb296fde2129b19d1b3c66f4d1242049527398ffec54ef91934b5117ca64bbe7.ico" for 92.84.60.177 at 2018-07-11 11:58:09 +0000
+I, [2018-07-11T11:58:09.603548 #4159]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+D, [2018-07-11T11:59:32.504982 #4159] DEBUG -- : 
+D, [2018-07-11T11:59:32.505106 #4159] DEBUG -- : 
+I, [2018-07-11T11:59:32.505304 #4159]  INFO -- : Started POST "/users/sign_in" for 92.84.60.177 at 2018-07-11 11:59:32 +0000
+I, [2018-07-11T11:59:32.519406 #4159]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-11T11:59:32.525518 #4159]  INFO -- : Processing by Milia::SessionsController#create as HTML
+I, [2018-07-11T11:59:32.525642 #4159]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"P5SWy7LKS8TbmaZ9quIHH3ncBKM2NmsxGNy/h5NHz/QL4sIhrdT/+sWHnnVNjtT1OritUPGp2MkjujE1ig7zgQ==", "user"=>{"email"=>"juliagatea@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+D, [2018-07-11T11:59:32.526853 #4159] DEBUG -- : MILIA >>>>> [change tenant] new: %	old: %
+D, [2018-07-11T11:59:32.526930 #4159] DEBUG -- : MILIA >>>>> [reset tenant] 
+D, [2018-07-11T11:59:32.529179 #4159] DEBUG -- :   [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "juliagatea@yahoo.com"]]
+I, [2018-07-11T11:59:32.599276 #4159]  INFO -- : Completed 401 Unauthorized in 73ms (ActiveRecord: 0.7ms)
+I, [2018-07-11T11:59:32.600806 #4159]  INFO -- : Processing by Milia::SessionsController#new as HTML
+I, [2018-07-11T11:59:32.600912 #4159]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"P5SWy7LKS8TbmaZ9quIHH3ncBKM2NmsxGNy/h5NHz/QL4sIhrdT/+sWHnnVNjtT1OritUPGp2MkjujE1ig7zgQ==", "user"=>{"email"=>"juliagatea@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+I, [2018-07-11T11:59:32.688394 #4159]  INFO -- :   Rendered devise/shared/_links.html.erb (0.7ms)
+I, [2018-07-11T11:59:32.688562 #4159]  INFO -- :   Rendered devise/sessions/new.html.erb within layouts/application (3.8ms)
+I, [2018-07-11T11:59:32.904434 #4159]  INFO -- :   Rendered common/_navbar.html.erb (0.3ms)
+I, [2018-07-11T11:59:32.906823 #4159]  INFO -- :   Rendered common/_footer.html.erb (0.3ms)
+I, [2018-07-11T11:59:32.907184 #4159]  INFO -- : Completed 200 OK in 306ms (Views: 229.7ms | ActiveRecord: 0.0ms)
+D, [2018-07-11T11:59:35.232580 #4159] DEBUG -- : 
+D, [2018-07-11T11:59:35.232793 #4159] DEBUG -- : 
+I, [2018-07-11T11:59:35.232971 #4159]  INFO -- : Started GET "/assets/favicon-bb296fde2129b19d1b3c66f4d1242049527398ffec54ef91934b5117ca64bbe7.ico" for 92.84.60.177 at 2018-07-11 11:59:35 +0000
+I, [2018-07-11T11:59:35.233533 #4159]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+D, [2018-07-11T11:59:38.974339 #4159] DEBUG -- : 
+D, [2018-07-11T11:59:38.974529 #4159] DEBUG -- : 
+I, [2018-07-11T11:59:38.974697 #4159]  INFO -- : Started POST "/users/sign_in" for 92.84.60.177 at 2018-07-11 11:59:38 +0000
+I, [2018-07-11T11:59:38.975340 #4159]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-11T11:59:38.981302 #4159]  INFO -- : Processing by Milia::SessionsController#create as HTML
+I, [2018-07-11T11:59:38.981418 #4159]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"eP9JaAHZsrJ88Kbf8GKwUjUlvqLZYqJw6b+MYcc2NNJMiR2CHscGjGLuntcXDmO4dkEXUR79EYjS2QLT3n8Ipw==", "user"=>{"email"=>"juliagatea@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+D, [2018-07-11T11:59:38.982507 #4159] DEBUG -- : MILIA >>>>> [change tenant] new: %	old: %
+D, [2018-07-11T11:59:38.982581 #4159] DEBUG -- : MILIA >>>>> [reset tenant] 
+D, [2018-07-11T11:59:38.985194 #4159] DEBUG -- :   [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "juliagatea@yahoo.com"]]
+D, [2018-07-11T11:59:39.057100 #4159] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+D, [2018-07-11T11:59:39.061774 #4159] DEBUG -- :   [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5  [["last_sign_in_at", "2018-07-11 09:11:34.083187"], ["current_sign_in_at", "2018-07-11 11:59:39.055501"], ["sign_in_count", 12], ["updated_at", "2018-07-11 11:59:39.057657"], ["id", 1]]
+D, [2018-07-11T11:59:39.066476 #4159] DEBUG -- :   [1m[36m (3.6ms)[0m  [1mCOMMIT[0m
+I, [2018-07-11T11:59:39.078106 #4159]  INFO -- : Redirected to https://rubyonrailstraining-iuliagatea.c9users.io/
+I, [2018-07-11T11:59:39.078446 #4159]  INFO -- : Completed 302 Found in 97ms (ActiveRecord: 5.6ms)
+D, [2018-07-11T11:59:39.585453 #4159] DEBUG -- : 
+D, [2018-07-11T11:59:39.585614 #4159] DEBUG -- : 
+I, [2018-07-11T11:59:39.585793 #4159]  INFO -- : Started GET "/" for 92.84.60.177 at 2018-07-11 11:59:39 +0000
+I, [2018-07-11T11:59:39.586444 #4159]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-11T11:59:39.601718 #4159]  INFO -- : Processing by HomeController#index as HTML
+D, [2018-07-11T11:59:39.604996 #4159] DEBUG -- :   [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+D, [2018-07-11T11:59:39.660050 #4159] DEBUG -- :   [1m[36mTenant Load (1.2ms)[0m  [1mSELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+D, [2018-07-11T11:59:39.664796 #4159] DEBUG -- : MILIA >>>>> [Tenant#change_tenant] new: 1	old:%
+I, [2018-07-11T11:59:39.664937 #4159]  INFO -- : Opening index..
+D, [2018-07-11T11:59:39.667155 #4159] DEBUG -- :   [1m[35mTenant Load (0.4ms)[0m  SELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-11T11:59:39.674114 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1[0m  [["id", 1]]
+D, [2018-07-11T11:59:39.694858 #4159] DEBUG -- :   [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM "products" WHERE "products"."tenant_id" = $1  [["tenant_id", 1]]
+D, [2018-07-11T11:59:39.695807 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products" WHERE "products"."tenant_id" = $1[0m  [["tenant_id", 1]]
+D, [2018-07-11T11:59:39.698944 #4159] DEBUG -- :   [1m[35mProduct Load (0.6ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."tenant_id" = $1 LIMIT 10 OFFSET 0  [["tenant_id", 1]]
+D, [2018-07-11T11:59:39.724873 #4159] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 1]]
+D, [2018-07-11T11:59:39.728374 #4159] DEBUG -- :   [1m[35m (0.4ms)[0m  SELECT SUM(price * quantity) FROM "estimates" WHERE "estimates"."product_id" = $1  [["product_id", 1]]
+D, [2018-07-11T11:59:39.732956 #4159] DEBUG -- :   [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-11T11:59:39.741361 #4159] DEBUG -- :   [1m[35mProductStatus Load (0.7ms)[0m  SELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1  [["product_id", 1]]
+D, [2018-07-11T11:59:39.754542 #4159] DEBUG -- :   [1m[36mStatus Load (0.6ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-11T11:59:39.760097 #4159] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1  [["product_id", 1]]
+D, [2018-07-11T11:59:39.760553 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 2]]
+I, [2018-07-11T11:59:39.762320 #4159]  INFO -- :   Rendered products/_list.html.erb (72.4ms)
+D, [2018-07-11T11:59:39.771595 #4159] DEBUG -- :   [1m[35m (1.0ms)[0m  SELECT COUNT(*) AS count_all, (DATE_TRUNC('month', (created_at::timestamptz) AT TIME ZONE 'Etc/UTC')) AT TIME ZONE 'Etc/UTC' AS date_trunc_month_created_at_timestamptz_at_time_zone_etc_utc_at FROM "products" WHERE "products"."tenant_id" = $1 AND (created_at >= '2017-12-01 00:00:00.000000' AND created_at <= '2018-07-11 11:59:39.762684') GROUP BY (DATE_TRUNC('month', (created_at::timestamptz) AT TIME ZONE 'Etc/UTC')) AT TIME ZONE 'Etc/UTC'  [["tenant_id", 1]]
+D, [2018-07-11T11:59:39.778042 #4159] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) AS count_all, users.email AS users_email FROM "products" INNER JOIN "users" ON "users"."id" = "products"."user_id" AND (users.tenant_id IS NULL) WHERE "products"."tenant_id" = $1 GROUP BY users.email[0m  [["tenant_id", 1]]
+I, [2018-07-11T11:59:39.778604 #4159]  INFO -- :   Rendered home/index.html.erb within layouts/application (90.5ms)
+D, [2018-07-11T11:59:39.994414 #4159] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1  [["user_id", 1]]
+D, [2018-07-11T11:59:39.995785 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+D, [2018-07-11T11:59:39.996951 #4159] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1  [["user_id", 1]]
+D, [2018-07-11T11:59:39.997959 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+I, [2018-07-11T11:59:39.998531 #4159]  INFO -- :   Rendered common/_navbar.html.erb (5.8ms)
+I, [2018-07-11T11:59:40.000636 #4159]  INFO -- :   Rendered common/_footer.html.erb (0.3ms)
+I, [2018-07-11T11:59:40.001010 #4159]  INFO -- : Completed 200 OK in 399ms (Views: 309.5ms | ActiveRecord: 18.4ms)
+D, [2018-07-11T11:59:42.280139 #4159] DEBUG -- : 
+D, [2018-07-11T11:59:42.280270 #4159] DEBUG -- : 
+I, [2018-07-11T11:59:42.280475 #4159]  INFO -- : Started GET "/tenants/1/products/1" for 92.84.60.177 at 2018-07-11 11:59:42 +0000
+I, [2018-07-11T11:59:42.281150 #4159]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-11T11:59:42.298598 #4159]  INFO -- : Processing by ProductsController#show as HTML
+I, [2018-07-11T11:59:42.298734 #4159]  INFO -- :   Parameters: {"tenant_id"=>"1", "id"=>"1"}
+D, [2018-07-11T11:59:42.301548 #4159] DEBUG -- :   [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+D, [2018-07-11T11:59:42.305831 #4159] DEBUG -- :   [1m[36mTenant Load (1.0ms)[0m  [1mSELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+D, [2018-07-11T11:59:42.306335 #4159] DEBUG -- : MILIA >>>>> [change tenant] new: 1	old: %
+D, [2018-07-11T11:59:42.308369 #4159] DEBUG -- :   [1m[35mProduct Load (0.4ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-11T11:59:42.310227 #4159] DEBUG -- :   [1m[36mTenant Load (0.4ms)[0m  [1mSELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1[0m  [["id", 1]]
+D, [2018-07-11T11:59:42.310855 #4159] DEBUG -- : Showing products of tenant with id 1 for user juliagatea@yahoo.com
+D, [2018-07-11T11:59:42.407877 #4159] DEBUG -- :   [1m[35mProductStatus Load (68.0ms)[0m  SELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1  [["product_id", 1]]
+D, [2018-07-11T11:59:42.409130 #4159] DEBUG -- :   [1m[36mStatus Load (0.4ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-11T11:59:42.411328 #4159] DEBUG -- :   [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  [["product_id", 1]]
+D, [2018-07-11T11:59:42.413144 #4159] DEBUG -- :   [1m[36mProductStatus Load (0.4ms)[0m  [1mSELECT "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1[0m  [["product_id", 1]]
+D, [2018-07-11T11:59:42.418643 #4159] DEBUG -- :   [1m[35mStatus Load (0.7ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-11T11:59:42.419961 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-11T11:59:42.421167 #4159] DEBUG -- :   [1m[35mStatus Load (0.4ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 4]]
+D, [2018-07-11T11:59:42.422300 #4159] DEBUG -- :   [1m[36mStatus Load (0.3ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 3]]
+D, [2018-07-11T11:59:42.423037 #4159] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 2]]
+D, [2018-07-11T11:59:42.424021 #4159] DEBUG -- :   [1m[36mStatus Load (0.3ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 5]]
+D, [2018-07-11T11:59:42.424643 #4159] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-11T11:59:42.425262 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-11T11:59:42.426601 #4159] DEBUG -- :   [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1  [["product_id", 1]]
+D, [2018-07-11T11:59:42.428252 #4159] DEBUG -- :   [1m[36mEstimate Load (0.4ms)[0m  [1mSELECT "estimates".* FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 1]]
+D, [2018-07-11T11:59:42.436550 #4159] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1  [["product_id", 1]]
+D, [2018-07-11T11:59:42.437770 #4159] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mSELECT SUM(price * quantity) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 1]]
+I, [2018-07-11T11:59:42.438050 #4159]  INFO -- :   Rendered products/_show.html.erb (101.0ms)
+I, [2018-07-11T11:59:42.439711 #4159]  INFO -- :   Rendered products/show.html.erb within layouts/application (116.2ms)
+D, [2018-07-11T11:59:42.639269 #4159] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1  [["user_id", 1]]
+D, [2018-07-11T11:59:42.640845 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+D, [2018-07-11T11:59:42.642112 #4159] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1  [["user_id", 1]]
+D, [2018-07-11T11:59:42.643135 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1  ORDER BY "tenants"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+I, [2018-07-11T11:59:42.643684 #4159]  INFO -- :   Rendered common/_navbar.html.erb (6.1ms)
+I, [2018-07-11T11:59:42.645663 #4159]  INFO -- :   Rendered common/_footer.html.erb (0.2ms)
+I, [2018-07-11T11:59:42.646024 #4159]  INFO -- : Completed 200 OK in 347ms (Views: 258.9ms | ActiveRecord: 75.5ms)
+D, [2018-07-11T11:59:45.675524 #4159] DEBUG -- : 
+D, [2018-07-11T11:59:45.675683 #4159] DEBUG -- : 
+I, [2018-07-11T11:59:45.675866 #4159]  INFO -- : Started GET "/tenants/1/products/1/send_product_card" for 92.84.60.177 at 2018-07-11 11:59:45 +0000
+I, [2018-07-11T11:59:45.676475 #4159]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-11T11:59:45.683148 #4159]  INFO -- : Processing by ProductsController#send_product_card as HTML
+I, [2018-07-11T11:59:45.683238 #4159]  INFO -- :   Parameters: {"tenant_id"=>"1", "product_id"=>"1"}
+D, [2018-07-11T11:59:45.685557 #4159] DEBUG -- :   [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+D, [2018-07-11T11:59:45.689750 #4159] DEBUG -- :   [1m[36mTenant Load (0.5ms)[0m  [1mSELECT "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1[0m  [["user_id", 1]]
+D, [2018-07-11T11:59:45.690309 #4159] DEBUG -- : MILIA >>>>> [change tenant] new: 1	old: %
+D, [2018-07-11T11:59:45.691389 #4159] DEBUG -- :   [1m[35mProduct Load (0.4ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-11T11:59:45.692933 #4159] DEBUG -- :   [1m[36mTenant Load (0.3ms)[0m  [1mSELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1[0m  [["id", 1]]
+D, [2018-07-11T11:59:45.716900 #4159] DEBUG -- :   [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1  [["id", 2]]
+W, [2018-07-11T11:59:45.718031 #4159]  WARN -- : DEPRECATION WARNING: You are passing an instance of ActiveRecord::Base to `find`. Please pass the id of the object by calling `.id`. (called from send_product_card at /home/ubuntu/rails_projects/service-app/app/controllers/products_controller.rb:134)
+D, [2018-07-11T11:59:45.718707 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+I, [2018-07-11T11:59:46.481509 #4159]  INFO -- :   Rendered products/product_pdf.html.erb within layouts/pdf.html.erb (61.9ms)
+D, [2018-07-11T11:59:46.481786 #4159] DEBUG -- : 
+UserNotifier#send_product_card_email_pdf: processed outbound mail in 673.0ms
+I, [2018-07-11T11:59:46.482193 #4159]  INFO -- : Completed 500 Internal Server Error in 799ms (ActiveRecord: 2.3ms)
+F, [2018-07-11T11:59:46.483491 #4159] FATAL -- : 
+ActionView::Template::Error (Missing partial user_notifier/_show, application_mailer/_show with {:locale=>[:en], :formats=>[:html, :text, :js, :css, :ics, :csv, :vcf, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip, :web_console_v2], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/ubuntu/rails_projects/service-app/app/views"
+  * "/usr/local/rvm/gems/ruby-2.3.4/gems/devise-bootstrap-views-0.0.11/app/views"
+  * "/usr/local/rvm/gems/ruby-2.3.4/gems/twitter-bootstrap-rails-3.2.2/app/views"
+  * "/usr/local/rvm/gems/ruby-2.3.4/gems/devise-3.5.10/app/views"
+):
+     8:   <h1><%=t '.title', :default => model_class.model_name.human.titleize %> Card</h1>
+     9: </div>
+    10: 
+    11: <%= render 'show' %>
+    12: <hr />
+    13: <footer class="footer">
+    14:     <div class="container no-black-hover">
+  app/views/products/product_pdf.html.erb:11:in `_app_views_products_product_pdf_html_erb__3777723518404566209_70030820204120'
+  app/mailers/user_notifier.rb:11:in `send_product_card_email_pdf'
+  app/controllers/products_controller.rb:134:in `send_product_card'
+
+
+I, [2018-07-11T11:59:46.630027 #4159]  INFO -- :   Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+I, [2018-07-11T11:59:46.643736 #4159]  INFO -- :   Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+I, [2018-07-11T11:59:46.653634 #4159]  INFO -- :   Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+I, [2018-07-11T11:59:46.653794 #4159]  INFO -- :   Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (38.6ms)
+D, [2018-07-11T12:01:59.362402 #4159] DEBUG -- : 
+D, [2018-07-11T12:01:59.362521 #4159] DEBUG -- : 
+I, [2018-07-11T12:01:59.362770 #4159]  INFO -- : Started GET "/tenants/1/products/1/send_product_card" for 92.84.60.177 at 2018-07-11 12:01:59 +0000
+I, [2018-07-11T12:01:59.363563 #4159]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-11T12:01:59.510448 #4159]  INFO -- : Processing by ProductsController#send_product_card as HTML
+I, [2018-07-11T12:01:59.510572 #4159]  INFO -- :   Parameters: {"tenant_id"=>"1", "product_id"=>"1"}
+D, [2018-07-11T12:01:59.524073 #4159] DEBUG -- :   [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+D, [2018-07-11T12:01:59.558796 #4159] DEBUG -- :   [1m[36mTenant Load (0.6ms)[0m  [1mSELECT "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1[0m  [["user_id", 1]]
+D, [2018-07-11T12:01:59.563785 #4159] DEBUG -- : MILIA >>>>> [change tenant] new: 1	old: %
+D, [2018-07-11T12:01:59.573475 #4159] DEBUG -- :   [1m[35mProduct Load (0.5ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-11T12:01:59.579670 #4159] DEBUG -- :   [1m[36mTenant Load (0.6ms)[0m  [1mSELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1[0m  [["id", 1]]
+D, [2018-07-11T12:01:59.602654 #4159] DEBUG -- :   [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1  [["id", 2]]
+W, [2018-07-11T12:01:59.604232 #4159]  WARN -- : DEPRECATION WARNING: You are passing an instance of ActiveRecord::Base to `find`. Please pass the id of the object by calling `.id`. (called from send_product_card at /home/ubuntu/rails_projects/service-app/app/controllers/products_controller.rb:134)
+D, [2018-07-11T12:01:59.604924 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-11T12:02:00.272035 #4159] DEBUG -- :   [1m[35mProductStatus Load (0.3ms)[0m  SELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1  [["product_id", 1]]
+D, [2018-07-11T12:02:00.287630 #4159] DEBUG -- :   [1m[36mStatus Load (0.2ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-11T12:02:00.297056 #4159] DEBUG -- :   [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  [["product_id", 1]]
+D, [2018-07-11T12:02:00.299125 #4159] DEBUG -- :   [1m[36mProductStatus Load (0.5ms)[0m  [1mSELECT "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1[0m  [["product_id", 1]]
+D, [2018-07-11T12:02:00.323284 #4159] DEBUG -- :   [1m[35mStatus Load (0.5ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-11T12:02:00.325029 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-11T12:02:00.326172 #4159] DEBUG -- :   [1m[35mStatus Load (0.3ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 4]]
+D, [2018-07-11T12:02:00.331971 #4159] DEBUG -- :   [1m[36mStatus Load (0.4ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 3]]
+D, [2018-07-11T12:02:00.333055 #4159] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 2]]
+D, [2018-07-11T12:02:00.334334 #4159] DEBUG -- :   [1m[36mStatus Load (0.5ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 5]]
+D, [2018-07-11T12:02:00.335121 #4159] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-11T12:02:00.335890 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-11T12:02:00.337792 #4159] DEBUG -- :   [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1  [["product_id", 1]]
+D, [2018-07-11T12:02:00.339178 #4159] DEBUG -- :   [1m[36mEstimate Load (0.4ms)[0m  [1mSELECT "estimates".* FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 1]]
+D, [2018-07-11T12:02:00.348604 #4159] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1  [["product_id", 1]]
+D, [2018-07-11T12:02:00.349816 #4159] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mSELECT SUM(price * quantity) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 1]]
+I, [2018-07-11T12:02:00.350053 #4159]  INFO -- :   Rendered products/_show.html.erb (88.4ms)
+I, [2018-07-11T12:02:00.350201 #4159]  INFO -- :   Rendered products/product_pdf_to_send.html.erb within layouts/pdf.html.erb (138.1ms)
+I, [2018-07-11T12:02:01.188203 #4159]  INFO -- :   Rendered user_notifier/send_product_card_email_pdf.html.erb within layouts/mailer (3.2ms)
+D, [2018-07-11T12:02:01.201832 #4159] DEBUG -- : 
+UserNotifier#send_product_card_email_pdf: processed outbound mail in 1594.4ms
+I, [2018-07-11T12:02:01.218981 #4159]  INFO -- : 
+Sent mail to tami@example.com (16.7ms)
+D, [2018-07-11T12:02:01.226043 #4159] DEBUG -- : Date: Wed, 11 Jul 2018 12:02:01 +0000
+From: do-not-reply@fixit.com
+To: tami@example.com
+Message-ID: <5b45f1b932cf0_103f3fb15209b83c553b1@iuliagatea-rubyonrailstraining-6038560.mail>
+Subject: Test Org - Product card - Telefon Asus
+Mime-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="--==_mimepart_5b45f1b92f650_103f3fb15209b83c5527d";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b45f1b92f650_103f3fb15209b83c5527d
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <link rel="stylesheet" media="screen" href="https://rubyonrailstraining-iuliagatea.c9users.io/assets/application.css" />
+  </head>
+  <body>
+    <h3>Hello, tami@example.com</h3>
+    <p>There is a product card attached for <a href="https://rubyonrailstraining-iuliagatea.c9users.io/tenants/1/products/1">44432212334 - Telefon Asus</a> </p>
+  </body>
+  <footer class="footer">
+    <div class="container no-black-hover">
+      <span class="text-muted">Sent from FixIT &copy; 2018</span>
+    </div>
+  </footer>
+
+</html>
+  </body>
+</html>
+
+----==_mimepart_5b45f1b92f650_103f3fb15209b83c5527d
+Content-Type: application/pdf;
+ filename=44432212334_product_card.pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename=44432212334_product_card.pdf
+Content-ID: <5b45f1b93449a_103f3fb15209b83c5543b@iuliagatea-rubyonrailstraining-6038560.mail>
+
+JVBERi0xLjQKMSAwIG9iago8PAovVGl0bGUgKP7/AFAARABGKQovQ3JlYXRv
+ciAo/v8AdwBrAGgAdABtAGwAdABvAHAAZABmACAAMAAuADEAMgAuADQpCi9Q
+cm9kdWNlciAo/v8AUQB0ACAANAAuADgALgA3KQovQ3JlYXRpb25EYXRlIChE
+OjIwMTgwNzExMTIwMjAwWikKPj4KZW5kb2JqCjMgMCBvYmoKPDwKL1R5cGUg
+L0V4dEdTdGF0ZQovU0EgdHJ1ZQovU00gMC4wMgovY2EgMS4wCi9DQSAxLjAK
+L0FJUyBmYWxzZQovU01hc2sgL05vbmU+PgplbmRvYmoKNCAwIG9iagpbL1Bh
+dHRlcm4gL0RldmljZVJHQl0KZW5kb2JqCjggMCBvYmoKWzAgL1hZWiAzMyAg
+CjgxMy41MDAwMDAgIDBdCmVuZG9iago5IDAgb2JqClswIC9YWVogMzMgIAo2
+MzcuMjUwMDAwICAwXQplbmRvYmoKMTAgMCBvYmoKWzAgL1hZWiAzMyAgCjM3
+MS43NTAwMDAgIDBdCmVuZG9iagoxMSAwIG9iago8PAovX19XS0FOQ0hPUl8y
+IDggMCBSCi9fX1dLQU5DSE9SXzQgOSAwIFIKL19fV0tBTkNIT1JfNiAxMCAw
+IFIKPj4KZW5kb2JqCjE0IDAgb2JqCjw8L1RpdGxlICj+/wBIAGkAcwB0AG8A
+cgB5KQogIC9QYXJlbnQgMTMgMCBSCiAgL0Rlc3QgL19fV0tBTkNIT1JfNAog
+IC9Db3VudCAwCiAgL05leHQgMTUgMCBSCj4+CmVuZG9iagoxNSAwIG9iago8
+PC9UaXRsZSAo/v8ARQBzAHQAaQBtAGEAdABlKQogIC9QYXJlbnQgMTMgMCBS
+CiAgL0Rlc3QgL19fV0tBTkNIT1JfNgogIC9Db3VudCAwCiAgL1ByZXYgMTQg
+MCBSCj4+CmVuZG9iagoxMyAwIG9iago8PC9UaXRsZSAo/v8AUAByAG8AZAB1
+AGMAdAAgAEMAYQByAGQpCiAgL1BhcmVudCAxMiAwIFIKICAvRGVzdCAvX19X
+S0FOQ0hPUl8yCiAgL0NvdW50IDAKICAvRmlyc3QgMTQgMCBSCiAgL0xhc3Qg
+MTUgMCBSCj4+CmVuZG9iagoxMiAwIG9iago8PC9UeXBlIC9PdXRsaW5lcyAv
+Rmlyc3QgMTMgMCBSCi9MYXN0IDEzIDAgUj4+CmVuZG9iagoxNiAwIG9iago8
+PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKL091dGxpbmVzIDEyIDAg
+UgovUGFnZU1vZGUgL1VzZU91dGxpbmVzCi9EZXN0cyAxMSAwIFIKPj4KZW5k
+b2JqCjUgMCBvYmoKPDwKL1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovQ29u
+dGVudHMgMTcgMCBSCi9SZXNvdXJjZXMgMTkgMCBSCi9Bbm5vdHMgMjAgMCBS
+Ci9NZWRpYUJveCBbMCAwIDU5NSA4NDJdCj4+CmVuZG9iagoxOSAwIG9iago8
+PAovQ29sb3JTcGFjZSA8PAovUENTcCA0IDAgUgovQ1NwIC9EZXZpY2VSR0IK
+L0NTcGcgL0RldmljZUdyYXkKPj4KL0V4dEdTdGF0ZSA8PAovR1NhIDMgMCBS
+Cj4+Ci9QYXR0ZXJuIDw8Cj4+Ci9Gb250IDw8Ci9GNiA2IDAgUgovRjcgNyAw
+IFIKPj4KL1hPYmplY3QgPDwKPj4KPj4KZW5kb2JqCjIwIDAgb2JqClsgXQpl
+bmRvYmoKMTcgMCBvYmoKPDwKL0xlbmd0aCAxOCAwIFIKL0ZpbHRlciAvRmxh
+dGVEZWNvZGUKPj4Kc3RyZWFtCnic7VxLb9w2EL7rV+hcwDJn+AaKAvY6KdBD
+AcMGegh6KJKmQRAHdXPo3y+px66k1SetaVF2kXWALEWuODPfPDhDUXv5890f
+5V/fysvd3d/l+/Zzd1eIymrR/JXx30W/g13VtktHsm2X7x+Kx/KxuC1uw//x
+87HoZm3m+Pb+a3HZ0Cuanrvdr6H1b8nlL+Hqc/nu9/DxoZ0ifuGhsGSrOD3p
+cPmlf0lCmcp48i70i/Fl/PKn4rcfyq+BD1E5IZglS2p4GV0H1pNZ7UlZsXaO
+pWYf2lpp4Z2QsW09kzbO8GDik/giUUrpAs6lUuU/fxYfA8msBL2sCZJykxRd
+S4RDW7JWXpA3sd12U5qITiERMxCMIgaCSERjnZIkbaRIbVPHNntFZI1KElFJ
+gUTMQDCIGAkiEWubiXOHtjJsa9Op+1vDSRPRGmio6xOMIgaC2xqqZt7WUCPB
+U0R0taFYEe1G7O0pSUQDw00GglFEg8NNnohqCIabPBE1EtzWUI2B4SaPoUaC
+MKKK1s1hu0/RVEqQddrpUluqpPbS2ZAKDPq5Iu0N1TmB8EE9gScz6qegQu84
+6LI3zxcwf0wXPvZ49rL9g+0+z7ZiwUJ44fo8HPHsAz/hzhFvuP8gy+T8Y56z
+4HzgDfAw6M+N86SuH8b9T8O5xxuypZVwtqQCWS+VHuJsSVfS+3jngIdh/4Hn
+3jxfwPyr2XOPhxHPpiLvQ2Ac84b6+7JMzr8Bzn3eAA+D/tw4T+r6Ydj/VJx7
+vCFb+lRH6NUrIz5URnPV3/V9cfnWlJLL+49lQ+ii+bh/KFx5EQc+lD/GOu+n
+8v5zwcFDlYwFaPxKM8L1CHHVDPRGZDPiw/ptXBg7jCg4ouGIaUZsZR3xgAPb
+jARzVMJw/x5Xj7jK+XqgN+IbeWQl/EieK0gHS9rI8+Y+qPK5uiADdGH9kHei
+Y4waxIOlGT2SV8GRa4jRbi2pLJAqZCkXJMTQxqY4SRlhOCITRlTCPZgDPEIb
+WBKFzLIldwNN6Qqy+Ka5R1VMzr4qU1I8DCNT5m4gj00YkR0UJ93TBBjVRYSj
+ADN1D0b2Gs6224c4S0M9NRp0Y/VMTX+zhW0Z2ZF7i3gmgVgkSghTSxoNq20d
+yE+bDQdKrGvMAQ7I0IswBsSQAywPxIAknA1yTSno4HuwJ6RobpsY49RyEMeL
+xVuE0qJPPGk2vChhOpjr1u7yBg4Wejm/wWG9YdF03nTSCDSlGTPHhgkdgHSC
+mae4BkRnhoNNnIbZLAedhGWRsMlqiBJcmAmG8ZnZcOg/Wpi3WH5Z2edUCTi1
+S0j6UrzoxS01FOUtJxbK5WCiiBdBmJWRH9sJNlBshthFoBhJWS12kauRGIRZ
+2i2kMVP34JEE36SbheLmaVrHQOKEfhwdjvFL4ITalFt2YJwgMePE43qDgCVp
+FH4nAhZeNJKWVhz+YKrQelHG4EMUsDBdCsQEg/fpHjjzVWhBzKdPkh0TrwIm
+usMEZ66Mt2C+83x7FllrljnBmKuFem/qHuitM7NhZLOjFH1SCVqMQm3qmpsT
+7na3vtO0d86YD2pKMeZzmJhBdm92KXvgKWEC7+mnhIn1ns3MOqfu6i6GaQzO
+tHDt+4RFPWX/eps1XB2K0rNzrovsvlxd2TkTHoTNzLb0ICyzc2ohF51zZn3E
+RRXGPMUXcbH40v7r5bKVnfe8E5DVpJ6BRYr/MtwPSsroN6mLteyOPrx0Dq7N
+su9/tzn4QU3nMLEysuY5WKQszHhLZWY2rA25iXP6/fZZs79F+uh018xuJ95V
+xXvPeE8YZ/RmE4tx+uyLWZA1wmzsi+smANtsmxnV7cect7L3liOX96jOPpmE
+rOaNfXLdrext1kdju22Yl06jjd8/ZT+n0UfGbJd3y85hIgnZg9m94jCBK3Ta
+4nC41Scc4E147D4Tc/DZovQDohlBYh1fxnDDoLDuEfqcKrZ97tv0aeqdFnzW
+Etc2KSe+sF3ge1bL1xBKpN1AyYRcYebMCBZs6cBQTuMVcqB/DwXDWsbH0LHN
+rCbYXF7heP8UDp5+fOnTexkhiK59gOAZOUJONWkz0BNe7NIfCGZkv3af/y/7
+tZPsiyVuX3U8frKV8qh6xvKxJSYk7JwdpdqP9ijNlG0v7kd6+WzGTKr7Kk20
+8bAT0H+tguGUImrsUINfwbUSH1BNeF9kZrVe7UQ9TjZU96NkfcnxGwM7OALP
+L7fnpKdUmr1cDzmip+6hF18jtc3sUe5G6cNM0riUW02Vkvva5OhddnzYIFth
+3/0gXeIvvM2q8La8Lf4D1/TM3wplbmRzdHJlYW0KZW5kb2JqCjE4IDAgb2Jq
+CjE3MTAKZW5kb2JqCjIxIDAgb2JqCjw8IC9UeXBlIC9Gb250RGVzY3JpcHRv
+cgovRm9udE5hbWUgL1FWQUFBQStOaW1idXNTYW5MLVJlZ3UKL0ZsYWdzIDQg
+Ci9Gb250QkJveCBbLTE3NCAtMjg1IDEwMjIgOTUzIF0KL0l0YWxpY0FuZ2xl
+IDAgCi9Bc2NlbnQgOTUzIAovRGVzY2VudCAtMjg1IAovQ2FwSGVpZ2h0IDk1
+MyAKL1N0ZW1WIDUwIAovRm9udEZpbGUyIDIyIDAgUgo+PgplbmRvYmoKMjIg
+MCBvYmoKPDwKL0xlbmd0aDEgNTQ2OCAKL0xlbmd0aCAyNSAwIFIKL0ZpbHRl
+ciAvRmxhdGVEZWNvZGUKPj4Kc3RyZWFtCnicfVgJXFNntv/OvTcJ1lpNyNJW
+UUKADIQQISSRRZGwqmHfVJQdApgQQBRTVESl2KFKmdYFrFXRWkRsfRSZtjPj
+NtPN1rZqGdrn83UbbTvjzOvvtfVNFS7vfDdgbafv3fhxv/Xcs/3POZ8ECCES
+spgwZL7d4a4M3VCThzMbCZHuq6ooKa+0L9ETIpPjnLkKJ6brJDIc23DsX+Vs
+3HAuQroWx3U4fsXhKisp6VntQ4j3r3Bc6CzZUEfCSSaOd+DYt7bEWeH3TgTS
+8+4jBIbwm5GEcEGiAfIAmYEzUqPUaNJINaAIUAPz3NDoaNu4g6ngI+FNWMUf
+hVW97ItjrrO9TDNuJtaJy9wMPBuBA6OF8xaLJeJArUapVCmVxnCz2WwxB2rN
+pkB8tLhmpBNmCy7TjWKxBl5X2kDHMAd2PbPba0g8d7blyl7X6dZEgHWtFyFm
+7RH79ZvcEMyUztuc734cIDJaHpK9iulhGP6HX+8F2HtwebOhpnpRU1/VjmMh
+GddXP223APz9y7hsv5gEYLauTStWTZs+HTlNQilVyGkIIQFqM+WMcoJseTgT
+388d5U9Cp8QSNffgOCfyW1iU8O7eZwGSF8f1Vu58O0brMw1Os3K5Zlv2Qnu6
+DpgLf2joXqUTsW8M6mxJyVpX1n8+vvJwTGQkQHFBVP1KS0qJv3UpQNCSsqiX
+6moWb+ocWkf1d5kQ5k1B94LmNcI3FYzsdJPKmNZayT1w97ZoIMcepZ7eirt1
+KMMZ0Qj6CgG1Sa1QS43MCHx91wm3zoj0fX13riI5koU2mc1lkHlUVogQRKQy
+isUKOYpGpcTvaPwE0S2CKgSR5RJutmSmYk5e396G4dYEa8vpta/8Q3MiYGdl
+9nad78PAcWGZjriFjoxQYOCTmPLmaKu9joHsng+3t119Og0uDK5xJCeE1KR3
+LHHnGQDC8uqtYsoq6cA/FuSbxbdGagTLwIBo5I4OVwKQ4Vmia0RJV0xmS7hS
+hc6C7CkUGoWR+iIzaxDWT1P4+Oge3rC9s7N/kAvrcwDATpEIWhqHO8ZWsseo
+1EtRajlKLSP+SGtKWpXgg9T9JOGCWVG9ODBF4DSjbxjaGBf3+6/qXm6xAlg3
+nq5PqU8PBtC5d3W5g4IyGrgMSN/9YfuOP38KqU9fafv1x3vSDkQ7D5QV7z0C
+cGR/afF+RzSVr4sQ9gZ+W4WoQp4jPCpVYVdwfD+xxNQ1oLU54ivWMf0wf/lm
+W1N/Ahd2930mI7Ot2AhMXcn4I6zO6rAFQ0UtxaSGEFGkYGnqGd5G0IDRO0Dt
+zb7TPTL+3e3xW+8cYKbz/rfhPB9LVQnnDzJ91MsnPmAHkJP5eGrK6GIqOOJR
+cc/oiE+LoJiIQC2OJyHJtrJvvVa01xkJfhnbig/lpzPt9UkuX4VSPCS6+mH5
+kcZF0PXc0eoiAHdNpZNjxc+dADDkuZfEFi81K7XK5AVpK/018oULXjsNhuWb
+05t2BWpVSyKX5gPk5yBvbcjbNS6MPEKIWqqRUt40yAx2BbdUUoYU7LV+CLY5
+rPZ10G9Y3pIRVZqfquXCxg/lPF4UDq4y5p9jryc4U7WgMNjMe5DqIEraTgTf
+CkCXgfYRfFCD+egPDyGypGS24A8SMaOaJVOZZd6BDMos4aSzGK0/O0vGGKtO
+RiYnwzd/u/kdQGJy9MlK0HTt4T+HLtEA5Cwr5q+9zXfybehzG6DqCgSW2rIP
+wvgr/Dv8KACTC8EQiHwUTkbRhyg2FWoxwzAYUGQymYULGjOx0q1nnijXnvMp
+e+qPzaKBwVf5N/hr/HunTkIKLIRFR9GByDLkeA5SUJNQEodUzFOu+yN2VWKV
+oCtPZAVPHMUNOJIqp/zbb8rBWbXZFqoAWLz2UHHJoXWLvPWpC36AxK0vO2uG
+WlMAeFXj4wzTvraxHaC9Mb42MwQgpLkjvjYjODjTxYz5xiVmmXJ22TGIRdp3
+5RizkuLU7m8qjzbFxTUdLf+W2cE019jd6A7VVc3M+CEIslXFWqsbIGhZdVxs
+lS0ItXIJ5dh5H/J3njsnIJ8hLt7KGdBT5QTzlLdROuWSU6nCpBFNSUTddlIk
+14D1YJX9uDsOINbdX+M6EXMARpMaMvUAoZkNiUnO9KCgdCdvZQw5qZD2zJXW
+9tHuLIDSwt5WiKnrLl61xxkV6ewuLux2CsjtxNDxNHLh7UFuoNkTD02TqO0c
+gJhF3kHGeL3CZ2b2kykCZvUNPfoZ8hli5kWGBce6CzT6RPNW9mukE0JikKxC
+CGGCzVSCZ1sUcppifoQfxiXhSyapiEbe+6ISa4s7XFHV545LjI85nF96IHnu
+PP9NadGVfnN9JC8+9OlZ9xnL3ODZM3hDRzcE1+/Y1aTVprm4sP2rV0Pus3/e
+2jZiS1wKBZUW55MhYcY5PgqLYf8LkGz1X9G4u4htbWH+42JJ96H7ohdDTBNX
+2NtoI8ESaKWfJAvKuxF+wRLs7X7L8ZqafvfiWPfJWufzCfv4oASXED7TnfFL
+GrN0uqxG0cj4SGYOQMbu91ue+HhfOqwo72RPQXQtWmCvc0GUc1/R6n3OGMpF
+O60gBE+ReHxFStFs7O8fGKBaF42MCvUGAqUfY8g0D8pAgWkQ2I6xT5j88Va2
+aryc2cSF7R7je/awHN0fO3GZvSzkQiEe/kseZGgEivCEv9e9/OZG/rau9tRm
+q7X5lOv8594D+o+fehb276rZKmPeTnXql6Eo2d0ftW3/ANPd6Fs8DyPnL37K
+gNtFv+UzcZnxEi335DKMajSBySlWLSaxVhxowVzmdaq/q6u60scaog6z/ApO
+cWGg5T/uGBvJyRN7PfUA1geRzCeU1iB/FZ7AqIYVGeofvYeWBeFmk2mwecYc
+g2aNY2QkwJwc5A1p7W23KZomrnCGKRuiJ5t+Aid0Zekv2dDVHfNCffWJjVaK
+puPVrt4o0CU1CmDKWjsFJorXjqKVkNnzcXvr+yh4/grGNH4NYlwCnCIjnfuK
+C/chnAQ0sV8gF3N+mgcx9fyYClEQaWe/NtURH5Tuq/Gj6bA5LbIoc5k//dBk
+QoRHlbPTF9CcGO9YFgyKoEQDY5nMtOJH0J5B/5Jpf5J0Pd9BFPqJhdwbmFhg
+KrQDfZsLq2AADu8xr0hNCZjfUbmmKclPgHVvZKUNA6DLPu4z1a+vGPdhA57q
+AZk2NiQ3PT5+/l7Udd7EB1yKkGMxSgcI+jRJp6pIWkQakQ3MmmJPBSmW0DpE
+SZlDk1iARgJ6ZCrWcCkzZ4n1Brj0xvrfWgL9mIFpzRsamwEWJoYX1CcZVL8D
+Q8exspcKvHJyHo4I4kfmBVTvrnRC8w7r8shgZTkLuiCmadceDPMxQVVpxYWQ
+bdObg2SiB6UPzfRKvbJ0/UaAZTnZNpBMB5cuVl2yMiu7UD5txvSZ0ynuzmCl
+4UKb+QjoV4crFcivyiiU7J663WymuMFaUyrFZRUNV1rYBH/bvIFRyb+arZFP
+Y6T6tJiNdcB8fW08/SxcSqvUpELnHmZb6xNtSVtCDdKQuPJlBZtzY2ZHn2g5
+fwnu6Fis+ef4WNu3bwK0qpz6DaJajJUBVjr4j0mB/ef4y/xn58HNhY31sJV3
+3yeTWX025shAemsByp7Go2chL967dHiSiASTL07CLwSvsZlJNR1Zj12MSwib
+CTPmGtRRr7rtL7YkA8Sv7y35aD3z/IGizaoJss2lpQGtauFiR4YuOAMD7fIn
+S03gLKn58IXSVd1bnIYVBclbhxzlx5sTAA7DAzAHoKGKH2Y2NaYkNeSGzs9f
+nxLvytQj758hx8MopRDhaK0iRLjhEeHhwkaofGkonwzlCyDo7t6e+tVilnkM
+8fPAjBUGJpT7gC3EMrPZ+ehHx9178nwT4qho8xa+tqHmZEti3Poj5ZWHktgX
+eoo3K0AcW01xrs9wWtt2Q3BaNdhOvw6ZtnA7zH595b5WR3j+KoAl2wZr7Meb
+rZCax3/Lfwn1NewFCM9vSkp0Zeng+d2Ja3MNaL/SiQ9ENaJ/CB4U6I+gw2JL
+IZehOfBK6DHQj7r3RASVyKbnP/9+7zdZlWtq1+R+/hvGL+FPM9TK+UMbGv6t
+JT62+WRtwf4wbYSUE3//bXFBHf/u8Gv8JefKXCy5MlNdIYWlOQc/27XrxuE8
+AKMusCaTRoeUSe/QUU9mjT9ebTxlEU28P/MRZNVbzb4/LnMcmxcVmxSS0phN
+tdL8TNPT84a8pPN8F723yTnctgQgYdOAPXXroihmlWhg7K/+Rt+ZAPMLWtMz
+Nm6DDc36+IyA3BVLO842rjnVmgTBoUBrU7xlSyi2Hrzn17SOBxB9B80j/N/5
+gUv8af7LEWi5DGmwXDRyN4H7PW13dNw7d03UH4YRnXkCBQUhRjUyLrMEMhSO
+3lK1UubNMJphZvHOT5/DzJRz4LOd4+fOQvH1GwA3rldcAMWpAZCft8Odq1wb
+8P/Of8H/hb+GfPVgFFVN8YW4VgNQeAN7Bo6e5v+HT+OT+H8OQR/3xV0fjMq3
+RHLkCPtUx69gnduLZ6d57qBS2ozQxLw1voDVjSnPMn19cL3vDjUBvcWwb6PH
+Y6CZFJ5Kb2TyoOocj88fwc63XQApPPgmo2PEfDO0jf/3+HV4li8n7MSNiati
+RvQNYj2apAto19zn/p7gee8i63EtDE+smEPnU8qUnCrc36Mtf63iHkaE6lhL
+z3IrA19oX/1MzYIF1b9Zeco+Qyn3ntalrM01lvkGBGjii6Izih4dOcL/ZdQN
+7g9BdfAYzPsIw/Jjo/zN3u1fv1TBQMXgX5/YfvPFUoCyl75mWw4/C0ktp9Yg
+1uLhKXmoOdmweUuYXr81PX3rqnAoKGPq6eEbvb38zdHHoGkU5hw7DI9itwXs
+Q7ce7/ivl8ugcvhW+45bQ3aqPaFNzHOdKJoZ8z0hXuTnz8QN3or+9Q3uE9+b
+xDPsq/wXuH8L7tgicQmU7n9CGfo/PmtJJDYrtiRsl7kviA7fWfAm6cD1AOwv
+xdZF94ryiAarKbqvDceD+F6OrRCbDceX8O1i+kknvqOxmZBGO+63YovFdZ/J
+My5sneJ+0oXvPNGb5AyuyyktXP8M32k4V4rvFMlOosf+MO7tQb5ewX0a0Y2J
+GwL3c8lazFkj5CsIg0VQhjH3Iv5uMhFMEbOGOcL8iQ1lo9nNbC9HuHguj6vl
+jnIXuc9FAYijfaIJcZw4TzwkfkOillRITkrek/zgpfLSe9m83vXoDu9eGfS2
+Mjn6+SPCCpQlwFHvlxEy2QfyKI48fYY8BCGTfQ7noyb7YjIXckg8cZE64iYN
+pJrYSRVpJL5kFVYSJmy5JIvkT47CMIbp8DbxS/vDMPfRny8pxZX/77wvSSAV
+qC96thZHgZMz67E5BMpO7NUi1WhciZ/8jgN/1aQMZ+zYc+OuKqThS0pIOf4q
+sE19OQ/nHDizBvtJwslq3F2HlNffx1f8PZ58STj25mNPP9kzkTQ840R664Rv
+ZCPFWqFnQ2kqkIN1SLUE+fq/992/4pm3If3J0/8LQRda7AplbmRzdHJlYW0K
+ZW5kb2JqCjI1IDAgb2JqCjQxMDQKZW5kb2JqCjIzIDAgb2JqCjw8IC9UeXBl
+IC9Gb250Ci9TdWJ0eXBlIC9DSURGb250VHlwZTIKL0Jhc2VGb250IC9OaW1i
+dXNTYW5MLVJlZ3UKL0NJRFN5c3RlbUluZm8gPDwgL1JlZ2lzdHJ5IChBZG9i
+ZSkgL09yZGVyaW5nIChJZGVudGl0eSkgL1N1cHBsZW1lbnQgMCA+PgovRm9u
+dERlc2NyaXB0b3IgMjEgMCBSCi9DSURUb0dJRE1hcCAvSWRlbnRpdHkKL1cg
+WzAgWzI3NiA1NTIgNTUyIDU1MiA1NTIgNjA2IDU1MiAyMjAgMjc2IDU1MiA1
+NTIgMjc2IDY2MiA0OTYgNTUyIDI3NiA1NTIgNTUyIDU1MiAyNzYgNTUyIDMz
+MCA1NTIgNTUyIDIyMCA0OTYgNDk2IDI3NiAyNzYgNTUyIDU1MiA4MjYgNTUy
+IDcxNiA0OTYgNTUyIDI3NiA1NTIgNzE2IDU1MiA5MzYgNzE2IDgyNiA2MDYg
+NDk2IDczMSBdCl0KPj4KZW5kb2JqCjI0IDAgb2JqCjw8IC9MZW5ndGggNjc5
+ID4+CnN0cmVhbQovQ0lESW5pdCAvUHJvY1NldCBmaW5kcmVzb3VyY2UgYmVn
+aW4KMTIgZGljdCBiZWdpbgpiZWdpbmNtYXAKL0NJRFN5c3RlbUluZm8gPDwg
+L1JlZ2lzdHJ5IChBZG9iZSkgL09yZGVyaW5nIChVQ1MpIC9TdXBwbGVtZW50
+IDAgPj4gZGVmCi9DTWFwTmFtZSAvQWRvYmUtSWRlbnRpdHktVUNTIGRlZgov
+Q01hcFR5cGUgMiBkZWYKMSBiZWdpbmNvZGVzcGFjZXJhbmdlCjwwMDAwPiA8
+RkZGRj4KZW5kY29kZXNwYWNlcmFuZ2UKMiBiZWdpbmJmcmFuZ2UKPDAwMDA+
+IDwwMDAwPiA8MDAwMD4KPDAwMDE+IDwwMDJEPiBbPDAwMzQ+IDwwMDMzPiA8
+MDAzMj4gPDAwMzE+IDwwMDU0PiA8MDA2NT4gPDAwNkM+IDwwMDY2PiA8MDA2
+Rj4gPDAwNkU+IDwwMDIwPiA8MDA0MT4gPDAwNzM+IDwwMDc1PiA8MDAyRT4g
+PDAwMzA+IDwwMDM3PiA8MDAzOD4gPDAwNDk+IDwwMDcwPiA8MDA3Mj4gPDAw
+Njc+IDwwMDY0PiA8MDA2OT4gPDAwN0E+IDwwMDYzPiA8MDA3ND4gPDAwMkM+
+IDwwMDYyPiA8MDA2OD4gPDAwNkQ+IDwwMDYxPiA8MDA1Mj4gPDAwNzY+IDww
+MDM2PiA8MDAzQT4gPDAwMzk+IDwwMDQzPiA8MDAzNT4gPDAwNTc+IDwwMDQ0
+PiA8MDA0RD4gPDAwNDY+IDwwMDc4PiA8MDBBOT4gXQplbmRiZnJhbmdlCmVu
+ZGNtYXAKQ01hcE5hbWUgY3VycmVudGRpY3QgL0NNYXAgZGVmaW5lcmVzb3Vy
+Y2UgcG9wCmVuZAplbmQKCmVuZHN0cmVhbQplbmRvYmoKNyAwIG9iago8PCAv
+VHlwZSAvRm9udAovU3VidHlwZSAvVHlwZTAKL0Jhc2VGb250IC9OaW1idXNT
+YW5MLVJlZ3UKL0VuY29kaW5nIC9JZGVudGl0eS1ICi9EZXNjZW5kYW50Rm9u
+dHMgWzIzIDAgUl0KL1RvVW5pY29kZSAyNCAwIFI+PgplbmRvYmoKMjYgMCBv
+YmoKPDwgL1R5cGUgL0ZvbnREZXNjcmlwdG9yCi9Gb250TmFtZSAvUUFCQUFB
+K05pbWJ1c1NhbkwtQm9sZAovRmxhZ3MgNCAKL0ZvbnRCQm94IFstMTczIC0z
+MDcgMTA5NyA5NzkgXQovSXRhbGljQW5nbGUgMCAKL0FzY2VudCA5NzkgCi9E
+ZXNjZW50IC0zMDcgCi9DYXBIZWlnaHQgOTc5IAovU3RlbVYgNjkgCi9Gb250
+RmlsZTIgMjcgMCBSCj4+CmVuZG9iagoyNyAwIG9iago8PAovTGVuZ3RoMSAz
+Njc2IAovTGVuZ3RoIDMwIDAgUgovRmlsdGVyIC9GbGF0ZURlY29kZQo+Pgpz
+dHJlYW0KeJx9Vn1QVNcVv+d97AIacYHd5cN1WRd2xXWF/eA9YUUQRAH5EERB
+EARdBIQFIgFEDIJEI6HGfKiYliQkowSTTGqNJjGmUdIPa9AaxzDGSabWtsbm
+H6eZSZNU2GfPfbtRMkn73tz37jn33HN/5+OeewkQQpQkjTAkobaxc0vujbyt
+yNlJSNA3dTXV7po3ss2EzGhBnlCHjCBPgAfpUaRj6jyPbe/fGHQU6Ut0TmPz
+5uo41rKNkJlZSKd5qre3kHkkGel9SEc3VXtq5p13mpDG+XAK1xwihJ/NT5CZ
+RI0cg10QBNFkMhtUBpXKYNeowxRmuAK7thxrTwP47iuvBxyg72xv72TClu8+
+0/rXu3DPwobBWMuj25qBAOklhPmWc5NgQkJRh9Nh12hVJqNCoUzsBf2Uer4u
+IqhmeBFXNPkWkzvFc2BkYEfLDUSSdf8qtx9nhhK0FxT4qMM0Go3DD8lkUiKl
+0dIB4zwkE504wNT1XHw6O/vp8Z7uPx3IA8jZf2lXclVmLIApsyrJVZUZE5NZ
+xbmh8MhnTw7cGCwoGPz0yYEvfrn6S3BW9BUW9FbY7ZV9q/N7K52IwHX/E24D
++kJDFhBioC4wUeQyEC2FohFEloJQ/xgEmwJ66ZZwaIv79e7MpUnJ/ZudWw4J
+XwslaTEQk1bqFMvSDIa0Mn7Ce7eoAMpe/vTx1onVhSvDIX8Ny4Gjsjc/d2d5
+gq18V17urgoHGk86EEkxV4S+IBQGXU0hYidMxqDmiqVbTMVaxxmQbp17u3k4
+hSvy5rpL5sIF5sKU9N4FWFfRh1oy0aNW9KgRVVIHmlEPq3jgU4NCYUamUxCR
+EDRazhqY3XW89vGPPgbI3DO20/1ad94M6e6cqsLmHaCLCi9PXVcZwZxyD7e4
+AFZ/Kd3u/+z5PFfzsLuhAuD00YIBhzUBoLIRV9bd/4Sp491EiysbEbdR7VAx
+sQg9EddUmEyiysHUvSzd2r+fgShroVk9d5Yudi7zMueCOOn6h95SaRJgxsyL
+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
+0N/nkJ/s7yvIXCgmGaSZtJBOso3Uk1pSRx4j0WQDSSCJ2NaSIlLip2zEgu/C
+n5W3IUL6RpNNOPL/5keT5aSGtMpzm5Ay+Tnt2BplzR7sNaFWF45k+NdpxLee
+bEZOLfY6UaoOdUSTauLGtwbbDyuvQ14jchqwv0KeWY/SLai5fRqujAeYonHH
+JOBrw7Pa10sk+TjHg/ra5DXWoMYmuZeL1tQggjbUWo24/rfc9BEfPxf1pyOK
+RuL+L709XUUKZW5kc3RyZWFtCmVuZG9iagozMCAwIG9iagoyNzQ3CmVuZG9i
+agoyOCAwIG9iago8PCAvVHlwZSAvRm9udAovU3VidHlwZSAvQ0lERm9udFR5
+cGUyCi9CYXNlRm9udCAvTmltYnVzU2FuTC1Cb2xkCi9DSURTeXN0ZW1JbmZv
+IDw8IC9SZWdpc3RyeSAoQWRvYmUpIC9PcmRlcmluZyAoSWRlbnRpdHkpIC9T
+dXBwbGVtZW50IDAgPj4KL0ZvbnREZXNjcmlwdG9yIDI2IDAgUgovQ0lEVG9H
+SURNYXAgL0lkZW50aXR5Ci9XIFswIFs0OTYgNjYyIDM4NiA2MDYgNjA2IDYw
+NiA1NTIgMzMwIDI3NiA3MTYgNTUyIDU1MiAzMzAgNzE2IDg4MiA2NjIgNTUy
+IDYwNiAyNzYgMjc2IDYwNiA1NTIgNzE2IDU1MiA3NzIgNjYyIDYwNiA1NTIg
+NTUyIDU1MiAyNzYgXQpdCj4+CmVuZG9iagoyOSAwIG9iago8PCAvTGVuZ3Ro
+IDU3NCA+PgpzdHJlYW0KL0NJREluaXQgL1Byb2NTZXQgZmluZHJlc291cmNl
+IGJlZ2luCjEyIGRpY3QgYmVnaW4KYmVnaW5jbWFwCi9DSURTeXN0ZW1JbmZv
+IDw8IC9SZWdpc3RyeSAoQWRvYmUpIC9PcmRlcmluZyAoVUNTKSAvU3VwcGxl
+bWVudCAwID4+IGRlZgovQ01hcE5hbWUgL0Fkb2JlLUlkZW50aXR5LVVDUyBk
+ZWYKL0NNYXBUeXBlIDIgZGVmCjEgYmVnaW5jb2Rlc3BhY2VyYW5nZQo8MDAw
+MD4gPEZGRkY+CmVuZGNvZGVzcGFjZXJhbmdlCjIgYmVnaW5iZnJhbmdlCjww
+MDAwPiA8MDAwMD4gPDAwMDA+CjwwMDAxPiA8MDAxRT4gWzwwMDUwPiA8MDA3
+Mj4gPDAwNkY+IDwwMDY0PiA8MDA3NT4gPDAwNjM+IDwwMDc0PiA8MDAyMD4g
+PDAwNDM+IDwwMDYxPiA8MDA2NT4gPDAwM0E+IDwwMDRFPiA8MDA2RD4gPDAw
+NDU+IDwwMDc4PiA8MDA3MD4gPDAwNkM+IDwwMDY5PiA8MDA2RT4gPDAwNzM+
+IDwwMDQ4PiA8MDA3OT4gPDAwNTE+IDwwMDU2PiA8MDA1ND4gPDAwMzI+IDww
+MDM1PiA8MDAzMD4gPDAwMkU+IF0KZW5kYmZyYW5nZQplbmRjbWFwCkNNYXBO
+YW1lIGN1cnJlbnRkaWN0IC9DTWFwIGRlZmluZXJlc291cmNlIHBvcAplbmQK
+ZW5kCgplbmRzdHJlYW0KZW5kb2JqCjYgMCBvYmoKPDwgL1R5cGUgL0ZvbnQK
+L1N1YnR5cGUgL1R5cGUwCi9CYXNlRm9udCAvTmltYnVzU2FuTC1Cb2xkCi9F
+bmNvZGluZyAvSWRlbnRpdHktSAovRGVzY2VuZGFudEZvbnRzIFsyOCAwIFJd
+Ci9Ub1VuaWNvZGUgMjkgMCBSPj4KZW5kb2JqCjIgMCBvYmoKPDwKL1R5cGUg
+L1BhZ2VzCi9LaWRzIApbCjUgMCBSCl0KL0NvdW50IDEKL1Byb2NTZXQgWy9Q
+REYgL1RleHQgL0ltYWdlQiAvSW1hZ2VDXQo+PgplbmRvYmoKeHJlZgowIDMx
+CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAw
+MDEzMDMzIDAwMDAwIG4gCjAwMDAwMDAxNjMgMDAwMDAgbiAKMDAwMDAwMDI1
+OCAwMDAwMCBuIAowMDAwMDAxMDM5IDAwMDAwIG4gCjAwMDAwMTI4OTIgMDAw
+MDAgbiAKMDAwMDAwODcxOCAwMDAwMCBuIAowMDAwMDAwMjk1IDAwMDAwIG4g
+CjAwMDAwMDAzMzggMDAwMDAgbiAKMDAwMDAwMDM4MSAwMDAwMCBuIAowMDAw
+MDAwNDI1IDAwMDAwIG4gCjAwMDAwMDA4NzIgMDAwMDAgbiAKMDAwMDAwMDcz
+NCAwMDAwMCBuIAowMDAwMDAwNTA4IDAwMDAwIG4gCjAwMDAwMDA2MjAgMDAw
+MDAgbiAKMDAwMDAwMDkzNSAwMDAwMCBuIAowMDAwMDAxMzU2IDAwMDAwIG4g
+CjAwMDAwMDMxNDIgMDAwMDAgbiAKMDAwMDAwMTE2MCAwMDAwMCBuIAowMDAw
+MDAxMzM2IDAwMDAwIG4gCjAwMDAwMDMxNjMgMDAwMDAgbiAKMDAwMDAwMzM3
+MiAwMDAwMCBuIAowMDAwMDA3NTg4IDAwMDAwIG4gCjAwMDAwMDc5ODcgMDAw
+MDAgbiAKMDAwMDAwNzU2NyAwMDAwMCBuIAowMDAwMDA4ODU5IDAwMDAwIG4g
+CjAwMDAwMDkwNjggMDAwMDAgbiAKMDAwMDAxMTkyNyAwMDAwMCBuIAowMDAw
+MDEyMjY2IDAwMDAwIG4gCjAwMDAwMTE5MDYgMDAwMDAgbiAKdHJhaWxlcgo8
+PAovU2l6ZSAzMQovSW5mbyAxIDAgUgovUm9vdCAxNiAwIFIKPj4Kc3RhcnR4
+cmVmCjEzMTMxCiUlRU9GCg==
+
+----==_mimepart_5b45f1b92f650_103f3fb15209b83c5527d--
+
+I, [2018-07-11T12:02:01.227370 #4159]  INFO -- : Redirected to https://rubyonrailstraining-iuliagatea.c9users.io/tenants/1/products/1
+I, [2018-07-11T12:02:01.227760 #4159]  INFO -- : Completed 302 Found in 1717ms (ActiveRecord: 21.6ms)
+D, [2018-07-11T12:02:01.321852 #4159] DEBUG -- : 
+D, [2018-07-11T12:02:01.321973 #4159] DEBUG -- : 
+I, [2018-07-11T12:02:01.322145 #4159]  INFO -- : Started GET "/tenants/1/products/1" for 92.84.60.177 at 2018-07-11 12:02:01 +0000
+I, [2018-07-11T12:02:01.323056 #4159]  INFO -- : Cannot render console from 92.84.60.177! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+I, [2018-07-11T12:02:01.329679 #4159]  INFO -- : Processing by ProductsController#show as HTML
+I, [2018-07-11T12:02:01.329757 #4159]  INFO -- :   Parameters: {"tenant_id"=>"1", "id"=>"1"}
+D, [2018-07-11T12:02:01.332442 #4159] DEBUG -- :   [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE (users.tenant_id IS NULL) AND "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+D, [2018-07-11T12:02:01.335883 #4159] DEBUG -- :   [1m[36mTenant Load (0.6ms)[0m  [1mSELECT "tenants".* FROM "tenants" INNER JOIN "tenants_users" ON "tenants"."id" = "tenants_users"."tenant_id" WHERE (tenants.tenant_id IS NULL) AND "tenants_users"."user_id" = $1[0m  [["user_id", 1]]
+D, [2018-07-11T12:02:01.336297 #4159] DEBUG -- : MILIA >>>>> [change tenant] new: 1	old: %
+D, [2018-07-11T12:02:01.337116 #4159] DEBUG -- :   [1m[35mProduct Load (0.4ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-11T12:02:01.338778 #4159] DEBUG -- :   [1m[36mTenant Load (0.4ms)[0m  [1mSELECT  "tenants".* FROM "tenants" WHERE (tenants.tenant_id IS NULL) AND "tenants"."id" = $1 LIMIT 1[0m  [["id", 1]]
+D, [2018-07-11T12:02:01.339230 #4159] DEBUG -- : Showing products of tenant with id 1 for user juliagatea@yahoo.com
+D, [2018-07-11T12:02:01.363842 #4159] DEBUG -- :   [1m[35mProductStatus Load (0.7ms)[0m  SELECT  "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  ORDER BY "product_statuses"."id" DESC LIMIT 1  [["product_id", 1]]
+D, [2018-07-11T12:02:01.364919 #4159] DEBUG -- :   [1m[36mStatus Load (0.4ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-11T12:02:01.366860 #4159] DEBUG -- :   [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "product_statuses" WHERE "product_statuses"."product_id" = $1  [["product_id", 1]]
+D, [2018-07-11T12:02:01.367819 #4159] DEBUG -- :   [1m[36mProductStatus Load (0.4ms)[0m  [1mSELECT "product_statuses".* FROM "product_statuses" WHERE "product_statuses"."product_id" = $1[0m  [["product_id", 1]]
+D, [2018-07-11T12:02:01.369165 #4159] DEBUG -- :   [1m[35mStatus Load (0.3ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-11T12:02:01.370313 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-11T12:02:01.371633 #4159] DEBUG -- :   [1m[35mStatus Load (0.3ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 4]]
+D, [2018-07-11T12:02:01.372772 #4159] DEBUG -- :   [1m[36mStatus Load (0.3ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 3]]
+D, [2018-07-11T12:02:01.373772 #4159] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 2]]
+D, [2018-07-11T12:02:01.374775 #4159] DEBUG -- :   [1m[36mStatus Load (0.3ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 5]]
+D, [2018-07-11T12:02:01.375443 #4159] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+D, [2018-07-11T12:02:01.376094 #4159] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 2]]
+D, [2018-07-11T12:02:01.377601 #4159] DEBUG -- :   [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1  [["product_id", 1]]
+D, [2018-07-11T12:02:01.378429 #4159] DEBUG -- :   [1m[36mEstimate Load (0.3ms)[0m  [1mSELECT "estimates".* FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 1]]
+D, [2018-07-11T12:02:01.379704 #4159] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "estimates" WHERE "estimates"."product_id" = $1  [["product_id", 1]]
+D, [2018-07-11T12:02:01.380747 #4159] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mSELECT SUM(price * quantity) FROM "estimates" WHERE "estimates"."product_id" = $1[0m  [["product_id", 1]]
+I, [2018-07-11T12:02:01.380982 #4159]  INFO -- :   Rendered products/_show.html.erb (19.6ms)
+I, [2018-07-11T12:02:01.382282 #4159]  INFO -- :   Rendered products/show.html.erb within layouts/application (33.8ms)
+I, [2018-07-11T12:02:01.582618 #4159]  INFO -- :   Rendered common/_navbar.html.erb (1.1ms)
+I, [2018-07-11T12:02:01.585126 #4159]  INFO -- :   Rendered common/_footer.html.erb (0.3ms)
+I, [2018-07-11T12:02:01.585532 #4159]  INFO -- : Completed 200 OK in 256ms (Views: 240.7ms | ActiveRecord: 6.5ms)
