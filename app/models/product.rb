@@ -6,7 +6,13 @@ class Product < ActiveRecord::Base
   has_many :estimates, inverse_of: :product, :dependent => :destroy
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :estimates, reject_if: :all_blank, allow_destroy: true
-
+  validate :free_plan_can_only_have_500_products
+  
+  def free_plan_can_only_have_500_products
+    if self.new_record? && (tenant.products.count > 499) && (tenant.plan == 'free')
+      errors.add(:base, "Free plans cannot have more than 500 products")
+    end
+  end
   
   def last_status
     status = ProductStatus.where(product_id: id).last.status_id
