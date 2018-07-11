@@ -107,7 +107,7 @@ class ProductsController < ApplicationController
       end
     end
   end
-
+  
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
@@ -126,6 +126,13 @@ class ProductsController < ApplicationController
     else
       @products = @user.products.paginate(page: params[:page], per_page: 10)
     end
+  end
+  
+  def send_product_card
+    @product = Product.find(params[:product_id])
+    @tenant = Tenant.find(params[:tenant_id])
+    UserNotifier.send_product_card_email_pdf(User.find(@product.user), @product, "#{@tenant.name} - Product card - #{@product.name}").deliver_now 
+    redirect_to tenant_product_path(@product.id, tenant_id: @product.tenant_id), notice: 'Product card sent successfully.' 
   end
 
   private

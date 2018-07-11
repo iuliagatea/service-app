@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   resources :tenants do
     resources :statuses
-    resources :products
+    resources :products do 
+      get '/send_product_card', to: 'products#send_product_card'
+    end
     resources :product_statuses
     get '/status_products', to: 'statuses#products'
     get '/user_products', to: 'products#by_member'
-    get '/send_product_card', to: 'products#send_product_card'
   end
   resources :members
   resources :products

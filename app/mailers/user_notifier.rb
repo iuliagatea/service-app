@@ -2,7 +2,7 @@ class UserNotifier < ApplicationMailer
   default :from => 'do-not-reply@fixit.com'
 
   # send a signup email to the user, pass in the user object that   contains the user's email address
-  def send_status_change_email_pdf(user, product, subject)
+  def send_product_card_email_pdf(user, product, subject)
     @user = user
     @product = product
     @product_statuses = @product.product_statuses

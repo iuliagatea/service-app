@@ -4,7 +4,7 @@
   <% if current_user.is_admin %>
     <% if @products.size > 0 %>
       <h4>Products by month</h4>
-        <%= column_chart @products.group_by_month(:created_at, format: "%b %Y", last: 8).count %>
+        <%= column_chart @products.group_by_month(:created_at, format: "%B %d, %Y", last: 8).count %>
       <h4>Products by user</h4>
       <%= bar_chart @products.joins(:user).group("users.email").count %>
     <% end %>
