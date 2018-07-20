@@ -20,7 +20,7 @@
   <tbody>
     <% obj.each do |product| %>
       <tr>
-        <td><%= product.tenant.name %></td>
+        <td class="no-black-hover"><%= link_to product.tenant.name, tenant_path(product.tenant) %></td>
         <td class="no-black-hover"><%= link_to (product.code + " - " + product.name), tenant_product_path(product, tenant_id: product.tenant_id) %></td>
         <td><%= product.estimated_value %></td>
         <td><%= format_date(product.expected_completion_date) %></td>

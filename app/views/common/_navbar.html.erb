@@ -11,9 +11,14 @@
     </span>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
+        <% if !current_user and controller.action_name != 'business' %>
+          <li>
+            <%= link_to(("<i class='fa fa-briefcase'></i> " + 'My Business').html_safe, business_path, class: 'btn btn-primary  navbar-link', title: 'Business') %>
+          </li>
+        <% end %>
         <% if current_user && current_user.is_admin? %>
           <li>
-            <%= link_to "<i class='fa fa-briefcase'></i> Change plan".html_safe, edit_plan_path, 
+            <%= link_to "<i class='fa fa-cogs'></i> Settings".html_safe, edit_plan_path, 
                                                         class: "btn btn-primary navbar-link" %>
           </li>
         <% end %>
@@ -26,7 +31,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= ('<i class="fa fa-building"></i> ' + truncate(current_user.tenants.first.name, length: 25)).html_safe %><span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li>
-                    <%= link_to "<i class='fa fa-edit'></i> Edit profile".html_safe, 
+                    <%= link_to "<i class='fa fa-edit'></i> Edit user profile".html_safe, 
                         edit_user_registration_path, title: 'Edit Profile',  class: 'navbar-link' %>
                   </li>
                   <li><%= link_to "<i class='fa fa-user-plus'></i> Add Customer Product".html_safe,
@@ -55,7 +60,7 @@
           <li class="col-md-2 logout"><%= link_to( ("<i class='fa fa-unlock'></i> ").html_safe, destroy_user_session_path, class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete) %></li>
         <% else %>
           <li class="col-md-4 pull-right">
-          <%= link_to(("<i class='fa fa-lock'></i> " + 'Sign In').html_safe, new_user_session_path, class: 'btn btn-primary', title: 'Sign In') %>
+            <%= link_to(("<i class='fa fa-lock'></i> " + 'Sign In').html_safe, new_user_session_path, class: 'btn btn-primary', title: 'Sign In') %>
           </li>
         <% end %>
         </ul>

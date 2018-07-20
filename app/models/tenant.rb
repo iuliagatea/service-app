@@ -1,14 +1,24 @@
 class Tenant < ActiveRecord::Base
-
+  include PgSearch
+  pg_search_scope :search_any_word,
+                  :against => [:name, :description, :keywords],
+                  :associated_against => {
+                    :categories => [:name]},
+                  :using => {
+                    :tsearch => {:any_word => true, :dictionary => "english"}
+                  }
   acts_as_universal_and_determines_tenant
   has_many :members, dependent: :destroy
   has_many :statuses, dependent: :destroy
   has_many :products, dependent: :destroy
   has_many :estimates, dependent: :destroy
+  has_many :tenant_categories
+  has_many :categories, through: :tenant_categories
   has_one :payment
   accepts_nested_attributes_for :payment
   validates_presence_of :name
   validates_uniqueness_of :name
+  validate :must_have_one_category
   
     def self.create_new_tenant(tenant_params, user_params, coupon_params)
 
@@ -49,6 +59,9 @@ class Tenant < ActiveRecord::Base
       Member.create_org_admin(user)
       #
     end
-
+  
+  def must_have_one_category
+    errors.add(:base, 'You must select at least one Catgeory') if self.categories.blank?
+  end
    
 end

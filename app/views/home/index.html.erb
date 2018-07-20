@@ -10,5 +10,20 @@
     <% end %>
   <% end %>
 <% else %>
-  <%= render 'plans' %>
+  <% if @tenants && @tenants.size > 0 %>
+    <% @tenants.each do |t| %>
+      <h3>
+        <%= t.name %>
+        <span class="pdf-download no-black-hover">
+          <%= link_to "<i class='fa fa-envelope'></i> ".html_safe, 
+                        tenant_demand_offer_path(t),
+                        title: 'Demand offer' %>
+        </span>  
+      </h3>
+      <% if t.categories.any? %>
+        <p><%= render t.categories %></p>
+      <% end %>
+      <p><%= t.description %></p>
+    <% end %>
+  <% end %>
 <% end %>

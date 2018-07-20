@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180710123109) do
+ActiveRecord::Schema.define(version: 20180720085721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "entity"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "estimates", force: :cascade do |t|
     t.string   "name"
@@ -51,6 +58,16 @@ ActiveRecord::Schema.define(version: 20180710123109) do
   end
 
   add_index "payments", ["tenant_id"], name: "index_payments_on_tenant_id", using: :btree
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
   create_table "product_statuses", force: :cascade do |t|
     t.integer  "product_id"
@@ -99,12 +116,24 @@ ActiveRecord::Schema.define(version: 20180710123109) do
 
   add_index "statuses", ["tenant_id"], name: "index_statuses_on_tenant_id", using: :btree
 
+  create_table "tenant_categories", force: :cascade do |t|
+    t.integer  "tenant_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "tenant_categories", ["category_id"], name: "index_tenant_categories_on_category_id", using: :btree
+  add_index "tenant_categories", ["tenant_id"], name: "index_tenant_categories_on_tenant_id", using: :btree
+
   create_table "tenants", force: :cascade do |t|
     t.integer  "tenant_id"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "plan"
+    t.string   "description"
+    t.string   "keywords"
   end
 
   add_index "tenants", ["name"], name: "index_tenants_on_name", using: :btree
@@ -153,5 +182,7 @@ ActiveRecord::Schema.define(version: 20180710123109) do
   add_foreign_key "products", "tenants"
   add_foreign_key "products", "users"
   add_foreign_key "statuses", "tenants"
+  add_foreign_key "tenant_categories", "categories"
+  add_foreign_key "tenant_categories", "tenants"
   add_foreign_key "tenants", "tenants"
 end

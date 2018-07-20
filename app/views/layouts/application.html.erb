@@ -43,9 +43,24 @@
       <div class="jumbotron">
         <div class="container">
           <h2>If it's broken, we will FixIT!</h2>
-          <p class="lead">
-            You'll love managing your products and customers. Please take a look at our great plans.
-          </p>
+          <% if controller.action_name == 'business' %>
+            <p class="lead">
+              You'll love managing your products and customers. Please take a look at our great plans.
+            </p>
+          <% else %>
+            <p class="lead">
+              Please search for service providers according to your needs
+              <%= form_tag({:controller => "home", :action => "index"}, {:method => "get", :class => "form-horizontal"}) do %>
+                <div class="row col-md-7 search">
+                  <%= text_field_tag(:query, "", class:'form-control', placeholder: 'Search..' ) %>
+                </div> 
+                <div class="row col-md-3">
+                  <%= submit_tag 'Search', class: "btn btn-primary", id:"submit" %>
+                </div>
+              <% end %>
+            </p>
+          <% end %>
+          
         </div>
       </div>
     <% end %>

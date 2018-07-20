@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :estimates
   # get 'home/index'
   get 'about', to: 'pages#about'
+  get 'business', to: 'home#business'
   resources :tenants do
     resources :statuses
     resources :products do 
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
     resources :product_statuses
     get '/status_products', to: 'statuses#products'
     get '/user_products', to: 'products#by_member'
+    get '/demand_offer', to: 'tenant#index'
   end
   resources :members
   resources :products

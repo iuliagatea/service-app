@@ -1,7 +1,13 @@
 class TenantsController < ApplicationController
   before_action :set_tenant
   
+  
   def edit
+    @categories = Category.where(entity: 'Tenants')
+  end
+  
+  def show
+    @categories = @tenant.categories
   end
   
   def update
@@ -24,7 +30,7 @@ class TenantsController < ApplicationController
               redirect_to edit_tenant_path(@tenant) and return
             end
           end
-          format.html { redirect_to edit_plan_path, notice: 'Plan was successfully updated.' }
+          format.html { redirect_to edit_plan_path, notice: 'Tenant was successfully updated.' }
         else
           format.html { render :edit }
         end
@@ -47,7 +53,7 @@ class TenantsController < ApplicationController
   end
   
   def tenant_params
-    params.require(:tenant).permit(:name, :plan)
+    params.require(:tenant).permit(:name, :plan, :description, :keywords, category_ids: [])
   end
 
 end
