@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require colorpicker
-//= require_tree .
+//= require_tree
+//= require seems_rateable
+//= require_directory ./rateable
 //= require bootstrap-datepicker
 //= require Chart.bundle
 //= require chartkick
@@ -42,6 +44,7 @@ $(document).ready(function () {
 });
 $(document).ready(function() { 
   $(".member").hide();
+  $(".customer_name").hide();
   $("#user_email").bind("change",function() { 
       if ($(this).val() != undefined) { 
           $.ajax({ 
@@ -50,17 +53,17 @@ $(document).ready(function() {
               dataType: "json", 
               type: "GET", 
               success : function(data) { 
-                  // $('#member_first_name').val(data["first_name"]); 
-                  // $('#member_last_name').val(data["last_name"]);
-                  // $('#member_first_name').prop('readonly', true);
-                  // $('#member_last_name').prop('readonly', true);
                   $(".member").hide();
+                  $(".customer_name").show();
+                  $('#customer_name').text(data["first_name"] + " " + data["last_name"]);
                   $("#member_first_name").prop('required',false);
-                $("#member_last_name").prop('required',false);
+                  $("#member_last_name").prop('required',false);
                   // console.log(data);
               },
               error : function() {
                 $(".member").show();
+                $(".customer_name").hide();
+                $('#customer_name').text("");
                 $("#member_first_name").prop('required',true);
                 $("#member_last_name").prop('required',true);
               }

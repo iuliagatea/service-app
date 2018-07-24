@@ -29,12 +29,9 @@ class MembersController < ApplicationController
   def get_name 
     if params[:email].present? 
         @user = User.find_by_email(params[:email]).first
-        @member = Member.where("user_id = #{@user.id}")
         @data = Hash.new 
-        # @data["first_name"] = @member.first_name
-        # @data["last_name"] = @member.last_name 
-        @data["first_name"] = "Iulia"
-        @data["last_name"] = "B"
+        @data["first_name"] = @user.member.first_name
+        @data["last_name"] = @user.member.last_name 
         render json: @data and return false 
     end 
   end

@@ -9,17 +9,28 @@ gem 'devise'
 gem 'milia'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
+# Payment
 gem 'stripe'
+# Colorpicker
 gem 'colorpicker'
+# Datepicker
 gem 'bootstrap-datepicker-rails'
+# Charts
 gem "chartkick"
 gem 'groupdate'
+# Pagination
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
+# Dynamic nested forms
 gem 'cocoon'
+# PDF generator
 gem 'wicked_pdf'  
 gem 'wkhtmltopdf-binary' 
+# Search and filter
 gem 'pg_search'
+# ratings
+gem 'seems_rateable', '~> 2.0'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

@@ -8,10 +8,6 @@
     <h3>Hello, <%= @user.email %></h3>
     <p>There is a product card attached for <%= link_to (@product.code + " - " + @product.name), tenant_product_url(@product, tenant_id: @product.tenant_id) %> </p>
   </body>
-  <footer class="footer">
-    <div class="container no-black-hover">
-      <span class="text-muted">Sent from FixIT &copy; <%= Date.today.year %></span>
-    </div>
-  </footer>
+  <%= render 'footer' %>
 
 </html>

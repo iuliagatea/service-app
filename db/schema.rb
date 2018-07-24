@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180720085721) do
+ActiveRecord::Schema.define(version: 20180724095623112805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,21 @@ ActiveRecord::Schema.define(version: 20180720085721) do
 
   add_index "products", ["tenant_id"], name: "index_products_on_tenant_id", using: :btree
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
+
+  create_table "seems_rateable_rates", force: :cascade do |t|
+    t.integer  "rater_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.float    "stars",         null: false
+    t.text     "comment"
+    t.string   "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "seems_rateable_rates", ["dimension"], name: "index_seems_rateable_rates_on_dimension", using: :btree
+  add_index "seems_rateable_rates", ["rateable_id", "rateable_type"], name: "index_seems_rateable_rates_on_rateable_id_and_rateable_type", using: :btree
+  add_index "seems_rateable_rates", ["rater_id"], name: "index_seems_rateable_rates_on_rater_id", using: :btree
 
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false

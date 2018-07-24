@@ -18,11 +18,17 @@ class UserNotifier < ApplicationMailer
     attachments["#{@product.code}_product_card.pdf"] = test
     mail to: @user.email, subject: subject
   end
+  
   def send_status_change_email(user, product, subject)
     @user = user
     @product = product
     @product_statuses = @product.product_statuses
     @estimates = @product.estimates
     mail to: @user.email, subject: subject
+  end
+  
+  def demand_offer(from, to, subject, message)
+    @message = message
+    mail to: to, subject: subject, reply_to: from
   end
 end

@@ -3,10 +3,12 @@ class TenantsController < ApplicationController
   
   
   def edit
+    logger.debug "Edit tenant #{@tenant.attributes.inspect}"
     @categories = Category.where(entity: 'Tenants')
   end
   
   def show
+    logger.debug "Show tenant #{@tenant.attributes.inspect}"
     @categories = @tenant.categories
   end
   
@@ -15,7 +17,7 @@ class TenantsController < ApplicationController
       Tenant.transaction do
         if @tenant.update(tenant_params)
           if @tenant.plan == 'premium' && @tenant.payment.blank?
-            logger.debugg "Updating plan for tennant #{@tenant.attributes.inspect}"
+            logger.debugg "Updating plan for tenant #{@tenant.attributes.inspect}"
             @payment = Payment.new({ email: tenant_params["email"],
             token: params[:payment]["token"],
             tenant: @tenant })
@@ -40,15 +42,27 @@ class TenantsController < ApplicationController
 
   def change
     @tenant = Tenant.find(params[:id])
+    logger.debug "Switch tenant #{@tenant.attributes.inspect}"
     Tenant.set_current_tenant @tenant.id
     session[:tenant_id] = Tenant.current_tenant.id
     redirect_to home_index_path, notice: "Switched to organization #{@tenant.name}"
   end
   
+  def contact
+    logger.debug "Contact form for tenant #{@tenant.attributes.inspect}"
+    @product = Product.find(params[:product_id]) if params[:product_id]
+  end
+  
+  def send_message
+    @tenant = Tenant.find(params[:tenant_id])
+    UserNotifier.demand_offer(params[:email], @tenant.users.first.email, "New message from #{params[:name]} - #{params[:subject]}", params[:message]).deliver_now 
+    redirect_to root_path, notice: 'Email was sent successfully.' 
+  end
+  
   private
   
   def set_tenant
-    Tenant.set_current_tenant(Tenant.find(params[:tenant_id])) unless current_user.is_admin?
+    Tenant.set_current_tenant(Tenant.find(params[:id])) unless current_user.is_admin?
     @tenant = Tenant.find(Tenant.current_tenant_id)
   end
   

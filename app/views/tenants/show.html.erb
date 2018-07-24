@@ -1,14 +1,4 @@
 <%- model_class = Tenant -%>
-<div class="page-header">
-  <h1>
-    <%= @tenant.name %>
-    <span class="pdf-download no-black-hover">
-      <%= link_to "<i class='fa fa-file'></i> ".html_safe, 
-                    tenant_path( @tenant),
-                    title: 'Demand offer' %>
-    </span>  
-  </h1>
-</div>
-<p><%= @tenant.description %></p>
+<%= render 'show', t: @tenant %> 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               root_path, :class => 'btn btn-default'  %>

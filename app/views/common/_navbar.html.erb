@@ -18,7 +18,7 @@
         <% end %>
         <% if current_user && current_user.is_admin? %>
           <li>
-            <%= link_to "<i class='fa fa-cogs'></i> Settings".html_safe, edit_plan_path, 
+            <%= link_to "<i class='fa fa-cogs'></i> Account Settings".html_safe, edit_plan_path, 
                                                         class: "btn btn-primary navbar-link" %>
           </li>
         <% end %>
@@ -52,7 +52,7 @@
                     </li>
                 </ul> 
             <% else %>
-              <%= link_to ('<i class="fa fa-user"></i> ' + truncate(current_user.email, length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile' %>
+              <%= link_to ('<i class="fa fa-user"></i> ' + truncate( current_user.member.first_name + ' ' + current_user.member.last_name, length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile' %>
             <% end %>
           </li>
           <li class="col-md-1"> 

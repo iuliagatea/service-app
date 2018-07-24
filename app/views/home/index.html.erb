@@ -2,7 +2,7 @@
     <h3>Products</h3>
     <%= render 'products/list', obj: @products %>
   <% if current_user.is_admin %>
-    <% if @products.size > 0 %>
+    <% if @products.size > 0 and 1 == 0 %>
       <h4>Products by month</h4>
         <%= column_chart @products.group_by_month(:created_at, format: "%B %d, %Y", last: 8).count %>
       <h4>Products by user</h4>
@@ -11,19 +11,45 @@
   <% end %>
 <% else %>
   <% if @tenants && @tenants.size > 0 %>
-    <% @tenants.each do |t| %>
-      <h3>
-        <%= t.name %>
-        <span class="pdf-download no-black-hover">
-          <%= link_to "<i class='fa fa-envelope'></i> ".html_safe, 
-                        tenant_demand_offer_path(t),
-                        title: 'Demand offer' %>
-        </span>  
-      </h3>
-      <% if t.categories.any? %>
-        <p><%= render t.categories %></p>
+    <div class="col-lg-3">
+      <div class="well sidebar-nav">
+        <h4>Filters</h4>
+        <%= form_tag({:controller => "home", :action => "index"}, {:method => "get", :class => "form-horizontal"}) do %>
+          <div class="boxes-filter form-group">
+            <% @categories.each do |c| %>
+              <label class="checkbox input_checkbox"> 
+                <%= check_box_tag 'categories[]', c.name, false, class: 'checkbox checkbox-filter' -%>
+                <%= c.name -%>
+              </label>
+            <% end %>
+          </div>
+          <%= hidden_field_tag 'query', params[:query] %>
+          <div class="row">
+            <%= submit_tag 'Apply filters', class: "btn btn-default", id:"submit" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <%= will_paginate @tenants %>
+      <% @tenants.each do |t| %>
+        <h3>
+          <%= t.name %>
+        </h3>
+        <%= rating_for t %>
+        <br />
+        <% if t.categories.any? %>
+          <p><%= render t.categories %></p>
+        <% end %>
+        <p><%= truncate(t.description, length: 500) %></p>
+        <h4 class="no-black-hover">
+          <%= link_to "<i class='fa fa-envelope'></i> Demand offer".html_safe, 
+                        demand_offer_path(tenant: t),
+                        title: 'Demand offer' %> 
+        </h4> 
+        <hr>
       <% end %>
-      <p><%= t.description %></p>
-    <% end %>
+      <%= will_paginate @tenants %>
+    </div>
   <% end %>
 <% end %>

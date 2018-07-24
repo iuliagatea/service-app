@@ -131,6 +131,7 @@ class ProductsController < ApplicationController
   def send_product_card
     @product = Product.find(params[:product_id])
     @tenant = Tenant.find(params[:tenant_id])
+    logger.debug "Send product card via email #{@product.attributes.inspect}"
     UserNotifier.send_product_card_email_pdf(User.find(@product.user), @product, "#{@tenant.name} - Product card - #{@product.name}").deliver_now 
     redirect_to tenant_product_path(@product.id, tenant_id: @product.tenant_id), notice: 'Product card sent successfully.' 
   end

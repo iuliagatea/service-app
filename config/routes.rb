@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  seems_rateable
   resources :categories
   resources :estimates
   # get 'home/index'
@@ -12,13 +13,15 @@ Rails.application.routes.draw do
     resources :product_statuses
     get '/status_products', to: 'statuses#products'
     get '/user_products', to: 'products#by_member'
-    get '/demand_offer', to: 'tenant#index'
   end
   resources :members
   resources :products
    root :to => "home#index"
   get '/get_name', to: 'members#get_name'
-  
+  get '/demand_offer', to: 'home#contact'
+  post '/send_email', to: 'home#demand_offer'
+  get '/contact', to: 'tenants#contact'
+  resources :tenants, :member => {:rate => :put}
   # *MUST* come *BEFORE* devise's definitions (below)
   as :user do   
     match '/user/confirmation' => 'confirmations#update', :via => :put, :as => :update_user_confirmation

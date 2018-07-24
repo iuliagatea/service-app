@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-3">
+    <h3>
+      <%= obj.name %>
+    </h3>
+    <%= rating_for obj %>
+    <br />
+    <% if obj.categories.any? %>
+      <p><%= render obj.categories %></p>
+    <% end %>
+    <p><%= obj.description %></p>
+  </div>
+  <div class="col-md-9 mb-md-0 mb-5">
+    <h2 class="h1-responsive font-weight-bold my-5"><%= action %><% if product %> <%= ' about ' + product.code + ' - ' + product.name %> <% end %></h2>
+    <%= form_tag({:controller => "home", :action => "demand_offer"}, {:method => "post", :class => "form-horizontal"}) do %>
+      <% if current_user %>
+        <%= hidden_field_tag 'name', current_user.member.first_name + ' ' + current_user.member.last_name %>
+        <%= hidden_field_tag 'email', current_user.email %>
+      <% else %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= label_tag 'name', 'Your name' %>
+          <%= text_field_tag(:name, "", class:'form-control', required: true ) %>
+        </div>
+        <div class="col-md-6">
+          <%= label_tag 'email', 'Your email' %>
+          <%= text_field_tag(:email, "", class:'form-control', required: true ) %>
+        </div>
+      </div>
+      <% end %>
+       <div class="row">
+        <div class="col-md-12">
+          <%= label_tag 'subject', 'Subject' %>
+          <% if product %>
+            <%= text_field_tag(:subject, "", class:'form-control', required: true, value: product.name ) %>
+          <% else %>
+            <%= text_field_tag(:subject, "", class:'form-control', required: true ) %>
+          <% end %>
+        </div>
+      </div>
+       <div class="row">
+        <div class="col-md-12">
+          <%= label_tag 'message', 'Message' %>
+          <%= text_area_tag(:message, "", class:'form-control', required: true ) %>
+        </div>
+      </div>
+      <br />
+      <%= hidden_field_tag 'tenant', obj.id %>
+      <% if product %>
+        <%= hidden_field_tag 'product', product.id %>
+      <% end %>
+      <%= submit_tag 'Send', class: "btn btn-default", id:"submit" %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                root_path, :class => 'btn btn-default' %>
+    <% end %>
+  </div>
+</div>

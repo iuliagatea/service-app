@@ -20,7 +20,26 @@
   <tbody>
     <% obj.each do |product| %>
       <tr>
-        <td class="no-black-hover"><%= link_to product.tenant.name, tenant_path(product.tenant) %></td>
+        <% if current_user.is_admin %>
+          <td class="no-black-hover">
+            <%= product.tenant.name %>
+          </td>
+        <% else %>
+        <td class="no-black-hover dropdown show">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <%= product.tenant.name %>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="no-black-hover">
+              <%= link_to "View tenant", tenant_path(product.tenant) %>
+            </li>
+            <li class="no-black-hover">
+              <%= link_to "Send message about this product", contact_path(id: product.tenant.id, product_id: product.id) %>
+            </li>
+          </ul>
+        </td>
+        <% end %>
         <td class="no-black-hover"><%= link_to (product.code + " - " + product.name), tenant_product_path(product, tenant_id: product.tenant_id) %></td>
         <td><%= product.estimated_value %></td>
         <td><%= format_date(product.expected_completion_date) %></td>

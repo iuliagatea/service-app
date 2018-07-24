@@ -1,0 +1,16 @@
+<div class="page-header">
+  <h1>
+    <%= t.name %> 
+  </h1> 
+  <%= rating_for t %>
+  <br />
+  <% if t.categories.any? %>
+    <p><%= render t.categories %></p>
+  <% end %>
+</div>
+<p><%= t.description %></p>
+<h4 class="no-black-hover">
+  <%= link_to "<i class='fa fa-envelope'></i> Contact".html_safe, 
+                contact_path(id: t.id),
+                title: 'Contact' %> 
+</h4> 

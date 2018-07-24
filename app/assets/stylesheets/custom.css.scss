@@ -1,5 +1,12 @@
 .btn {
-  border-radius: 0 !important;
+  border-radius: 1px !important;
+}
+.well {
+  border-radius: 1px !important;
+  text-align: center;
+}
+.form-control {
+  border-radius: 1px !important;
 }
 .user-name {
   padding: 0 !important ;
@@ -250,12 +257,24 @@
 }
 
 .boxes {
- height: 125px;
- overflow: auto;
- width: 400px;
+  height: 125px;
+  overflow: auto;
+  width: 400px;
 }
 
 .checkbox {
   margin-left: 0 !important;
   text-indent: 20px;
+}
+
+.checkbox-filter {
+  min-height: 20px !important;
+}
+
+.boxes-filter {
+  height: 250px;
+  overflow: auto;
+  width: 100%;
+  text-align: left;
+  margin-left: 10px !important;
 }

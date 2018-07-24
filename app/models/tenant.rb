@@ -7,6 +7,12 @@ class Tenant < ActiveRecord::Base
                   :using => {
                     :tsearch => {:any_word => true, :dictionary => "english"}
                   }
+  pg_search_scope :search_categories,
+                  :associated_against => {
+                    :categories => [:name]},
+                  :using => {
+                    :tsearch => {:any_word => true, :dictionary => "english"}
+                  }
   acts_as_universal_and_determines_tenant
   has_many :members, dependent: :destroy
   has_many :statuses, dependent: :destroy
@@ -19,6 +25,7 @@ class Tenant < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
   validate :must_have_one_category
+  seems_rateable # :quality, :speed, :effectiveness
   
     def self.create_new_tenant(tenant_params, user_params, coupon_params)
 
