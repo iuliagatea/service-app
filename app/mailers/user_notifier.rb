@@ -27,8 +27,8 @@ class UserNotifier < ApplicationMailer
     mail to: @user.email, subject: subject
   end
   
-  def demand_offer(from, to, subject, message)
+  def send_email(from, to, subject, message)
     @message = message
-    mail to: to, subject: subject, reply_to: from
+    mail to: to, subject: subject, reply_to: from, bcc: from
   end
 end

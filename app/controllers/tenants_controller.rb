@@ -53,12 +53,6 @@ class TenantsController < ApplicationController
     @product = Product.find(params[:product_id]) if params[:product_id]
   end
   
-  def send_message
-    @tenant = Tenant.find(params[:tenant_id])
-    UserNotifier.demand_offer(params[:email], @tenant.users.first.email, "New message from #{params[:name]} - #{params[:subject]}", params[:message]).deliver_now 
-    redirect_to root_path, notice: 'Email was sent successfully.' 
-  end
-  
   private
   
   def set_tenant

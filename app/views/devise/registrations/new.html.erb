@@ -32,6 +32,7 @@
           <%= w.select :plan, options_for_select(Plan.options, params[:plan]), {}, require:true,
             class: "form-control" %>
         </div>
+
         <%= fields_for(:payment) do |p| %>
           <div class="row col-md-12">
             <div class="form-group col-md-4 no-left-padding">

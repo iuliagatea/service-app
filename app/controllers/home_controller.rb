@@ -50,8 +50,14 @@ class HomeController < ApplicationController
   def demand_offer
     @tenant = Tenant.find(params[:tenant])
     @product = Product.find(params[:product_id]) if params[:product_id]
-    params[:message] << "<hr> This message refers to #{ link_to @product.code @product.name, product_url(@product) }<hr>" if @product
-    UserNotifier.demand_offer(params[:email], @tenant.users.first.email, "New offer demand from #{params[:name]} - #{params[:subject]}", params[:message]).deliver_now 
+    @message = params[:message] 
+    @message << "<hr> This message refers to #{ link_to @product.code @product.name, product_url(@product) }<hr>" if @product
+    if current_user
+      @subject = "New offer demand"
+    else
+      @subject = "New message"
+    end
+    UserNotifier.send_email(params[:email], @tenant.users.first.email, "#{@subject} from #{params[:name]} - #{params[:subject]}", @message).deliver_now 
     redirect_to root_path, notice: 'Email was sent successfully.' 
   end
   
