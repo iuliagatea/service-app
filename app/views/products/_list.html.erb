@@ -32,7 +32,7 @@
           </a>
           <ul class="dropdown-menu">
             <li class="no-black-hover">
-              <%= link_to "View tenant", tenant_path(product.tenant) %>
+              <%= link_to "Details", tenant_path(product.tenant) %>
             </li>
             <li class="no-black-hover">
               <%= link_to "Send message about this product", contact_path(id: product.tenant.id, product_id: product.id) %>
@@ -40,7 +40,7 @@
           </ul>
         </td>
         <% end %>
-        <td class="no-black-hover"><%= link_to (product.code + " - " + product.name), tenant_product_path(product, tenant_id: product.tenant_id) %></td>
+        <td class="no-black-hover"><%= link_to (product.code + " - " + product.name), tenant_product_path(product, tenant_id: product.tenant_id), title: 'View Product' %></td>
         <td><%= product.estimated_value %></td>
         <td><%= format_date(product.expected_completion_date) %></td>
         <% if current_user.is_admin %>
@@ -48,7 +48,7 @@
             <%= link_to product.user.email, tenant_user_products_path(user_id: product.user, tenant_id: product.tenant_id)  %>
           </td>
         <% end %>
-        <td class="no-black-hover"><%= link_to product.last_status.name, tenant_status_products_path(status_id: product.last_status, tenant_id: product.tenant_id) %></td>
+        <td class="no-black-hover"><%= link_to product.last_status.name, tenant_status_products_path(status_id: product.last_status, tenant_id: product.tenant_id), title: 'View Products with status' %></td>
         <td><%= format_date_time(product.updated_at) %></td>
         <% if current_user.is_admin %>
           <td>
@@ -67,7 +67,7 @@
 </table>
 <% else %> 
   <p>There are no products to display</p>
-  <div>
+  <div class=" no-black-hover">
     <%= link_to "<i class='fa fa-user-plus'></i> Add Customer Product".html_safe,
                         new_tenant_product_path(tenant_id: params[:tenant_id]),  
                         class: 'navbar-link' %>

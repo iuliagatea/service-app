@@ -55,6 +55,11 @@
     background: #3071a9;
     color: #fff;
   }
+  .navbar-search {
+    color: #fff;
+    margin-top: 8px;
+    padding: 8px;
+  }
   
   li a {
     margin-right: 5px;
@@ -272,7 +277,7 @@
 }
 
 .boxes-filter {
-  height: 250px;
+  max-height: 250px;
   overflow: auto;
   width: 100%;
   text-align: left;

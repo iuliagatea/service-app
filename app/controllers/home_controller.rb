@@ -21,7 +21,7 @@ class HomeController < ApplicationController
     end
     if params[:query].present?
       search_by = params[:query]
-      @tenants = Tenant.search_any_word(search_by).paginate(page: params[:page], per_page: 10)
+      @tenants = Tenant.search_any_word(search_by).sort_by{ |t| [t.rating.stars, t.name]}.paginate(page: params[:page], per_page: 10)
       if params[:categories].present?
         @tenants = @tenants.search_categories(params[:categories]).paginate(page: params[:page], per_page: 10)
       end
@@ -45,14 +45,15 @@ class HomeController < ApplicationController
   
   def contact
     @tenant = Tenant.find(params[:tenant])
+    logger.debug "Demand offer form for tenant #{@tenant.attributes.inspect}"
   end
   
   def demand_offer
     @tenant = Tenant.find(params[:tenant])
-    @product = Product.find(params[:product_id]) if params[:product_id]
+    @product = Product.find(params[:product]) if params[:product]
     @message = params[:message] 
-    @message << "<hr> This message refers to #{ link_to @product.code @product.name, product_url(@product) }<hr>" if @product
-    if current_user
+    @message << "<hr> This message refers to #{ view_context.link_to @product.code + " " + @product.name, product_url(@product) }<hr>".html_safe if @product
+    if params[:title] == "Demand offer"
       @subject = "New offer demand"
     else
       @subject = "New message"

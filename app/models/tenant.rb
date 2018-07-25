@@ -24,13 +24,13 @@ class Tenant < ActiveRecord::Base
   accepts_nested_attributes_for :payment
   validates_presence_of :name
   validates_uniqueness_of :name
-  validate :must_have_one_category, :unless => :new_record?
-  seems_rateable # :quality, :speed, :effectiveness
+  validate :must_have_one_category
+  seems_rateable :quality, :speed, :effectiveness
   
     def self.create_new_tenant(tenant_params, user_params, coupon_params)
 
       tenant = Tenant.new(tenant_params)
-
+      tenant.categories << Category.where("name = 'Service / Reparatii'") 
       if new_signups_not_permitted?(coupon_params)
 
         raise ::Milia::Control::MaxTenantExceeded, "Sorry, new accounts not permitted at this time" 
@@ -68,7 +68,7 @@ class Tenant < ActiveRecord::Base
     end
   
   def must_have_one_category
-    # errors.add(:base, 'You must select at least one Catgeory') if self.categories.blank?
+    errors.add(:base, 'You must select at least one Catgeory') if self.categories.blank?
   end
    
 end

@@ -4,7 +4,7 @@ class TenantsController < ApplicationController
   
   def edit
     logger.debug "Edit tenant #{@tenant.attributes.inspect}"
-    @categories = Category.where(entity: 'Tenants')
+    @categories = Category.where(entity: 'tenant')
   end
   
   def show

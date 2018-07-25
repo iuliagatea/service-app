@@ -7,11 +7,10 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @user = User.find(current_user)
-    if @user.is_admin
+    if current_user.is_admin
       @products = Product.by_tenant(params[:tenant_id]).paginate(page: params[:page], per_page: 10)
     else
-      @products = @user.products.paginate(page: params[:page], per_page: 10)
+      @products = current_user.products.paginate(page: params[:page], per_page: 10)
     end
   end
 
@@ -53,7 +52,7 @@ class ProductsController < ApplicationController
     logger.debug "New product: #{@product.attributes.inspect}"
     logger.debug "Product should be valid: #{@product.valid?}"
     
-    @user = User.find_by_email(params[:user]["email"]).ids.first
+    @user = User.find(User.find_by_email(params[:user]["email"]).ids.first)
     if @user.blank?
       @user   = User.new( user_params )
       logger.debug "New user, member: #{@user.attributes.inspect}"
@@ -69,13 +68,14 @@ class ProductsController < ApplicationController
         render :new
       end
     else
-      @user.tenants << Tenant.find(Tenant.current_tenant_id)
+      @user.tenants << Tenant.find(Tenant.current_tenant_id) unless @user.tenants.include?(Tenant.find(Tenant.current_tenant_id))
     end
-    @product.user_id = @user
+    @product.user_id = @user.id
     status = Status.find(params[:status]["id"])
     @product.statuses << status
     respond_to do |format|
       if @product.save
+        UserNotifier.send_status_change_email(User.find(@user), @product, "#{@tenant.name} - New product #{@product.name}").deliver_now 
         logger.info "The product was saved and now the user is going to be redirected..."
         format.html { redirect_to tenant_products_url, notice: 'Product was successfully created.' }
       else

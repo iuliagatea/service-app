@@ -37,6 +37,15 @@ module ApplicationHelper
     ""
   end
   
+  def user_full_name(user, tenant)
+    @user = user
+    Tenant.set_current_tenant(@user.tenants.first)
+    first_name = @user.member.first_name
+    last_name = @user.member.last_name 
+    Tenant.set_current_tenant(tenant) if tenant
+    return first_name + " " + last_name
+  end
+  
   def format_date(date)
     date.strftime("%d.%m.%Y")
   end
