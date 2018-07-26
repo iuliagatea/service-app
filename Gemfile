@@ -28,6 +28,7 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary' 
 # Search and filter
 gem 'pg_search'
+gem 'filterrific', '4.0.1'
 # ratings
 gem 'seems_rateable', '~> 2.0'
 

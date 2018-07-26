@@ -7,6 +7,7 @@ class StatusesController < ApplicationController
   # GET /statuses
   # GET /statuses.json
   def index
+    logger.debug "Showing statuses for #{current_user.email}"
     @statuses = Status.by_tenant(params[:tenant_id]).paginate(page: params[:page], per_page: 10)
   end
 
@@ -17,6 +18,7 @@ class StatusesController < ApplicationController
 
   # GET /statuses/new
   def new
+    logger.debug "New status for user #{current_user.email}"
     @status = Status.new
   end
 
@@ -28,7 +30,6 @@ class StatusesController < ApplicationController
   # POST /statuses.json
   def create
     @status = Status.new(status_params)
-
     respond_to do |format|
       if @status.save
         format.html { redirect_to tenant_statuses_url, notice: 'Status was successfully created.' }
@@ -64,8 +65,10 @@ class StatusesController < ApplicationController
     @user = User.find(current_user)
     @status = Status.find(params[:status_id])
     if @user.is_admin
+      logger.debug "Showing products with statuses for tenant #{current_user.email}"
       @products = @status.products_with_status.paginate(page: params[:page], per_page: 10)
     else
+      logger.debug "Showing products with statuses for user #{current_user.email}"
       @products = @status.products_with_status_by_user(@user).paginate(page: params[:page], per_page: 10)
     end
   end

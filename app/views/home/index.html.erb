@@ -44,7 +44,7 @@
    
 <% else %>
   <% if current_user %>
-      <h3>Products</h3>
+      <h1>Products</h1>
       <%= render 'products/list', obj: @products %>
     <% if current_user.is_admin %>
       <% if @products.size > 0 and 1 == 0 %>

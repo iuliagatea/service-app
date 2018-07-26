@@ -1,5 +1,5 @@
 <%= form_tag({:controller => "home", :action => "index"}, {:method => "get", :class => "form-horizontal"}) do %>
-  <div class="row col-md-10 search">
+  <div class="row <% if current_user %>col-md-10 <% else %>col-md-9 <% end %>search">
     <%= text_field_tag(:query, "", class:'form-control', placeholder: 'Search service provider..' ) %>
   </div> 
   <div class="row col-md-3">

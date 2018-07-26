@@ -93,6 +93,18 @@ ActiveRecord::Schema.define(version: 20180724095623112805) do
   add_index "products", ["tenant_id"], name: "index_products_on_tenant_id", using: :btree
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "tenant_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "review"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reviews", ["tenant_id"], name: "index_reviews_on_tenant_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
   create_table "seems_rateable_rates", force: :cascade do |t|
     t.integer  "rater_id"
     t.integer  "rateable_id"
@@ -196,6 +208,8 @@ ActiveRecord::Schema.define(version: 20180724095623112805) do
   add_foreign_key "product_statuses", "statuses"
   add_foreign_key "products", "tenants"
   add_foreign_key "products", "users"
+  add_foreign_key "reviews", "tenants"
+  add_foreign_key "reviews", "users"
   add_foreign_key "statuses", "tenants"
   add_foreign_key "tenant_categories", "categories"
   add_foreign_key "tenant_categories", "tenants"

@@ -1,4 +1,6 @@
 <%- model_class = Tenant -%>
 <%= render 'show', t: @tenant %> 
-<%= link_to t('.back', :default => t("helpers.links.back")),
+ <div class="row col-md-12 buttons">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
               root_path, :class => 'btn btn-default'  %>
+</div>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   seems_rateable
   resources :categories
   resources :estimates
+  resources :reviews
   # get 'home/index'
   get 'about', to: 'pages#about'
   get 'business', to: 'home#business'

@@ -21,6 +21,7 @@
 //= require Chart.bundle
 //= require chartkick
 //= require cocoon
+//= require filterrific/filterrific-jquery
 
 $(document).ready(function () {
   options = {
@@ -44,6 +45,7 @@ $(document).ready(function () {
 });
 $(document).ready(function() { 
   $(".member").hide();
+  $(".new_review").hide();
   $(".customer_name").hide();
   $("#user_email").bind("change",function() { 
       if ($(this).val() != undefined) { 
@@ -72,4 +74,12 @@ $(document).ready(function() {
           }) 
       } 
   })
+  $("#write_review").click(function() {
+    $(".new_review").show();
+    $("#write_review").hide();
+  });
+  $("#cancel_review").click(function() {
+    $(".new_review").hide();
+    $("#write_review").show();
+  });
 })

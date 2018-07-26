@@ -93,7 +93,7 @@
 }
 
 .jumbotron {
-  background-image: asset-url('pointing.jpg');
+  background-image: asset-url('cover_color_big.png');
   background-size: cover;
   color: #fff;
   font-family: 'Helvetica Neue' !important;
@@ -103,7 +103,8 @@
  /* margin-left: 15px;
   margin-right: 15px;*/
   margin-top: -20px;
-  text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
+  /*text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;*/
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
   h2 {
     font-size: 35px !important;
     .lead {
@@ -282,4 +283,15 @@
   width: 100%;
   text-align: left;
   margin-left: 10px !important;
+}
+
+@media (max-width: 767px) {
+    .table-responsive .dropdown-menu {
+        position: relative;
+    }
+}
+@media (min-width: 768px) {
+  .buttons {
+    padding-top: 10px !important;
+  }
 }

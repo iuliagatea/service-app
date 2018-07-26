@@ -21,11 +21,12 @@ class Tenant < ActiveRecord::Base
   has_many :tenant_categories
   has_many :categories, through: :tenant_categories
   has_one :payment
+  has_many :reviews, dependent: :destroy
   accepts_nested_attributes_for :payment
   validates_presence_of :name
   validates_uniqueness_of :name
   validate :must_have_one_category
-  seems_rateable :quality, :speed, :effectiveness
+  seems_rateable
   
     def self.create_new_tenant(tenant_params, user_params, coupon_params)
 

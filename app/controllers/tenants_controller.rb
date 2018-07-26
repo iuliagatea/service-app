@@ -10,6 +10,9 @@ class TenantsController < ApplicationController
   def show
     logger.debug "Show tenant #{@tenant.attributes.inspect}"
     @categories = @tenant.categories
+    @user_review = @tenant.reviews.where(user_id: current_user)
+    @reviews = @tenant.reviews.order({ created_at: :desc }).paginate(page: params[:page], per_page: 5)
+    @reviews.unshift(@user_review)
   end
   
   def update

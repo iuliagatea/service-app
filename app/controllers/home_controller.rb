@@ -22,6 +22,7 @@ class HomeController < ApplicationController
     if params[:query].present?
       search_by = params[:query]
       @tenants = Tenant.search_any_word(search_by).sort_by{ |t| [t.rating.stars, t.name]}.paginate(page: params[:page], per_page: 10)
+      @tenants.delete(Tenant.current_tenant) 
       if params[:categories].present?
         @tenants = @tenants.search_categories(params[:categories]).paginate(page: params[:page], per_page: 10)
       end
@@ -52,7 +53,7 @@ class HomeController < ApplicationController
     @tenant = Tenant.find(params[:tenant])
     @product = Product.find(params[:product]) if params[:product]
     @message = params[:message] 
-    @message << "<hr> This message refers to #{ view_context.link_to @product.code + " " + @product.name, product_url(@product) }<hr>".html_safe if @product
+    @message << "<hr> This message refers to #{ view_context.link_to @product.code + " " + @product.name, product_url(@product) } <hr>" if @product
     if params[:title] == "Demand offer"
       @subject = "New offer demand"
     else
