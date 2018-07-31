@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
     logger.debug "New product: #{@product.attributes.inspect}"
     logger.debug "Product should be valid: #{@product.valid?}"
     
-    @user = User.find(User.find_by_email(params[:user]["email"]).ids.first)
+    @user = User.find_by_email(params[:user]["email"]).ids.first
     if @user.blank?
       @user   = User.new( user_params )
       logger.debug "New user, member: #{@user.attributes.inspect}"
@@ -68,6 +68,7 @@ class ProductsController < ApplicationController
         render :new
       end
     else
+      @user = User.find(User.find_by_email(params[:user]["email"]).ids.first)
       @user.tenants << Tenant.find(Tenant.current_tenant_id) unless @user.tenants.include?(Tenant.find(Tenant.current_tenant_id))
     end
     @product.user_id = @user.id
@@ -122,7 +123,7 @@ class ProductsController < ApplicationController
   def by_member
     @user = User.find(params[:user_id])
     if current_user.is_admin?
-      @products = @user.products.by_tenant(params[:tenant_id]).paginate(page: params[:page], per_page: 10)
+      @products = @user.products.by_tenant_and_user(params[:tenant_id],params[:user_id]).paginate(page: params[:page], per_page: 10)
     else
       @products = @user.products.paginate(page: params[:page], per_page: 10)
     end

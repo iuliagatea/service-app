@@ -38,7 +38,7 @@ class Product < ActiveRecord::Base
   end
   
   def self.by_tenant_and_user(tenant_id,user_id)
-    Products.where(tenant_id: tenant_id, user_id: user_id)
+    Product.where(tenant_id: tenant_id, user_id: user_id)
   end
   
 end

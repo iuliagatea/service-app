@@ -1,4 +1,5 @@
 class Tenant < ActiveRecord::Base
+  seems_rateable
   include PgSearch
   pg_search_scope :search_any_word,
                   :against => [:name, :description, :keywords],
@@ -26,8 +27,7 @@ class Tenant < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
   validate :must_have_one_category
-  seems_rateable
-  
+
     def self.create_new_tenant(tenant_params, user_params, coupon_params)
 
       tenant = Tenant.new(tenant_params)
@@ -71,5 +71,5 @@ class Tenant < ActiveRecord::Base
   def must_have_one_category
     errors.add(:base, 'You must select at least one Catgeory') if self.categories.blank?
   end
-   
+
 end

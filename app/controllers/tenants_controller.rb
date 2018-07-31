@@ -1,7 +1,7 @@
 class TenantsController < ApplicationController
   before_action :set_tenant
-  
-  
+  before_action :must_be_customer
+
   def edit
     logger.debug "Edit tenant #{@tenant.attributes.inspect}"
     @categories = Category.where(entity: 'tenant')
@@ -65,6 +65,11 @@ class TenantsController < ApplicationController
   
   def tenant_params
     params.require(:tenant).permit(:name, :plan, :description, :keywords, category_ids: [])
+  end
+  
+  def must_be_customer
+    redirect_to :root, 
+            flash: { error: 'You are not authorized to do this action' } unless @tenant.users.include?(current_user)
   end
 
 end
