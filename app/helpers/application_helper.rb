@@ -1,5 +1,5 @@
 module ApplicationHelper
-  ALERT_TYPES = [:success, :info, :warning, :danger] unless const_defined?(:ALERT_TYPES)
+  ALERT_TYPES = %i[success info warning danger].freeze unless const_defined?(:ALERT_TYPES)
 
   def bootstrap_flash(options = {})
     flash_messages = []
@@ -18,7 +18,7 @@ module ApplicationHelper
         class: "alert fade in alert-#{type} #{tag_class}"
       }.merge(options)
 
-      close_button = content_tag(:button, raw("&times;"), type: "button", class: "close", "data-dismiss" => "alert")
+      close_button = content_tag(:button, raw('&times;'), type: 'button', class: 'close', 'data-dismiss' => 'alert')
 
       Array(message).each do |msg|
         text = content_tag(:div, close_button + msg, tag_options)
@@ -27,31 +27,31 @@ module ApplicationHelper
     end
     flash_messages.join("\n").html_safe
   end
-  
+
   def tenant_name(tenant_id)
     Tenant.find(tenant_id).name
   end
-  
+
   def class_name_for_tenant_form(tenant)
-    return "cc_form" if tenant.payment.blank?
-    ""
+    return 'cc_form' if tenant.payment.blank?
+
+    ''
   end
-  
+
   def user_full_name(user, tenant)
     @user = user
     Tenant.set_current_tenant(@user.tenants.first)
     first_name = @user.member.first_name
-    last_name = @user.member.last_name 
+    last_name = @user.member.last_name
     Tenant.set_current_tenant(tenant) if tenant
-    return first_name + " " + last_name
+    first_name + ' ' + last_name
   end
-  
+
   def format_date(date)
-    date.strftime("%d.%m.%Y")
+    date.strftime('%d.%m.%Y')
   end
-  
+
   def format_date_time(date)
-    date.strftime("%d.%m.%Y %I:%M:%S")
+    date.strftime('%d.%m.%Y %I:%M:%S')
   end
-  
 end

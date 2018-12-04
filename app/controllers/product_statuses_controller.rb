@@ -12,10 +12,7 @@ class ProductStatusesController < ApplicationController
     @product_status = ProductStatus.new
   end
 
-  def edit
-  end
-
-  def create
+    def create
     @product_status = ProductStatus.new(product_status_params)
 
     respond_to do |format|
@@ -25,6 +22,9 @@ class ProductStatusesController < ApplicationController
         format.html { render :new }
       end
     end
+    end
+
+  def edit
   end
 
   def update

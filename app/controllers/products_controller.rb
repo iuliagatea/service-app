@@ -36,13 +36,6 @@ class ProductsController < ApplicationController
     @statuses = Status.by_tenant(params[:tenant_id])
   end
 
-  def edit
-    @user = Product.find(params[:id]).user
-    @status = Status.find(ProductStatus.last_by_product(params[:id]))
-    @statuses = Status.by_tenant(params[:tenant_id])
-    @estimates = @product.estimates
-  end
-
   def create
     @product = Product.new(product_params)
     logger.debug "New product: #{@product.attributes.inspect}"
@@ -80,6 +73,13 @@ class ProductsController < ApplicationController
         format.html { render :new }
       end
     end
+  end
+
+  def edit
+    @user = Product.find(params[:id]).user
+    @status = Status.find(ProductStatus.last_by_product(params[:id]))
+    @statuses = Status.by_tenant(params[:tenant_id])
+    @estimates = @product.estimates
   end
 
   def update
@@ -144,20 +144,6 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:code, :name, :expected_completion_date, :tenant_id, :comments, estimates_attributes: %i[id name quantity price value _destroy])
   end
 
-  def verify_tenant
-    unless params[:tenant_id] == Tenant.current_tenant_id.to_s
-      redirect_to :root, 
-          flash: { error: 'You are not authorized to acces any organization other than your own' }
-    end
-  end
-    
-  def verify_user
-    unless params[:user_id] == current_user.to_s or current_user.is_admin
-      redirect_to :root, 
-          flash: { error: 'You are not authorized to do this action' }
-    end
-  end
-    
   def member_params()
     params.require(:member).permit(:first_name, :last_name)
   end

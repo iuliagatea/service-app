@@ -22,7 +22,7 @@ class MembersController < ApplicationController
   end
 
   def get_name 
-    if params[:email].present? 
+    if params[:email].present?
       @user = User.find_by_email(params[:email]).first
       @tenant = Tenant.current_tenant
       Tenant.set_current_tenant(@user.tenants.first)
@@ -36,19 +36,11 @@ class MembersController < ApplicationController
 
   private
 
-  def member_params()
+  def member_params
     params.require(:member).permit(:first_name, :last_name)
   end
 
-  def user_params()
+  def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
   end
-  
-  def verify_admin
-    unless current_user.is_admin
-      redirect_to :root,
-                  flash: { error: 'You are not authorized to do this action' }
-    end
-  end
-
 end

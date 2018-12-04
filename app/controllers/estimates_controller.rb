@@ -17,7 +17,6 @@ class EstimatesController < ApplicationController
 
   def create
     @estimate = Estimate.new(estimate_params)
-    @estimate.value = @estimate.price * @estimate.quantity
     respond_to do |format|
       if @estimate.save
         format.html { redirect_to @estimate, notice: 'Estimate was successfully created.' }
@@ -30,7 +29,6 @@ class EstimatesController < ApplicationController
 
   def update
     respond_to do |format|
-      @estimate.value = @estimate.price * @estimate.quantity
       if @estimate.update(estimate_params)
         format.html { redirect_to @estimate, notice: 'Estimate was successfully updated.' }
       else
@@ -55,6 +53,8 @@ class EstimatesController < ApplicationController
   end
 
   def estimate_params
-    params.require(:estimate).permit(:name, :quantity, :price, :value, :tenant_id)
+    params.require(:estimate).permit(:name, :quantity, :price, :value, :tenant_id).tap do |params|
+      params[:value] = params[:price] * params[:quantity]
+    end
   end
 end

@@ -5,12 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   acts_as_universal_and_determines_account
-  has_one :member, :dependent => :destroy
+  has_one :member, dependent: :destroy
   has_many :products
   has_many :reviews, dependent: :destroy
   seems_rateable_rater
 
-  def is_admin?
+  def admin?
     is_admin
   end
 

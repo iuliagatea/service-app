@@ -9,4 +9,26 @@ class ApplicationController < ActionController::Base
   rescue_from ::Milia::Control::MaxTenantExceeded, :with => :max_tenants
   rescue_from ::Milia::Control::InvalidTenantAccess, :with => :invalid_tenant
 
+  def verify_admin
+    unless current_user.admin?
+      redirect_to :root,
+                  flash: { error: 'You are not authorized to do this action' }
+    end
+  end
+
+  def verify_user
+    if current_user
+      unless params[:user_id] == current_user.to_s or current_user.admin?
+        redirect_to :root,
+                    flash: { error: 'You are not authorized to do this action' }
+      end
+    end
+  end
+
+  def verify_tenant
+    unless params[:tenant_id] == Tenant.current_tenant_id.to_s
+      redirect_to :root,
+                  flash: { error: 'You are not authorized to acces any organization other than your own' }
+    end
+  end
 end

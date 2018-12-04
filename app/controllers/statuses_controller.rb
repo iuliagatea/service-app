@@ -75,19 +75,4 @@ class StatusesController < ApplicationController
     Tenant.set_current_tenant(Tenant.find(params[:tenant_id])) unless current_user.is_admin?
     @tenant = Tenant.find(params[:tenant_id])
   end
-    
-  def verify_tenant
-    unless params[:tenant_id] == Tenant.current_tenant_id.to_s
-      redirect_to :root, 
-          flash: { error: 'You are not authorized to acces any organization other than your own' }
-    end
-  end
-    
-  def verify_user
-    unless params[:user_id] == current_user.to_s or current_user.is_admin
-      redirect_to :root, 
-          flash: { error: 'You are not authorized to do this action' }
-    end
-  end
-
 end
