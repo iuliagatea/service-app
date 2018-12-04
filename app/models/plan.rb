@@ -1,5 +1,5 @@
 class Plan
-  PLANS = [:free, :premium]
+  PLANS = %i[free premium].freeze
   
   def self.options
     PLANS.map { |plan| [plan.capitalize, plan] }

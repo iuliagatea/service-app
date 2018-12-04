@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
 
   def create
-    logger.debug "Creating new review"
+    logger.debug 'Creating new review'
     @review = Review.new(tenant_id: params[:tenant], user_id: params[:user], title: params[:title], review: params[:review])
     @review.save
     logger.debug "Created review #{@review.attributes.inspect}"
@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
     logger.debug "Deleting review #{@review.attributes.inspect}"
     @review.destroy
     respond_to do |format|
-      logger.info "The review was deleted and now the user is going to be redirected..."
+      logger.info 'The review was deleted and now the user is going to be redirected...'
       format.html { redirect_to tenant_path(params[:tenant]), notice: 'Review was successfully destroyed.' }
     end
   end

@@ -11,7 +11,7 @@ class TenantsController < ApplicationController
     logger.debug "Show tenant #{@tenant.attributes.inspect}"
     @categories = @tenant.categories
     @user_review = @tenant.reviews.where(user_id: current_user)
-    @reviews = @tenant.reviews.order({ created_at: :desc }).paginate(page: params[:page], per_page: 5)
+    @reviews = @tenant.reviews.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
     @reviews.unshift(@user_review)
   end
   
@@ -21,9 +21,9 @@ class TenantsController < ApplicationController
         if @tenant.update(tenant_params)
           if @tenant.plan == 'premium' && @tenant.payment.blank?
             logger.debugg "Updating plan for tenant #{@tenant.attributes.inspect}"
-            @payment = Payment.new({ email: tenant_params["email"],
-            token: params[:payment]["token"],
-            tenant: @tenant })
+            @payment = Payment.new( email: tenant_params['email'],
+                                    token: params[:payment]['token'],
+                                    tenant: @tenant )
             begin
               @payment.process_payment
               @payment.save
@@ -68,8 +68,10 @@ class TenantsController < ApplicationController
   end
   
   def must_be_customer
-    redirect_to :root, 
-            flash: { error: 'You are not authorized to do this action' } unless @tenant.users.include?(current_user)
+    unless @tenant.users.include?(current_user)
+      redirect_to :root,
+                  flash: { error: 'You are not authorized to do this action' }
+    end
   end
 
 end

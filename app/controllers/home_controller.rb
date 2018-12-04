@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
-  skip_before_action :authenticate_tenant!, :only => [ :index, :business, :contact, :demand_offer ]
-  skip_before_action :verify_authenticity_token, :only => [ :demand_offer ]
+  skip_before_action :authenticate_tenant!, only: %i[index business contact demand_offer]
+  skip_before_action :verify_authenticity_token, only: [:demand_offer]
   
   def index
     if current_user
@@ -9,7 +9,7 @@ class HomeController < ApplicationController
       else
         Tenant.set_current_tenant current_user.tenants.first
       end
-      logger.info "Opening index.."
+      logger.info 'Opening index..'
       @tenant = Tenant.current_tenant
       params[:tenant_id] = @tenant.id
       @user_tenants = current_user.tenants
@@ -28,7 +28,7 @@ class HomeController < ApplicationController
       end
       @categories = []
       if @tenants.empty?
-        flash[:notice] = "No result for your search"
+        flash[:notice] = 'No result for your search'
       else
         @tenants.each do |t|
           t.categories.each do |c|
@@ -41,7 +41,6 @@ class HomeController < ApplicationController
   end
   
   def business
-    
   end
   
   def contact
@@ -54,13 +53,13 @@ class HomeController < ApplicationController
     @product = Product.find(params[:product]) if params[:product]
     @message = params[:message] 
     @message << "<hr> This message refers to #{ view_context.link_to @product.code + " " + @product.name, product_url(@product) } <hr>" if @product
-    if params[:title] == "Demand offer"
-      @subject = "New offer demand"
-    else
-      @subject = "New message"
-    end
+    @subject = if params[:title] == 'Demand offer'
+                 'New offer demand'
+               else
+                 'New message'
+               end
     UserNotifier.send_email(params[:email], @tenant.users.first.email, "#{@subject} from #{params[:name]} - #{params[:subject]}", @message).deliver_now 
-    redirect_to root_path, notice: 'Email was sent successfully.' 
+    redirect_to root_path, notice: 'Email was sent successfully.'
   end
   
 end

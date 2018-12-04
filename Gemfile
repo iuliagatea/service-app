@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.8'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.15'
+gem 'pg', '~> 0.18.4'
 gem 'devise'
 gem 'milia'
 gem 'twitter-bootstrap-rails'
@@ -16,7 +16,7 @@ gem 'colorpicker'
 # Datepicker
 gem 'bootstrap-datepicker-rails'
 # Charts
-gem "chartkick"
+gem 'chartkick'
 gem 'groupdate'
 # Pagination
 gem 'will_paginate', '3.0.7'
