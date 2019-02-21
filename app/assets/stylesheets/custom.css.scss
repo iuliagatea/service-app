@@ -47,12 +47,12 @@
   .navbar-link {
     border-radius: 5px;
     color: #fff;
-    margin-top: 15px;
-    padding: 8px;
+    margin-top: 8%;
+    padding: 10px;
   }
   
   .navbar-link:focus, .navbar-link:hover {
-    background: #3071a9;
+    background: #46b8da;
     color: #fff;
   }
   .navbar-search {
@@ -65,7 +65,14 @@
     margin-right: 5px;
   }
 }
-
+.navbar-default {
+  .navbar-brand {
+    color: #ffffff;
+  }
+  .navbar-brand:hover {
+    color: #eaeded;
+  }
+}
 .nav.navbar-right li {
   .btn {
   color: #fff !important;
@@ -78,6 +85,10 @@
   
   .btn-primary:hover, .btn-primary:focus {
   background-color: darken(#428bca,20%) !important;
+  }
+  
+  .btn-info:hover, .btn-info:focus {
+  background-color: darken(#46b8da,5%) !important;
   }
 }
 
@@ -170,7 +181,7 @@
 }
 
 .navbar.navbar-static-top {
-  background: #000;
+  background: #7d7d7d;
   color: #fff !important;
   padding-bottom: 5px;
 }

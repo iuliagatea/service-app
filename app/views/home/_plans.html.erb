@@ -16,7 +16,7 @@
         </div>
         <p>
           <% if !current_user %>
-            <%= link_to 'Sign up for free', new_user_registration_path(plan: 'free'), class: 'btn btn-primary sign-up' %>
+            <%= link_to 'Sign up for free', new_user_registration_path(plan: 'free'), class: 'btn btn-info sign-up' %>
           <% end %>
         </p>
       </div>
@@ -36,7 +36,7 @@
         </div>
         <p>
           <% if !current_user %>
-            <%= link_to 'Get started', new_user_registration_path(plan: 'premium'), class: 'btn btn-primary sign-up' %>
+            <%= link_to 'Get started', new_user_registration_path(plan: 'premium'), class: 'btn btn-info sign-up' %>
           <% end %>
         </p>
       </div>
