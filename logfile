@@ -1,0 +1,8 @@
+2022-02-11 20:06:01.583 EET [52021] LOG:  starting PostgreSQL 14.1 on x86_64-apple-darwin21.1.0, compiled by Apple clang version 13.0.0 (clang-1300.0.29.3), 64-bit
+2022-02-11 20:06:01.584 EET [52021] LOG:  listening on IPv6 address "::1", port 5432
+2022-02-11 20:06:01.584 EET [52021] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-02-11 20:06:01.585 EET [52021] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-02-11 20:06:01.588 EET [52022] LOG:  database system was shut down at 2022-02-11 20:05:51 EET
+2022-02-11 20:06:01.591 EET [52021] LOG:  database system is ready to accept connections
+2022-02-11 20:06:28.755 EET [52031] FATAL:  database "service-app_development" does not exist
+2022-02-11 20:09:02.415 EET [52060] FATAL:  database "service-app_development" does not exist
