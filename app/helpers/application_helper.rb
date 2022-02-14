@@ -39,12 +39,8 @@ module ApplicationHelper
   end
 
   def user_full_name(user, tenant)
-    @user = user
-    Tenant.set_current_tenant(@user.tenants.first)
-    first_name = @user.member.first_name
-    last_name = @user.member.last_name
-    Tenant.set_current_tenant(tenant) if tenant
-    first_name + ' ' + last_name
+    Tenant.set_current_tenant(tenant ? tenant : user.tenants.first) unless Tenant.current_tenant
+    user.member.first_name + ' ' + user.member.last_name
   end
 
   def format_date(date)
