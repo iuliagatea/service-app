@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
     resources :product_statuses
     get '/status_products', to: 'statuses#products'
-    get '/user_products', to: 'products#by_member'
+    get '/user_products', to: 'tenant_member_products#index'
   end
   resources :members
   resources :products
