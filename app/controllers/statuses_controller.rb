@@ -1,6 +1,6 @@
 class StatusesController < ApplicationController
   before_action :set_status, only: %i[show edit update destroy]
-  before_action :set_tenant, only: %i[show edit update destroy new create]
+  before_action :set_current_tenant, only: %i[show edit update destroy new create]
   before_action :verify_tenant
   before_action :verify_user, except: [:products]
 
@@ -50,7 +50,7 @@ class StatusesController < ApplicationController
   end
   
   def products
-    @user = User.find(current_user)
+    @user = current_user
     @status = Status.find(params[:status_id])
     if @user.is_admin
       logger.debug "Showing products with statuses for tenant #{current_user.email}"
@@ -69,10 +69,5 @@ class StatusesController < ApplicationController
 
   def status_params
     params.require(:status).permit(:name, :color, :tenant_id, :is_active)
-  end
-    
-  def set_tenant
-    Tenant.set_current_tenant(Tenant.find(params[:tenant_id])) unless current_user.is_admin?
-    @tenant = Tenant.find(params[:tenant_id])
   end
 end

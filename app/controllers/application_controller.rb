@@ -10,8 +10,7 @@ class ApplicationController < ActionController::Base
   rescue_from ::Milia::Control::InvalidTenantAccess, :with => :invalid_tenant
 
   def tenant
-    Tenant.set_current_tenant params[:tenant_id] unless Tenant.current_tenant
-    @tenant ||= Tenant.current_tenant
+    @tenant = Tenant.current_tenant if Tenant.current_tenant != @tenant
   end
 
   def product
@@ -20,6 +19,13 @@ class ApplicationController < ActionController::Base
 
   def user
     @user ||= User.find(params[:user_id])
+  end
+
+  def must_be_customer
+    unless tenant.users.include?(current_user)
+      redirect_to :root,
+                  flash: { error: 'You are not authorized to do this action' }
+    end
   end
 
   def verify_admin
@@ -43,5 +49,9 @@ class ApplicationController < ActionController::Base
       redirect_to :root,
                   flash: { error: 'You are not authorized to acces any organization other than your own' }
     end
+  end
+
+  def paginate(resource, page)
+    resource.paginate(page: page, per_page: 10)
   end
 end

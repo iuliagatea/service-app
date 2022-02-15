@@ -1,5 +1,5 @@
 class TenantsController < ApplicationController
-  before_action :set_tenant
+  before_action :set_current_tenant
   before_action :must_be_customer
 
   def edit
@@ -44,10 +44,9 @@ class TenantsController < ApplicationController
   end
 
   def change
-    @tenant = Tenant.find(params[:id])
+    Tenant.set_current_tenant params[:id]
     logger.debug "Switch tenant #{@tenant.attributes.inspect}"
-    Tenant.set_current_tenant @tenant.id
-    session[:tenant_id] = Tenant.current_tenant.id
+    session[:tenant_id] = params[:id]
     redirect_to home_index_path, notice: "Switched to organization #{@tenant.name}"
   end
   
@@ -58,20 +57,7 @@ class TenantsController < ApplicationController
   
   private
   
-  def set_tenant
-    Tenant.set_current_tenant(Tenant.find(params[:id])) unless current_user.is_admin?
-    @tenant = Tenant.find(Tenant.current_tenant_id)
-  end
-  
   def tenant_params
     params.require(:tenant).permit(:name, :plan, :description, :keywords, category_ids: [])
   end
-  
-  def must_be_customer
-    unless @tenant.users.include?(current_user)
-      redirect_to :root,
-                  flash: { error: 'You are not authorized to do this action' }
-    end
-  end
-
 end
