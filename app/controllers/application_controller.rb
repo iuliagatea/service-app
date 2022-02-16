@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :authenticate_tenant!
-  
-     ##    milia defines a default max_tenants, invalid_tenant exception handling
-     ##    but you can override these if you wish to handle directly
-  rescue_from ::Milia::Control::MaxTenantExceeded, :with => :max_tenants
-  rescue_from ::Milia::Control::InvalidTenantAccess, :with => :invalid_tenant
+
+  ##    milia defines a default max_tenants, invalid_tenant exception handling
+  ##    but you can override these if you wish to handle directly
+  rescue_from ::Milia::Control::MaxTenantExceeded, with: :max_tenants
+  rescue_from ::Milia::Control::InvalidTenantAccess, with: :invalid_tenant
 
   def tenant
     @tenant = Tenant.current_tenant if Tenant.current_tenant != @tenant
@@ -36,11 +38,9 @@ class ApplicationController < ActionController::Base
   end
 
   def verify_user
-    if current_user
-      unless params[:user_id] == current_user.to_s or current_user.is_admin
-        redirect_to :root,
-                    flash: { error: 'You are not authorized to do this action' }
-      end
+    if current_user && !((params[:user_id] == current_user.to_s) || current_user.is_admin)
+      redirect_to :root,
+                  flash: { error: 'You are not authorized to do this action' }
     end
   end
 

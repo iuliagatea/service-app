@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StatusesController < ApplicationController
   before_action :set_status, only: %i[show edit update destroy]
   before_action :set_current_tenant, only: %i[show edit update destroy new create]
@@ -9,16 +11,14 @@ class StatusesController < ApplicationController
     @statuses = Status.by_tenant(params[:tenant_id]).paginate(page: params[:page], per_page: 10)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     logger.debug "New status for user #{current_user.email}"
     @status = Status.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @status = Status.new(status_params)
@@ -48,7 +48,7 @@ class StatusesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def products
     @user = current_user
     @status = Status.find(params[:status_id])
@@ -60,7 +60,7 @@ class StatusesController < ApplicationController
       @products = @status.products_with_status_by_user(@user).paginate(page: params[:page], per_page: 10)
     end
   end
-  
+
   private
 
   def set_status

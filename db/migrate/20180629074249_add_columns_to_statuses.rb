@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddColumnsToStatuses < ActiveRecord::Migration
   def change
     add_column :statuses, :is_active, :boolean, default: true

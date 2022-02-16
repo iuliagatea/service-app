@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show edit update destroy]
   before_action :verify_user_email_for_category
@@ -6,15 +8,13 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @category = Category.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @category = Category.new(category_params)

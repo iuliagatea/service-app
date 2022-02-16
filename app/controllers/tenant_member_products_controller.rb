@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TenantMemberProductsController < ApplicationController
   before_action :set_current_tenant
   before_action :user

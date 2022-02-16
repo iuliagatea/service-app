@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class MembersController < ApplicationController
   before_action :verify_admin
-  
+
   def new
     @member = Member.new
     @user   = User.new
@@ -18,10 +20,9 @@ class MembersController < ApplicationController
       @member = Member.new(member_params) # only used if need to revisit form
       render :new
     end
-
   end
 
-  def get_name 
+  def get_name
     if params[:email].present?
       @user = User.find_by_email(params[:email]).first
       @tenant = Tenant.current_tenant
@@ -31,7 +32,7 @@ class MembersController < ApplicationController
       @data['last_name'] = @user.member.last_name
       Tenant.set_current_tenant(@tenant)
       render(json: @data) && false
-    end 
+    end
   end
 
   private

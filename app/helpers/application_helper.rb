@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   ALERT_TYPES = %i[success info warning danger].freeze unless const_defined?(:ALERT_TYPES)
 
@@ -39,8 +41,8 @@ module ApplicationHelper
   end
 
   def user_full_name(user, tenant)
-    Tenant.set_current_tenant(tenant ? tenant : user.tenants.first) unless Tenant.current_tenant
-    user.member.first_name + ' ' + user.member.last_name
+    Tenant.set_current_tenant(tenant || user.tenants.first) unless Tenant.current_tenant
+    "#{user.member.first_name} #{user.member.last_name}"
   end
 
   def format_date(date)

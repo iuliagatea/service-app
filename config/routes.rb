@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   seems_rateable
   resources :categories
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   get 'business', to: 'home#business'
   resources :tenants do
     resources :statuses
-    resources :products do 
+    resources :products do
       get '/send_product_card', to: 'products#send_product_card'
     end
     resources :product_statuses
@@ -17,28 +19,28 @@ Rails.application.routes.draw do
   end
   resources :members
   resources :products
-   root :to => "home#index"
+  root to: 'home#index'
   get '/get_name', to: 'members#get_name'
   get '/demand_offer', to: 'home#contact'
   post '/send_email', to: 'home#demand_offer'
   get '/contact', to: 'tenants#contact'
-  resources :tenants, :member => {:rate => :put}
+  resources :tenants, member: { rate: :put }
   # *MUST* come *BEFORE* devise's definitions (below)
-  as :user do   
+  as :user do
     match '/user/confirmation' => 'confirmations#update', :via => :put, :as => :update_user_confirmation
   end
 
-  devise_for :users, :controllers => { 
-    :registrations => "registrations",
-    :confirmations => "confirmations",
-    :sessions => "milia/sessions", 
-    :passwords => "milia/passwords", 
+  devise_for :users, controllers: {
+    registrations: 'registrations',
+    confirmations: 'confirmations',
+    sessions: 'milia/sessions',
+    passwords: 'milia/passwords'
   }
   match '/plan/edit' => 'tenants#edit', via: :get, as: :edit_plan
 
-  match '/plan/update' => 'tenants#update', via: [:put, :patch], as: :update_plan
+  match '/plan/update' => 'tenants#update', via: %i[put patch], as: :update_plan
 
-  #root 'home#index'
+  # root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

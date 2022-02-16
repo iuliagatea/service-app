@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EstimatesController < ApplicationController
   before_action :set_estimate, only: %i[show edit update destroy]
 
@@ -5,15 +7,13 @@ class EstimatesController < ApplicationController
     @estimates = Estimate.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @estimate = Estimate.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @estimate = Estimate.new(estimate_params)

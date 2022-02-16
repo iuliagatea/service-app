@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTenantCategories < ActiveRecord::Migration
   def change
     create_table :tenant_categories do |t|

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class UserNotifier < ApplicationMailer
-  default :from => 'do-not-reply@fixit.com'
+  default from: 'do-not-reply@fixit.com'
 
   # send a signup email to the user, pass in the user object that   contains the user's email address
   def send_product_card_email_pdf(user, product, subject)
@@ -9,16 +11,16 @@ class UserNotifier < ApplicationMailer
     @estimates = @product.estimates
     test = WickedPdf.new.pdf_from_string(
       render_to_string(
-          pdf: "test.pdf",
-          template: "products/product_pdf_to_send.html.erb",
-          layout: 'layouts/pdf.html.erb'
-         )
+        pdf: 'test.pdf',
+        template: 'products/product_pdf_to_send.html.erb',
+        layout: 'layouts/pdf.html.erb'
+      )
     )
 
     attachments["#{@product.code}_product_card.pdf"] = test
     mail to: @user.email, subject: subject
   end
-  
+
   def send_status_change_email(user, product, subject)
     @user = user
     @product = product
@@ -26,7 +28,7 @@ class UserNotifier < ApplicationMailer
     @estimates = @product.estimates
     mail to: @user.email, subject: subject
   end
-  
+
   def send_email(from, to, subject, message)
     @message = message
     mail to: to, subject: subject, reply_to: from, bcc: from

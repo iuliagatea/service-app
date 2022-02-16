@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProductsController < ApplicationController
   before_action :product, only: %i[show edit update destroy]
   before_action :set_current_tenant, only: %i[show edit update destroy new create]
@@ -36,14 +38,14 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     logger.debug "New product: #{@product.attributes.inspect}"
     logger.debug "Product should be valid: #{@product.valid?}"
-    
+
     @user = User.find_by(email: params[:user]['email'])
     if @user.blank?
       @user = User.new(user_params)
       logger.debug "New user, member: #{@user.attributes.inspect}"
-     
+
       # ok to create user, member
-      if @user.save_and_invite_member() && @user.create_member( member_params )
+      if @user.save_and_invite_member && @user.create_member(member_params)
         logger.debug "New member added and invitation email sent to #{@user.email}."
         flash[:notice] = "New member added and invitation email sent to #{@user.email}."
       else
@@ -59,7 +61,8 @@ class ProductsController < ApplicationController
     @product.statuses << Status.find(params[:status]['id'])
     respond_to do |format|
       if @product.save
-        UserNotifier.send_status_change_email(@user, @product, "#{current_tenant.name} - New product #{@product.name}").deliver_now
+        UserNotifier.send_status_change_email(@user, @product,
+                                              "#{current_tenant.name} - New product #{@product.name}").deliver_now
         logger.info 'The product was saved and now the user is going to be redirected...'
         format.html { redirect_to tenant_products_url, notice: 'Product was successfully created.' }
       else
@@ -85,11 +88,12 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(product_params)
         logger.info 'The product was updated and now the user is going to be redirected...'
-        if status.send_email and last_status != status 
+        if status.send_email && (last_status != status)
           logger.info 'Send email to customer for status change'
-          UserNotifier.send_status_change_email(user, @product, "#{tenant.name} - Status updated for product #{@product.name}").deliver_now
+          UserNotifier.send_status_change_email(user, @product,
+                                                "#{tenant.name} - Status updated for product #{@product.name}").deliver_now
         end
-        format.html { redirect_to tenant_products_url, notice: 'Product was successfully updated.'}
+        format.html { redirect_to tenant_products_url, notice: 'Product was successfully updated.' }
       else
         logger.error "Errors occurred while updating product #{@product.attributes.inspect}."
         format.html { render :edit }
@@ -108,7 +112,8 @@ class ProductsController < ApplicationController
 
   def send_product_card
     logger.debug "Send product card via email #{product.attributes.inspect}"
-    UserNotifier.send_product_card_email_pdf(product.user, product, "#{tenant.name} - Product card - #{product.name}").deliver_now
+    UserNotifier.send_product_card_email_pdf(product.user, product,
+                                             "#{tenant.name} - Product card - #{product.name}").deliver_now
     redirect_to tenant_product_path(product.id, tenant_id: product.tenant_id), notice: 'Product card sent successfully.'
   end
 
@@ -123,13 +128,14 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:code, :name, :expected_completion_date, :tenant_id, :comments, estimates_attributes: %i[id name quantity price value _destroy])
+    params.require(:product).permit(:code, :name, :expected_completion_date, :tenant_id, :comments,
+                                    estimates_attributes: %i[id name quantity price value _destroy])
   end
 
   def member_params
     params.require(:member).permit(:first_name, :last_name)
   end
-  
+
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
   end
