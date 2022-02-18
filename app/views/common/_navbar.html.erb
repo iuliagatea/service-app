@@ -36,7 +36,7 @@
               <% if current_user && current_user.is_admin? %>
                 <%= ('<i class="fa fa-building"></i> ' + truncate(current_user.tenants.first.name, length: 25)).html_safe %>
               <% else %>
-                <%= ('<i class="fa fa-user"></i> ' + truncate( user_full_name(current_user, Tenant.current_tenant), length: 25)).html_safe %>
+                <%= ('<i class="fa fa-user"></i> ' + truncate( user_full_name(current_user), length: 25)).html_safe %>
               <% end %>
               <span class="caret"></span>
             </a>

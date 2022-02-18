@@ -37,8 +37,8 @@
           <%= label_tag 'name', 'Review' %>
           <%= text_area_tag(:review, "", class:'form-control' ) %>
         </div> 
-        <%= hidden_field_tag(:tenant, t.id ) %>
-        <%= hidden_field_tag(:user, current_user.id ) %>
+        <%= hidden_field_tag(:tenant_id, t.id ) %>
+        <%= hidden_field_tag(:user_id, current_user.id ) %>
         <br />
         <div class="row col-md-12 buttons">
           <%= submit_tag "Save".html_safe, class: "btn btn-primary", id:"submit" %>

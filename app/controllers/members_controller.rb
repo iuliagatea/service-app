@@ -9,7 +9,8 @@ class MembersController < ApplicationController
   end
 
   def create
-    @user   = User.new(user_params)
+    @user = User.new(user_params)
+    byebug
     if @user.save_and_invite_member && @user.create_member(member_params)
       flash[:notice] = "New member added and invitation email sent to #{@user.email}."
       logger.debugg "Creating user and sending email #{@user.attributes.inspect}"
@@ -23,16 +24,14 @@ class MembersController < ApplicationController
   end
 
   def get_name
-    if params[:email].present?
-      @user = User.find_by_email(params[:email]).first
-      @tenant = Tenant.current_tenant
-      Tenant.set_current_tenant(@user.tenants.first)
-      @data = {}
-      @data['first_name'] = @user.member.first_name
-      @data['last_name'] = @user.member.last_name
-      Tenant.set_current_tenant(@tenant)
-      render(json: @data) && false
-    end
+    return unless params[:email].present?
+
+    @user = User.find_by(email: params[:email])
+    @data = {}
+    @data['first_name'] = @user.member.first_name
+    @data['last_name'] = @user.member.last_name
+    @tenant = Tenant.current_tenant
+    render(json: @data) && false
   end
 
   private

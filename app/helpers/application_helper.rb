@@ -40,8 +40,7 @@ module ApplicationHelper
     ''
   end
 
-  def user_full_name(user, tenant)
-    Tenant.set_current_tenant(tenant || user.tenants.first) unless Tenant.current_tenant
+  def user_full_name(user)
     "#{user.member.first_name} #{user.member.last_name}"
   end
 

@@ -2,19 +2,17 @@
 
 class ProductsController < ApplicationController
   before_action :product, only: %i[show edit update destroy]
-  before_action :set_current_tenant, only: %i[show edit update destroy new create]
+  # before_action :set_current_tenant, only: %i[show edit update destroy new create]
   before_action :verify_tenant
   before_action :verify_user, except: %i[show index]
 
-  # GET /products
-  # GET /products.json
   def index
+    byebug
     @products = products.paginate(page: params[:page], per_page: 10)
   end
 
-  # GET /products/1
-  # GET /products/1.json
   def show
+    byebug
     logger.debug "Showing products of tenant with id #{params[:tenant_id]} for user #{current_user.email}"
     @product_statuses = product.product_statuses
     @estimates = product.estimates
@@ -31,7 +29,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @statuses = Status.by_tenant(params[:tenant_id])
+    @statuses = Tenant.current_tenant.statuses
   end
 
   def create
@@ -44,7 +42,6 @@ class ProductsController < ApplicationController
       @user = User.new(user_params)
       logger.debug "New user, member: #{@user.attributes.inspect}"
 
-      # ok to create user, member
       if @user.save_and_invite_member && @user.create_member(member_params)
         logger.debug "New member added and invitation email sent to #{@user.email}."
         flash[:notice] = "New member added and invitation email sent to #{@user.email}."
@@ -55,14 +52,14 @@ class ProductsController < ApplicationController
         render :new
       end
     else
-      @user.tenants << tenant unless @user.tenants.include?(current_tenant)
+      @user.tenants << Tenant.current_tenant unless @user.tenants.include?(Tenant.current_tenant)
     end
     @product.user = @user
     @product.statuses << Status.find(params[:status]['id'])
     respond_to do |format|
       if @product.save
         UserNotifier.send_status_change_email(@user, @product,
-                                              "#{current_tenant.name} - New product #{@product.name}").deliver_now
+                                              "#{Tenant.current_tenant.name} - New product #{@product.name}").deliver_now
         logger.info 'The product was saved and now the user is going to be redirected...'
         format.html { redirect_to tenant_products_url, notice: 'Product was successfully created.' }
       else
@@ -121,10 +118,6 @@ class ProductsController < ApplicationController
 
   def product
     @product = Product.find(params[:id])
-  end
-
-  def products
-    current_user.is_admin ? tenant.products : current_user.products
   end
 
   def product_params

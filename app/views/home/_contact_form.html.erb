@@ -15,7 +15,7 @@
     <%= form_tag({:controller => "home", :action => "demand_offer"}, {:method => "post", :class => "form-horizontal"}) do %>
       <%= hidden_field_tag 'title', action %>
       <% if current_user %>
-        <%= hidden_field_tag 'name', user_full_name(current_user, nil) %>
+        <%= hidden_field_tag 'name', user_full_name(current_user) %>
         <%= hidden_field_tag 'email', current_user.email %>
       <% else %>
       <div class="row">

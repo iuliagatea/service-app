@@ -37,9 +37,9 @@ class Tenant < ActiveRecord::Base
     tenant.categories << Category.where("name = 'Service / Reparatii'")
     if new_signups_not_permitted?(coupon_params)
       raise ::Milia::Control::MaxTenantExceeded, 'Sorry, new accounts not permitted at this time'
-    else
-      tenant.save # create the tenant
     end
+
+    tenant.save # create the tenant
 
     tenant
   end

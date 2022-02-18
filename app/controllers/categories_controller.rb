@@ -61,9 +61,9 @@ class CategoriesController < ApplicationController
   end
 
   def verify_user_email_for_category
-    unless current_user.email == 'fixit.app2@gmail.com'
-      redirect_to :root,
-                  flash: { error: 'You are not authorized to do this action' }
-    end
+    return if current_user.email == 'fixit.app2@gmail.com'
+
+    redirect_to :root,
+                flash: { error: 'You are not authorized to do this action' }
   end
 end

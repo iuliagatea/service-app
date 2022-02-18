@@ -132,9 +132,9 @@ class RegistrationsController < Milia::RegistrationsController
   # sign_out_session! -- force the devise session signout
   # ------------------------------------------------------------------------------
   def sign_out_session!
-    if user_signed_in?
-      Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
-    end
+    return unless user_signed_in?
+
+    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
   end
 
   # ------------------------------------------------------------------------------

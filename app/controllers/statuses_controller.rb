@@ -2,7 +2,7 @@
 
 class StatusesController < ApplicationController
   before_action :set_status, only: %i[show edit update destroy]
-  before_action :set_current_tenant, only: %i[show edit update destroy new create]
+  # before_action :set_current_tenant, only: %i[show edit update destroy new create]
   before_action :verify_tenant
   before_action :verify_user, except: [:products]
 

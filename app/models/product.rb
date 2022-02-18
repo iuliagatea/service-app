@@ -11,9 +11,9 @@ class Product < ActiveRecord::Base
   validate :free_plan_can_only_have_500_products
 
   def free_plan_can_only_have_500_products
-    if new_record? && (tenant.products.count > 499) && (tenant.plan == 'free')
-      errors.add(:base, 'Free plans cannot have more than 500 products')
-    end
+    return unless new_record? && (tenant.products.count > 499) && (tenant.plan == 'free')
+
+    errors.add(:base, 'Free plans cannot have more than 500 products')
   end
 
   def last_status

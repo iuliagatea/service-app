@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TenantsController < ApplicationController
-  before_action :set_current_tenant
+  # before_action :set_current_tenant
   before_action :must_be_customer
 
   def edit
@@ -46,7 +46,7 @@ class TenantsController < ApplicationController
   end
 
   def change
-    Tenant.set_current_tenant params[:id]
+    @tenant = current_tenant(params[:id])
     logger.debug "Switch tenant #{@tenant.attributes.inspect}"
     session[:tenant_id] = params[:id]
     redirect_to home_index_path, notice: "Switched to organization #{@tenant.name}"
