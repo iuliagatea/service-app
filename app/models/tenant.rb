@@ -11,13 +11,6 @@ class Tenant < ActiveRecord::Base
                   using: {
                     tsearch: { any_word: true, dictionary: 'english' }
                   }
-  pg_search_scope :search_categories,
-                  associated_against: {
-                    categories: [:name]
-                  },
-                  using: {
-                    tsearch: { any_word: true, dictionary: 'english' }
-                  }
   acts_as_universal_and_determines_tenant
   has_many :members, dependent: :destroy
   has_many :statuses, dependent: :destroy

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get '/demand_offer', to: 'home#contact'
   post '/send_email', to: 'home#demand_offer'
   get '/contact', to: 'tenants#contact'
+  post '/search', to: 'tenants#search'
   resources :tenants, member: { rate: :put }
   # *MUST* come *BEFORE* devise's definitions (below)
   as :user do

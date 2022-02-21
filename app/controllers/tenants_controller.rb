@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class TenantsController < ApplicationController
-  # before_action :set_current_tenant
-  before_action :must_be_customer
+  skip_before_action :authenticate_tenant!, only: %i[search]
+  before_action :set_current_tenant,  only: %i[edit update contact]
+  # before_action :must_be_customer
 
   def edit
     logger.debug "Edit tenant #{@tenant.attributes.inspect}"
@@ -10,6 +11,7 @@ class TenantsController < ApplicationController
   end
 
   def show
+    @tenant = Tenant.find(params[:id])
     logger.debug "Show tenant #{@tenant.attributes.inspect}"
     @categories = @tenant.categories
     @user_review = @tenant.reviews.where(user_id: current_user)
@@ -45,21 +47,25 @@ class TenantsController < ApplicationController
     end
   end
 
-  def change
-    @tenant = current_tenant(params[:id])
-    logger.debug "Switch tenant #{@tenant.attributes.inspect}"
-    session[:tenant_id] = params[:id]
-    redirect_to home_index_path, notice: "Switched to organization #{@tenant.name}"
-  end
-
   def contact
     logger.debug "Contact form for tenant #{@tenant.attributes.inspect}"
     @product = Product.find(params[:product_id]) if params[:product_id]
+  end
+
+  def search
+    @tenants = TenantSearch.new(params).search
+    return flash[:notice] = 'No result for your search' unless @tenants
+
+    @tenants = paginate(@tenants, params[:page]) if @tenants
   end
 
   private
 
   def tenant_params
     params.require(:tenant).permit(:name, :plan, :description, :keywords, category_ids: [])
+  end
+
+  def set_current_tenant
+    @tenant ||= Tenant.current_tenant
   end
 end

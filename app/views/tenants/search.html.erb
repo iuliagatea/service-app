@@ -1,0 +1,45 @@
+<% if @tenants && @tenants.size > 0 %>
+  <div class="col-lg-3">
+    <div class="well sidebar-nav">
+      <h4>Filters</h4>
+      <%= form_tag({:controller => "tenants", :action => "search"}, {:method => "post", :class => "form-horizontal"}) do %>
+        <div class="boxes-filter form-group">
+          <% tenants_categories(@tenants).each do |c| %>
+            <label class="checkbox input_checkbox">
+              <%= check_box_tag 'categories[]', c.name, false, class: 'checkbox checkbox-filter' -%>
+              <%= c.name -%>
+            </label>
+          <% end %>
+        </div>
+        <%= hidden_field_tag 'query', params[:query] %>
+        <div class="row">
+          <%= submit_tag 'Apply filters', class: "btn btn-default", id:"submit" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-lg-9">
+    <%= will_paginate @tenants %>
+    <% @tenants.each do |t| %>
+      <h3>
+        <%= t.name %>
+      </h3>
+      <%= rating_for t, disabled: true %>
+      <br />
+      <% if t.categories.any? %>
+        <p><%= render t.categories %></p>
+      <% end %>
+      <p><%= truncate(t.description, length: 500) %></p>
+      <h4 class="no-black-hover">
+        <%= link_to "<i class='fa fa-envelope'></i> Demand offer".html_safe,
+                    demand_offer_path(tenant: t),
+                    title: 'Demand offer' %>
+      </h4>
+      <hr>
+    <% end %>
+    <%= will_paginate @tenants %>
+    <%= link_to t('.back', :default => t("helpers.links.back")),
+                root_path, :class => 'btn btn-default' %>
+  </div>
+
+<% end %>

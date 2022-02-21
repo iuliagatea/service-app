@@ -51,4 +51,8 @@ module ApplicationHelper
   def format_date_time(date)
     date.strftime('%d.%m.%Y %I:%M:%S')
   end
+
+  def tenants_categories(tenants)
+    tenants.map(&:categories).map(&:to_a).uniq.flatten
+  end
 end

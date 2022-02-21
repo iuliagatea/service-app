@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
     return if params[:tenant_id] == Tenant.current_tenant_id.to_s
 
     redirect_to :root,
-                flash: { error: 'You are not authorized to acces any organization other than your own' }
+                flash: { error: 'You are not authorized to access any organization other than your own' }
   end
 
   def paginate(resource, page)
