@@ -11,20 +11,10 @@ class ApplicationController < ActionController::Base
   rescue_from ::Milia::Control::MaxTenantExceeded, with: :max_tenants
   rescue_from ::Milia::Control::InvalidTenantAccess, with: :invalid_tenant
 
-  # def tenant
-  #   @tenant = Tenant.current_tenant if Tenant.current_tenant != @tenant
-  # end
-
   def products
     @products ||= current_user.is_admin ? Tenant.current_tenant.products : current_user.products
   end
 
-  # def current_tenant(tenant_param)
-  #   tenant_id = tenant_param || current_user.tenants.first.id
-  #   Tenant.set_current_tenant tenant_id if Tenant.current_tenant_id != tenant_id
-  #
-  #   Tenant.current_tenant
-  # end
 
   def product
     @product ||= Product.find(params[:product_id])

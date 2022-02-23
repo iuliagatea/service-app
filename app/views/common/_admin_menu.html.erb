@@ -1,0 +1,20 @@
+<li>
+  <%= link_to "<i class='fa fa-user'></i> View profile".html_safe,
+              tenant_path, title: 'Edit Profile',  class: 'navbar-link' %>
+</li>
+<li><%= link_to "<i class='fa fa-user-plus'></i> Add Customer Product".html_safe,
+                new_tenant_product_path,  class: 'navbar-link' %>
+</li>
+<li>
+  <%= link_to "<i class='fa fa-tasks'></i> Products".html_safe,
+              tenant_products_path, class: "navbar-link" %>
+</li>
+<li>
+  <%= link_to "<i class='fa fa-list'></i> Statuses".html_safe,
+              tenant_statuses_path, class: "navbar-link" %>
+</li>
+<li role="separator" class="divider"></li>
+<li>
+  <%= link_to "<i class='fa fa-cogs'></i> Account Settings".html_safe, edit_plan_path,
+              class: "navbar-link" %>
+</li>

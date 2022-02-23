@@ -7,12 +7,10 @@ class ProductsController < ApplicationController
   before_action :verify_user, except: %i[show index]
 
   def index
-    byebug
     @products = products.paginate(page: params[:page], per_page: 10)
   end
 
   def show
-    byebug
     logger.debug "Showing products of tenant with id #{params[:tenant_id]} for user #{current_user.email}"
     @product_statuses = product.product_statuses
     @estimates = product.estimates
@@ -71,8 +69,8 @@ class ProductsController < ApplicationController
 
   def edit
     @user = product.user
-    @status = Status.find(ProductStatus.last_by_product(params[:id]))
-    @statuses = tenant.statuses
+    @status = product.current_status
+    @statuses = Tenant.current_tenant.statuses
     @estimates = product.estimates
   end
 
@@ -80,12 +78,12 @@ class ProductsController < ApplicationController
     user = User.find_by(email: params[:user]['email'])
     @product.user = user
     status = Status.find(params[:status]['id'])
-    last_status = @product.last_status
-    @product.statuses << status unless last_status == status
+    current_status = @product.current_status
+    @product.statuses << status unless current_status == status
     respond_to do |format|
       if @product.update(product_params)
         logger.info 'The product was updated and now the user is going to be redirected...'
-        if status.send_email && (last_status != status)
+        if status.send_email && (current_status != status)
           logger.info 'Send email to customer for status change'
           UserNotifier.send_status_change_email(user, @product,
                                                 "#{tenant.name} - Status updated for product #{@product.name}").deliver_now
@@ -117,7 +115,7 @@ class ProductsController < ApplicationController
   private
 
   def product
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:product_id])
   end
 
   def product_params

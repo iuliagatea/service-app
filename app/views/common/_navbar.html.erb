@@ -11,69 +11,14 @@
     </span>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
-        <% if !current_user and controller.action_name != 'business' %>
-          <li>
-            <%= link_to(("<i class='fa fa-briefcase'></i> " + 'My Business').html_safe, business_path, class: 'btn btn-info navbar-link', title: 'Business') %>
-          </li>
-        <% end %>
-        <% if current_user && current_user.is_admin? %>
-          <li>
-            <% link_to "<i class='fa fa-cogs'></i> Account Settings".html_safe, edit_plan_path, 
-                                                        class: "btn btn-info navbar-link" %>
-          </li>
-        <% end %>
-        <% if current_user && 1 == 0 %>
-          <li class="navbar-search">
-            <%= render 'layouts/search_form' %>
-          </li>
-        <% end %>
+        <li class="navbar-search">
+          <%= render 'layouts/search_form' %>
+        </li>
       </ul>
       <ul class="nav nav-list">
         <ul class="nav navbar-right col-md-4">
         <% if current_user %>
-          <li class="col-md-4 pull-right user-name">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <% if current_user && current_user.is_admin? %>
-                <%= ('<i class="fa fa-building"></i> ' + truncate(current_user.tenants.first.name, length: 25)).html_safe %>
-              <% else %>
-                <%= ('<i class="fa fa-user"></i> ' + truncate( user_full_name(current_user), length: 25)).html_safe %>
-              <% end %>
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <% if current_user && current_user.is_admin? %>
-                <li>
-                  <%= link_to "<i class='fa fa-user'></i> View profile".html_safe, 
-                      tenant_path(Tenant.current_tenant), title: 'Edit Profile',  class: 'navbar-link' %>
-                </li>
-                <li><%= link_to "<i class='fa fa-user-plus'></i> Add Customer Product".html_safe,
-                      new_tenant_product_path(tenant_id: Tenant.current_tenant),  class: 'navbar-link' %>
-                </li>
-                <li>
-                  <%= link_to "<i class='fa fa-tasks'></i> Products".html_safe, 
-                      tenant_products_path(tenant_id: Tenant.current_tenant), class: "navbar-link" %>
-                </li>
-                <li>
-                  <%= link_to "<i class='fa fa-list'></i> Statuses".html_safe, 
-                      tenant_statuses_path(tenant_id: Tenant.current_tenant), class: "navbar-link" %>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li>
-                  <%= link_to "<i class='fa fa-cogs'></i> Account Settings".html_safe, edit_plan_path, 
-                                                            class: "navbar-link" %>
-                </li>
-              <% end %>
-              <li>
-                <%= link_to "<i class='fa fa-edit'></i> Change password".html_safe, 
-                    edit_user_registration_path, title: 'Edit Profile',  class: 'navbar-link' %>
-              </li>
-              <li role="separator" class="divider"></li>
-              <li class="logout">
-                <%= link_to( ("<i class='fa fa-unlock'></i> " + "Sign out").html_safe, destroy_user_session_path, 
-                    title: 'Logout', :method => :delete) %>
-              </li>
-            </ul> 
-          </li>
+            <%= render 'common/logged_in_menu' %>
         <% else %>
           <li class="col-md-4 pull-right">
             <%= link_to(("<i class='fa fa-lock'></i> " + 'Sign In').html_safe, new_user_session_path, class: 'btn btn-info navbar-link', title: 'Sign In') %>

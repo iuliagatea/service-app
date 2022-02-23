@@ -40,8 +40,9 @@ module ApplicationHelper
     ''
   end
 
-  def user_full_name(user)
-    "#{user.member.first_name} #{user.member.last_name}"
+  def user_full_name(user = nil)
+    user = user ? user : current_user
+    user.is_admin ? user.tenants.first.name : "#{user.member.first_name} #{user.member.last_name}"
   end
 
   def format_date(date)

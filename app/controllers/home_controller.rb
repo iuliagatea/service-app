@@ -1,22 +1,16 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  skip_before_action :authenticate_tenant!, only: %i[index business contact demand_offer]
+  skip_before_action :authenticate_tenant!, only: %i[index contact demand_offer]
   skip_before_action :verify_authenticity_token, only: [:demand_offer]
 
   def index
-    if current_user
-      logger.info 'Opening index..'
-      params[:tenant_id] = session[:tenant_id]
-      @user_tenants = current_user.tenants
-      @products = paginate(products, params[:page])
-    end
+    redirect_to tenant_products_path(current_user.tenants.first) if current_user
   end
 
-  def business; end
-
   def contact
-    logger.debug "Demand offer form for tenant #{tenant.attributes.inspect}"
+    # logger.debug "Demand offer form for tenant #{Tenant.current_tenant.attributes.inspect}"
+    @tenant = Tenant.find(params[:tenant])
   end
 
   def demand_offer

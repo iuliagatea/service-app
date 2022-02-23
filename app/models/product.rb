@@ -16,15 +16,11 @@ class Product < ActiveRecord::Base
     errors.add(:base, 'Free plans cannot have more than 500 products')
   end
 
-  def last_status
-    Status.find(ProductStatus.where(product_id: id).last.status_id)
+  def current_status
+    product_statuses.last.status
   end
 
   def estimated_value
     estimates.count.positive? ? estimates.sum('price * quantity') : 0
-  end
-
-  def self.by_tenant_and_user(tenant_id, user_id)
-    Product.where(tenant_id: tenant_id, user_id: user_id)
   end
 end

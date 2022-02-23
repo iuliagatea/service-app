@@ -30,7 +30,6 @@ class MembersController < ApplicationController
     @data = {}
     @data['first_name'] = @user.member.first_name
     @data['last_name'] = @user.member.last_name
-    @tenant = Tenant.current_tenant
     render(json: @data) && false
   end
 

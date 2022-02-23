@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class TenantsController < ApplicationController
-  skip_before_action :authenticate_tenant!, only: %i[search]
-  before_action :set_current_tenant,  only: %i[edit update contact]
+  skip_before_action :authenticate_tenant!, only: %i[search contact send_email]
+  before_action :find_tenant,  except: %i[search]
   # before_action :must_be_customer
 
   def edit
@@ -11,7 +11,6 @@ class TenantsController < ApplicationController
   end
 
   def show
-    @tenant = Tenant.find(params[:id])
     logger.debug "Show tenant #{@tenant.attributes.inspect}"
     @categories = @tenant.categories
     @user_review = @tenant.reviews.where(user_id: current_user)
@@ -48,8 +47,18 @@ class TenantsController < ApplicationController
   end
 
   def contact
-    logger.debug "Contact form for tenant #{@tenant.attributes.inspect}"
+  end
+
+  def send_email
     @product = Product.find(params[:product_id]) if params[:product_id]
+    if @product
+      params[:message] << "<hr> This message refers to #{view_context.link_to "#{@product.code} #{@product.name}",
+                                                                              product_url(@product)} <hr>"
+    end
+    @subject = "#{params[:action]} from #{params[:name]} - #{params[:subject]}"
+    UserNotifier.send_email(params[:email], @tenant.users.first.email,
+                            @subject, params[:message]).deliver_now
+    redirect_to root_path, notice: 'Email was sent successfully.'
   end
 
   def search
@@ -62,10 +71,10 @@ class TenantsController < ApplicationController
   private
 
   def tenant_params
-    params.require(:tenant).permit(:name, :plan, :description, :keywords, category_ids: [])
+    params.require(:tenant).permit(:tenant_id, :name, :plan, :description, :keywords, category_ids: [])
   end
 
-  def set_current_tenant
-    @tenant ||= Tenant.current_tenant
+  def find_tenant
+    @tenant = Tenant.find(params[:tenant_id])
   end
 end

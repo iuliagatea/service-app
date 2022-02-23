@@ -5,26 +5,28 @@ Rails.application.routes.draw do
   resources :categories
   resources :estimates
   resources :reviews
-  # get 'home/index'
   get 'about', to: 'pages#about'
-  get 'business', to: 'home#business'
-  resources :tenants do
-    resources :statuses
-    resources :products do
-      get '/send_product_card', to: 'products#send_product_card'
+  resources :tenants, param: :tenant_id
+  resources :tenants, only: [] do
+    resources :statuses, param: :status_id
+    resources :statuses, only: [] do
+      get 'products'
+    end
+    resources :products, param: :product_id do
+      get 'send_product_card', to: 'products#send_product_card'
     end
     resources :product_statuses
-    get '/status_products', to: 'statuses#products'
-    get '/user_products', to: 'tenant_member_products#index'
+    resources :user, only: [] do
+      get 'products', to: 'tenant_member_products#index'
+    end
+    # get 'user_products', to: 'tenant_member_products#index'
+    get 'contact'
+    post 'send_email'
   end
-  resources :members
-  resources :products
   root to: 'home#index'
-  get '/get_name', to: 'members#get_name'
-  get '/demand_offer', to: 'home#contact'
-  post '/send_email', to: 'home#demand_offer'
-  get '/contact', to: 'tenants#contact'
-  post '/search', to: 'tenants#search'
+  get 'get_name', to: 'members#get_name'
+  get 'demand_offer', to: 'home#contact'
+  post 'search', to: 'tenants#search'
   resources :tenants, member: { rate: :put }
   # *MUST* come *BEFORE* devise's definitions (below)
   as :user do
@@ -41,60 +43,4 @@ Rails.application.routes.draw do
 
   match '/plan/update' => 'tenants#update', via: %i[put patch], as: :update_plan
 
-  # root 'home#index'
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class StatusesController < ApplicationController
-  before_action :set_status, only: %i[show edit update destroy]
+  before_action :set_status, only: %i[show edit update destroy products]
   # before_action :set_current_tenant, only: %i[show edit update destroy new create]
   before_action :verify_tenant
   before_action :verify_user, except: [:products]
 
   def index
     logger.debug "Showing statuses for #{current_user.email}"
-    @statuses = Status.by_tenant(params[:tenant_id]).paginate(page: params[:page], per_page: 10)
+    @statuses = paginate(Tenant.current_tenant.statuses, params[:page])
   end
 
   def show; end
@@ -50,21 +50,14 @@ class StatusesController < ApplicationController
   end
 
   def products
-    @user = current_user
-    @status = Status.find(params[:status_id])
-    if @user.is_admin
-      logger.debug "Showing products with statuses for tenant #{current_user.email}"
-      @products = @status.products_with_status.paginate(page: params[:page], per_page: 10)
-    else
-      logger.debug "Showing products with statuses for user #{current_user.email}"
-      @products = @status.products_with_status_by_user(@user).paginate(page: params[:page], per_page: 10)
-    end
+    logger.debug "Showing products with statuses for tenant #{current_user.email}"
+    @products = @status.status_products(current_user).paginate(page: params[:page], per_page: 10)
   end
 
   private
 
   def set_status
-    @status = Status.find(params[:id])
+    @status = Status.find(params[:status_id])
   end
 
   def status_params

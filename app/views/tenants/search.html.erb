@@ -20,19 +20,11 @@
   </div>
   <div class="col-lg-9">
     <%= will_paginate @tenants %>
-    <% @tenants.each do |t| %>
-      <h3>
-        <%= t.name %>
-      </h3>
-      <%= rating_for t, disabled: true %>
-      <br />
-      <% if t.categories.any? %>
-        <p><%= render t.categories %></p>
-      <% end %>
-      <p><%= truncate(t.description, length: 500) %></p>
+    <% @tenants.each do |tenant| %>
+      <%= render 'tenants/search_result', tenant: tenant %>
       <h4 class="no-black-hover">
         <%= link_to "<i class='fa fa-envelope'></i> Demand offer".html_safe,
-                    demand_offer_path(tenant: t),
+                    tenant_contact_path(tenant),
                     title: 'Demand offer' %>
       </h4>
       <hr>

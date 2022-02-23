@@ -44,13 +44,13 @@
             <td><%= format_date(product.expected_completion_date) %></td>
             <% if current_user.is_admin %>
               <td class="no-black-hover">
-                <%= link_to product.user.email, tenant_user_products_path(user_id: product.user, tenant_id: product.tenant_id)  %>
+                <%= link_to product.user.email, tenant_user_products_path(user_id: product.user)  %>
               </td>
             <% end %>
             <% if current_user.is_admin %>
-              <td class="no-black-hover"><%= link_to product.last_status.name, tenant_status_products_path(status_id: product.last_status, tenant_id: product.tenant_id), title: "View Products with status #{product.last_status.name}" %></td>
+              <td class="no-black-hover"><%= link_to product.current_status.name, tenant_status_products_path(status_id: product.current_status.id), title: "View Products with status #{product.current_status.name}" %></td>
             <% else %>
-              <td class="no-black-hover"><%= product.last_status.name %></td>
+              <td class="no-black-hover"><%= product.current_status.name %></td>
             <% end%>
             <td><%= format_date_time(product.updated_at) %></td>
             <% if current_user.is_admin %>

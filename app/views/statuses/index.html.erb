@@ -19,12 +19,12 @@
       <tr>
         <td style="background-color: <%= status.color %>">
           <h4>
-             <%= link_to status.name, edit_tenant_status_path(status, tenant_id: status.tenant_id) %> 
+             <%= link_to status.name, edit_tenant_status_path(status_id: status.id) %>
           </h4>
         </td>
         <td style="background-color: <%= status.color %>">
           <h5>
-             <%= link_to pluralize(status.products_with_status.count, "product"), tenant_status_products_path(status_id: status.id, tenant_id: status.tenant_id) %>
+             <%= link_to pluralize(status.status_products(current_user).count, "product"), tenant_status_products_path(status_id: status.id) %>
           </h5>
         </td>
         <td style="background-color: <%= status.color %>">
@@ -45,7 +45,7 @@
              <% end %>
           </h5>
         </td>
-        <% if (status.products_with_status.count == 0 && status.can_be_deleted)  %>
+        <% if (status.status_products(current_user).count == 0 && status.can_be_deleted)  %>
           <td>
             <h4 class="status-delete">
               <%= link_to "<i class='fa fa-remove'></i> ".html_safe,

@@ -16,7 +16,7 @@
 <% if t.id != current_user.tenants.first %>
   <h4 class="no-black-hover">
     <%= link_to "<i class='fa fa-envelope'></i> Contact".html_safe, 
-                  contact_path(id: t.id),
+                  tenant_contact_path(t),
                   title: 'Contact' %> 
   </h4> 
 <% end %>
