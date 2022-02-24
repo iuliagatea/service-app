@@ -1,14 +1,15 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
 
+source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.8'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18.4'
 gem 'devise'
-gem 'milia'
-gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
+gem 'milia'
+gem 'pg', '~> 0.18.4'
+gem 'twitter-bootstrap-rails'
 # Payment
 gem 'stripe'
 # Colorpicker
@@ -19,16 +20,16 @@ gem 'bootstrap-datepicker-rails'
 gem 'chartkick'
 gem 'groupdate'
 # Pagination
-gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'will_paginate', '3.0.7'
 # Dynamic nested forms
 gem 'cocoon'
 # PDF generator
-gem 'wicked_pdf'  
-gem 'wkhtmltopdf-binary' 
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 # Search and filter
-gem 'pg_search'
 gem 'filterrific', '4.0.1'
+gem 'pg_search'
 # ratings
 gem 'seems_rateable', '~> 2.0'
 
@@ -62,6 +63,10 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :development do
@@ -72,6 +77,5 @@ group :development do
   gem 'spring'
 end
 
-
-gem 'recaptcha', require: 'recaptcha/rails'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+gem 'recaptcha', require: 'recaptcha/rails'

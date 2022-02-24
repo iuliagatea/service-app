@@ -58,11 +58,8 @@ $(document).ready(function() {
                   $(".member").hide();
                   $(".customer_name").show();
                   $('#customer_name').text(data["first_name"] + " " + data["last_name"]);
-                  // $("#member_first_name").val(data["first_name"]);
-                  // $("#member_last_name").val(data["last_name"]);
                   $("#member_first_name").prop('required',false);
                   $("#member_last_name").prop('required',false);
-                  // console.log(data);
               },
               error : function() {
                 $(".member").show();

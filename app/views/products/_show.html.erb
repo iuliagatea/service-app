@@ -7,7 +7,7 @@
   <dt><strong><%= model_class.human_attribute_name(:expected_completion_date) %>:</strong></dt>
   <dd><%= @product.expected_completion_date.strftime("%d.%m.%Y") %></dd>
   <dt><strong>Current status:</strong></dt>
-  <dd><%= @product.last_status.name %></dd>
+  <dd><%= @product.current_status.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:comments) %>:</strong></dt>
   <dd><%= @product.comments %></dd>
 </dl>

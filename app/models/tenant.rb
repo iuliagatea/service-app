@@ -1,18 +1,15 @@
+# frozen_string_literal: true
+
 class Tenant < ActiveRecord::Base
   seems_rateable
   include PgSearch
   pg_search_scope :search_any_word,
-                  :against => [:name, :description, :keywords],
-                  :associated_against => {
-                    :categories => [:name]},
-                  :using => {
-                    :tsearch => {:any_word => true, :dictionary => 'english'}
-                  }
-  pg_search_scope :search_categories,
-                  :associated_against => {
-                    :categories => [:name]},
-                  :using => {
-                    :tsearch => {:any_word => true, :dictionary => 'english'}
+                  against: %i[name description keywords],
+                  associated_against: {
+                    categories: [:name]
+                  },
+                  using: {
+                    tsearch: { any_word: true, dictionary: 'english' }
                   }
   acts_as_universal_and_determines_tenant
   has_many :members, dependent: :destroy
@@ -28,15 +25,16 @@ class Tenant < ActiveRecord::Base
   validates_uniqueness_of :name
   validate :must_have_one_category
 
-  def self.create_new_tenant(tenant_params, user_params, coupon_params)
+  def self.create_new_tenant(tenant_params, _user_params, coupon_params)
     tenant = Tenant.new(tenant_params)
     tenant.categories << Category.where("name = 'Service / Reparatii'")
     if new_signups_not_permitted?(coupon_params)
       raise ::Milia::Control::MaxTenantExceeded, 'Sorry, new accounts not permitted at this time'
-    else
-      tenant.save    # create the tenant
     end
-    return tenant
+
+    tenant.save # create the tenant
+
+    tenant
   end
 
   # ------------------------------------------------------------------------
@@ -44,8 +42,8 @@ class Tenant < ActiveRecord::Base
   # args: params from user input; might contain a special 'coupon' code
   #       used to determine whether or not to allow another signup
   # ------------------------------------------------------------------------
-  def self.new_signups_not_permitted?(params)
-    return false
+  def self.new_signups_not_permitted?(_params)
+    false
   end
 
   # ------------------------------------------------------------------------
@@ -57,16 +55,14 @@ class Tenant < ActiveRecord::Base
   #   tenant -- new tenant obj
   #   other  -- any other parameter string from initial request
   # ------------------------------------------------------------------------
-  def self.tenant_signup(user, tenant, other = nil)
+  def self.tenant_signup(user, _tenant, _other = nil)
     #  StartupJob.queue_startup( tenant, user, other )
     # any special seeding required for a new organizational tenant
     #
     Member.create_org_admin(user)
-    #
-  end
-  
-  def must_have_one_category
-    errors.add(:base, 'You must select at least one Catgeory') if self.categories.blank?
   end
 
+  def must_have_one_category
+    errors.add(:base, 'You must select at least one Catgeory') if categories.blank?
+  end
 end

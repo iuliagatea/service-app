@@ -1,24 +1,21 @@
+# frozen_string_literal: true
+
 class StatusesController < ApplicationController
-  before_action :set_status, only: %i[show edit update destroy]
-  before_action :set_tenant, only: %i[show edit update destroy new create]
+  before_action :find_status, only: %i[show edit update destroy products]
   before_action :verify_tenant
   before_action :verify_user, except: [:products]
 
   def index
-    logger.debug "Showing statuses for #{current_user.email}"
-    @statuses = Status.by_tenant(params[:tenant_id]).paginate(page: params[:page], per_page: 10)
+    @statuses = paginate(Tenant.current_tenant.statuses, params[:page])
   end
 
-  def show
-  end
+  def show; end
 
   def new
-    logger.debug "New status for user #{current_user.email}"
     @status = Status.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @status = Status.new(status_params)
@@ -48,31 +45,19 @@ class StatusesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def products
-    @user = User.find(current_user)
-    @status = Status.find(params[:status_id])
-    if @user.is_admin
-      logger.debug "Showing products with statuses for tenant #{current_user.email}"
-      @products = @status.products_with_status.paginate(page: params[:page], per_page: 10)
-    else
-      logger.debug "Showing products with statuses for user #{current_user.email}"
-      @products = @status.products_with_status_by_user(@user).paginate(page: params[:page], per_page: 10)
-    end
+    logger.debug "Showing products with statuses for tenant #{current_user.email}"
+    @products = paginate(@status.status_products(current_user), params[:page])
   end
-  
+
   private
 
-  def set_status
-    @status = Status.find(params[:id])
+  def find_status
+    @status = Status.find(params[:status_id])
   end
 
   def status_params
     params.require(:status).permit(:name, :color, :tenant_id, :is_active)
-  end
-    
-  def set_tenant
-    Tenant.set_current_tenant(Tenant.find(params[:tenant_id])) unless current_user.is_admin?
-    @tenant = Tenant.find(params[:tenant_id])
   end
 end

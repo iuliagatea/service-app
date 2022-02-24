@@ -1,18 +1,19 @@
+# frozen_string_literal: true
+
 class ProductStatusesController < ApplicationController
-  before_action :set_product_status, only: %i[show edit update destroy]
+  before_action :find_product_status, only: %i[show edit update destroy]
 
   def index
     @product_statuses = ProductStatus.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @product_status = ProductStatus.new
   end
 
-    def create
+  def create
     @product_status = ProductStatus.new(product_status_params)
 
     respond_to do |format|
@@ -22,10 +23,9 @@ class ProductStatusesController < ApplicationController
         format.html { render :new }
       end
     end
-    end
-
-  def edit
   end
+
+  def edit; end
 
   def update
     respond_to do |format|
@@ -40,13 +40,16 @@ class ProductStatusesController < ApplicationController
   def destroy
     @product_status.destroy
     respond_to do |format|
-      format.html { redirect_to tenant_product_statuses_url(tenant_id: params[:tenant_id]), notice: 'Product status was successfully destroyed.' }
+      format.html do
+        redirect_to tenant_product_statuses_url(tenant_id: params[:tenant_id]),
+                    notice: 'Product status was successfully destroyed.'
+      end
     end
   end
 
   private
 
-  def set_product_status
+  def find_product_status
     @product_status = ProductStatus.find(params[:id])
   end
 

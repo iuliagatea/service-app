@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   ALERT_TYPES = %i[success info warning danger].freeze unless const_defined?(:ALERT_TYPES)
 
@@ -38,13 +40,9 @@ module ApplicationHelper
     ''
   end
 
-  def user_full_name(user, tenant)
-    @user = user
-    Tenant.set_current_tenant(@user.tenants.first)
-    first_name = @user.member.first_name
-    last_name = @user.member.last_name
-    Tenant.set_current_tenant(tenant) if tenant
-    first_name + ' ' + last_name
+  def user_full_name(user = nil)
+    user ||= current_user
+    user.is_admin ? user.tenants.first.name : "#{user.member.first_name} #{user.member.last_name}"
   end
 
   def format_date(date)
@@ -53,5 +51,9 @@ module ApplicationHelper
 
   def format_date_time(date)
     date.strftime('%d.%m.%Y %I:%M:%S')
+  end
+
+  def tenants_categories(tenants)
+    tenants.map(&:categories).map(&:to_a).uniq.flatten
   end
 end

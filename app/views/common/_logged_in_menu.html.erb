@@ -1,0 +1,20 @@
+<li class="col-md-4 pull-right user-name">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+    <%= ('<i class="fa fa-user"></i> ' + truncate( user_full_name, length: 25)).html_safe %>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <% if current_user && current_user.is_admin? %>
+      <%= render 'common/admin_menu' %>
+    <% end %>
+    <li>
+      <%= link_to "<i class='fa fa-edit'></i> Change password".html_safe,
+                  edit_user_registration_path, title: 'Edit Profile',  class: 'navbar-link' %>
+    </li>
+    <li role="separator" class="divider"></li>
+    <li class="logout">
+      <%= link_to( ("<i class='fa fa-unlock'></i> " + "Sign out").html_safe, destroy_user_session_path,
+                   title: 'Logout', :method => :delete) %>
+    </li>
+  </ul>
+</li>

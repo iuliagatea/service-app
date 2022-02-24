@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-    <%= stylesheet_link_tag "#{root_url}assets/application.css" %>
-  </head>
+  <%= render 'header' %>
   <body>
     <%= @message.html_safe %>
   </body>

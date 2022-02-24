@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddProductToEstimate < ActiveRecord::Migration
   def change
     add_reference :estimates, :product, index: true, foreign_key: true

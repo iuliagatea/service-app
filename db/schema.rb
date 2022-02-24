@@ -1,4 +1,5 @@
-# encoding: UTF-8
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,8 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180724095623112805) do
-
+ActiveRecord::Schema.define(version: 20_180_724_095_623_112_805) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -67,7 +67,8 @@ ActiveRecord::Schema.define(version: 20180724095623112805) do
     t.datetime 'updated_at',      null: false
   end
 
-  add_index 'pg_search_documents', ['searchable_type', 'searchable_id'], name: 'index_pg_search_documents_on_searchable_type_and_searchable_id', using: :btree
+  add_index 'pg_search_documents', %w[searchable_type searchable_id],
+            name: 'index_pg_search_documents_on_searchable_type_and_searchable_id', using: :btree
 
   create_table 'product_statuses', force: :cascade do |t|
     t.integer  'product_id'
@@ -117,7 +118,8 @@ ActiveRecord::Schema.define(version: 20180724095623112805) do
   end
 
   add_index 'seems_rateable_rates', ['dimension'], name: 'index_seems_rateable_rates_on_dimension', using: :btree
-  add_index 'seems_rateable_rates', ['rateable_id', 'rateable_type'], name: 'index_seems_rateable_rates_on_rateable_id_and_rateable_type', using: :btree
+  add_index 'seems_rateable_rates', %w[rateable_id rateable_type],
+            name: 'index_seems_rateable_rates_on_rateable_id_and_rateable_type', using: :btree
   add_index 'seems_rateable_rates', ['rater_id'], name: 'index_seems_rateable_rates_on_rater_id', using: :btree
 
   create_table 'sessions', force: :cascade do |t|
@@ -171,7 +173,8 @@ ActiveRecord::Schema.define(version: 20180724095623112805) do
     t.integer 'user_id',   null: false
   end
 
-  add_index 'tenants_users', ['tenant_id', 'user_id'], name: 'index_tenants_users_on_tenant_id_and_user_id', using: :btree
+  add_index 'tenants_users', %w[tenant_id user_id], name: 'index_tenants_users_on_tenant_id_and_user_id',
+                                                    using: :btree
 
   create_table 'users', force: :cascade do |t|
     t.string   'email',                        default: '',    null: false

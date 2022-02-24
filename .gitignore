@@ -13,3 +13,5 @@
 /tmp
 application.log
 .idea/
+.byebug_history
+logfile
