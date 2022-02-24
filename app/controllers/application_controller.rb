@@ -15,44 +15,39 @@ class ApplicationController < ActionController::Base
     @products ||= current_user.is_admin ? Tenant.current_tenant.products : current_user.products
   end
 
-
-  def product
-    @product ||= Product.find(params[:product_id])
-  end
-
-  def user
-    @user ||= User.find(params[:user_id])
-  end
-
   def must_be_customer
     return if tenant.users.include?(current_user)
 
-    redirect_to :root,
-                flash: { error: 'You are not authorized to do this action' }
+    not_authorized_redirect
   end
 
   def verify_admin
     return if current_user.is_admin
 
-    redirect_to :root,
-                flash: { error: 'You are not authorized to do this action' }
+    not_authorized_redirect
   end
 
   def verify_user
-    return unless current_user && !((params[:user_id] == current_user.to_s) || current_user.is_admin)
+    return unless current_user && !((params[:user_id].to_i == current_user.id) || current_user.is_admin)
 
-    redirect_to :root,
-                flash: { error: 'You are not authorized to do this action' }
+    not_authorized_redirect
   end
 
   def verify_tenant
-    return if params[:tenant_id] == Tenant.current_tenant_id.to_s
+    return if params[:tenant_id].to_i == Tenant.current_tenant_id
 
-    redirect_to :root,
-                flash: { error: 'You are not authorized to access any organization other than your own' }
+    not_authorized_redirect
   end
 
-  def paginate(resource, page)
-    resource.paginate(page: page, per_page: 10)
+  def paginate(resource, page, per_page = nil)
+    per_page ||= 10
+    resource.paginate(page: page, per_page: per_page)
+  end
+
+  private
+
+  def not_authorized_redirect
+    redirect_to :root,
+                flash: { error: 'You are not authorized to do this action' }
   end
 end

@@ -2,19 +2,16 @@
 
 class TenantsController < ApplicationController
   skip_before_action :authenticate_tenant!, only: %i[search contact send_email]
-  before_action :find_tenant,  except: %i[search]
-  # before_action :must_be_customer
+  before_action :find_tenant, except: %i[search]
 
   def edit
-    logger.debug "Edit tenant #{@tenant.attributes.inspect}"
     @categories = Category.where(entity: 'tenant')
   end
 
   def show
-    logger.debug "Show tenant #{@tenant.attributes.inspect}"
     @categories = @tenant.categories
     @user_review = @tenant.reviews.where(user_id: current_user)
-    @reviews = @tenant.reviews.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    @reviews = paginate(@tenant.reviews.order(created_at: :desc), params[:page], 5)
     @reviews.unshift(@user_review)
   end
 
@@ -46,18 +43,10 @@ class TenantsController < ApplicationController
     end
   end
 
-  def contact
-  end
+  def contact; end
 
   def send_email
-    @product = Product.find(params[:product_id]) if params[:product_id]
-    if @product
-      params[:message] << "<hr> This message refers to #{view_context.link_to "#{@product.code} #{@product.name}",
-                                                                              product_url(@product)} <hr>"
-    end
-    @subject = "#{params[:action]} from #{params[:name]} - #{params[:subject]}"
-    UserNotifier.send_email(params[:email], @tenant.users.first.email,
-                            @subject, params[:message]).deliver_now
+    UserNotifier.send_email(params).deliver_now
     redirect_to root_path, notice: 'Email was sent successfully.'
   end
 

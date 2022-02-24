@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ReviewsController < ApplicationController
+  before_action :find_review, except: %i[create]
+
   def create
     logger.debug 'Creating new review'
     @review = Review.new(review_params)
@@ -10,7 +12,6 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review = Review.find(params[:review_id])
     logger.debug "Editing review #{@review.attributes.inspect}"
     @review.title = params[:title]
     @review.review = params[:review]
@@ -19,7 +20,6 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find(params[:id])
     logger.debug "Deleting review #{@review.attributes.inspect}"
     @review.destroy
     respond_to do |format|
@@ -29,6 +29,10 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+  def find_review
+    @review = Review.find(params[:review_id])
+  end
 
   def review_params
     params.require(:review).permit(:tenant_id, :user_id, :title_review, :review)

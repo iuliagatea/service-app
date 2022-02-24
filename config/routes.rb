@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   seems_rateable
   resources :categories
   resources :estimates
-  resources :reviews
+  resources :reviews, param: :review_id
   get 'about', to: 'pages#about'
   resources :tenants, param: :tenant_id
   resources :tenants, only: [] do
@@ -42,5 +42,4 @@ Rails.application.routes.draw do
   match '/plan/edit' => 'tenants#edit', via: :get, as: :edit_plan
 
   match '/plan/update' => 'tenants#update', via: %i[put patch], as: :update_plan
-
 end

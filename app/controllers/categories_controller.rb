@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[show edit update destroy]
+  before_action :find_category, only: %i[show edit update destroy]
   before_action :verify_user_email_for_category
 
   def index
@@ -52,7 +52,7 @@ class CategoriesController < ApplicationController
 
   private
 
-  def set_category
+  def find_category
     @category = Category.find(params[:id])
   end
 
@@ -63,7 +63,6 @@ class CategoriesController < ApplicationController
   def verify_user_email_for_category
     return if current_user.email == 'fixit.app2@gmail.com'
 
-    redirect_to :root,
-                flash: { error: 'You are not authorized to do this action' }
+    not_authorized_redirect
   end
 end

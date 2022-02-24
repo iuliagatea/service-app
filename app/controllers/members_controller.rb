@@ -10,7 +10,6 @@ class MembersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    byebug
     if @user.save_and_invite_member && @user.create_member(member_params)
       flash[:notice] = "New member added and invitation email sent to #{@user.email}."
       logger.debugg "Creating user and sending email #{@user.attributes.inspect}"

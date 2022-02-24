@@ -4,7 +4,7 @@ class TenantMemberProductsController < ApplicationController
   before_action :find_user
 
   def index
-    @products = products.paginate(page: params[:page], per_page: 10)
+    @products = paginate(products, params[:page])
   end
 
   private

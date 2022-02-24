@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EstimatesController < ApplicationController
-  before_action :set_estimate, only: %i[show edit update destroy]
+  before_action :find_estimate, only: %i[show edit update destroy]
 
   def index
     @estimates = Estimate.all
@@ -48,7 +48,7 @@ class EstimatesController < ApplicationController
 
   private
 
-  def set_estimate
+  def find_estimate
     @estimate = Estimate.find(params[:id])
   end
 

@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  before_action :product, only: %i[show edit update destroy]
-  # before_action :set_current_tenant, only: %i[show edit update destroy new create]
+  before_action :find_product, only: %i[show edit update destroy]
   before_action :verify_tenant
   before_action :verify_user, except: %i[show index]
 
   def index
-    @products = products.paginate(page: params[:page], per_page: 10)
+    @products = paginate(products, params[:page])
   end
 
   def show
@@ -114,7 +113,7 @@ class ProductsController < ApplicationController
 
   private
 
-  def product
+  def find_product
     @product = Product.find(params[:product_id])
   end
 

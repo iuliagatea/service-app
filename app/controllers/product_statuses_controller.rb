@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProductStatusesController < ApplicationController
-  before_action :set_product_status, only: %i[show edit update destroy]
+  before_action :find_product_status, only: %i[show edit update destroy]
 
   def index
     @product_statuses = ProductStatus.all
@@ -49,7 +49,7 @@ class ProductStatusesController < ApplicationController
 
   private
 
-  def set_product_status
+  def find_product_status
     @product_status = ProductStatus.find(params[:id])
   end
 
