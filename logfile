@@ -25,3 +25,9 @@
 2022-02-24 13:02:27.479 EET [3884] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2022-02-24 13:02:27.489 EET [3885] LOG:  database system was shut down at 2022-02-23 21:41:30 EET
 2022-02-24 13:02:27.494 EET [3884] LOG:  database system is ready to accept connections
+2022-03-02 13:35:25.200 EET [1760] LOG:  starting PostgreSQL 14.1 on x86_64-apple-darwin21.1.0, compiled by Apple clang version 13.0.0 (clang-1300.0.29.3), 64-bit
+2022-03-02 13:35:25.202 EET [1760] LOG:  listening on IPv6 address "::1", port 5432
+2022-03-02 13:35:25.202 EET [1760] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-03-02 13:35:25.203 EET [1760] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-02 13:35:25.215 EET [1761] LOG:  database system was shut down at 2022-03-02 13:10:23 EET
+2022-03-02 13:35:25.220 EET [1760] LOG:  database system is ready to accept connections

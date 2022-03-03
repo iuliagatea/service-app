@@ -25,20 +25,13 @@ class RegistrationsController < Milia::RegistrationsController
 
     # validate recaptcha first unless not enabled
     if !::Milia.use_recaptcha || verify_recaptcha
-
       Tenant.transaction do
         @tenant = Tenant.create_new_tenant(tenant_params, user_params, coupon_params)
         logger.debug "Creating tenant: #{@tenant.attributes.inspect}"
         logger.debug "Tenant should be valid: #{@tenant.valid?}"
         if @tenant.errors.empty? # tenant created
           logger.info 'Saving initial statuses'
-          @statuses = [{ name: 'Received', color: '#428bca' }, { name: 'In progress', color: '#d9534f' },
-                       { name: 'Completed', color: '#3c763d' }, { name: 'Canceled', color: '#ad2f21' }, { name: 'Waiting', color: '#d9cf14' }]
-          @statuses.each do |s|
-            @status = Status.new(name: s[:name], color: s[:color], tenant_id: @tenant.id, can_be_deleted: false)
-            @status.save
-            logger.error "Error saving status: #{@status.attributes.inspect}" unless @status.valid?
-          end
+          @tenant.create_statuses
           if @tenant.plan == 'premium'
             @payment = Payment.new({ email: user_params['email'],
                                      token: params[:payment]['token'],

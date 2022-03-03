@@ -1,7 +1,7 @@
 <footer class="footer">
   <div class="container no-black-hover">
     <span class="text-muted">FixIT &copy; <%= Date.today.year %></span>
-    <% if (current_user and current_user.is_admin?) or !current_user %>
+    <% if (current_user and current_user.is_admin) or !current_user %>
       <%= link_to "About", about_path, class: "pull-right" %>
     <% end %>
   </div>

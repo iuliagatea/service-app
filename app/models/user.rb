@@ -11,12 +11,4 @@ class User < ActiveRecord::Base
   has_many :products
   has_many :reviews, dependent: :destroy
   seems_rateable_rater
-
-  def admin?
-    is_admin
-  end
-
-  def self.find_by_email(email)
-    where('email = :email', { email: email })
-  end
 end

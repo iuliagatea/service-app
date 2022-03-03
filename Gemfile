@@ -48,7 +48,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+gem 'factory_bot_rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -67,6 +67,8 @@ group :development, :test do
   gem 'rubocop'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'faker', '~> 1.6', '>= 1.6.3'
+  gem 'shoulda-matchers'
 end
 
 group :development do
