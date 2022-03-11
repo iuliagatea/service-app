@@ -31,3 +31,7 @@
 2022-03-02 13:35:25.203 EET [1760] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2022-03-02 13:35:25.215 EET [1761] LOG:  database system was shut down at 2022-03-02 13:10:23 EET
 2022-03-02 13:35:25.220 EET [1760] LOG:  database system is ready to accept connections
+2022-03-03 12:49:07.657 EET [1760] LOG:  received smart shutdown request
+2022-03-03 12:49:07.659 EET [1760] LOG:  background worker "logical replication launcher" (PID 1767) exited with exit code 1
+2022-03-03 12:49:07.659 EET [1762] LOG:  shutting down
+2022-03-03 12:49:07.665 EET [1760] LOG:  database system is shut down

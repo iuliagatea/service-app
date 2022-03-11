@@ -11,12 +11,12 @@ class ProductsController < ApplicationController
 
   def show
     logger.debug "Showing products of tenant with id #{params[:tenant_id]} for user #{current_user.email}"
-    @product_statuses = product.product_statuses
-    @estimates = product.estimates
+    @product_statuses = @product.product_statuses
+    @estimates = @product.estimates
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "#{product.code}_product_card",
+        render pdf: "#{@product.code}_product_card",
                template: 'products/product_pdf.html.erb',
                layout: 'layouts/pdf.html.erb',
                show_as_html: params[:debug].present?
@@ -38,7 +38,6 @@ class ProductsController < ApplicationController
     if @user.blank?
       @user = User.new(user_params)
       logger.debug "New user, member: #{@user.attributes.inspect}"
-
       if @user.save_and_invite_member && @user.create_member(member_params)
         logger.debug "New member added and invitation email sent to #{@user.email}."
         flash[:notice] = "New member added and invitation email sent to #{@user.email}."
@@ -67,10 +66,10 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @user = product.user
-    @status = product.current_status
+    @user = @product.user
+    @status = @product.current_status
     @statuses = Tenant.current_tenant.statuses
-    @estimates = product.estimates
+    @estimates = @product.estimates
   end
 
   def update
@@ -85,7 +84,7 @@ class ProductsController < ApplicationController
         if status.send_email && (current_status != status)
           logger.info 'Send email to customer for status change'
           UserNotifier.send_status_change_email(user, @product,
-                                                "#{tenant.name} - Status updated for product #{@product.name}").deliver_now
+                                                "#{Tenant.current_tenant.name} - Status updated for product #{@product.name}").deliver_now
         end
         format.html { redirect_to tenant_products_url, notice: 'Product was successfully updated.' }
       else
