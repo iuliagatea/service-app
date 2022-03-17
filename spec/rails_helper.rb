@@ -12,6 +12,8 @@ require 'support/factory_bot'
 require 'support/devise'
 require 'devise'
 require 'support/controller_helpers'
+require 'support/shared_context/initialize'
+require 'support/shared_examples/index_examples'
 
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!

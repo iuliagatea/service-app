@@ -3,36 +3,24 @@
 require 'rails_helper'
 
 RSpec.describe ProductsController do
-  let(:tenant) { create(:tenant, :free) }
-  let(:admin_user) { create(:user, :admin) }
-  let(:customer) { create(:user, :regular, member: create(:member)) }
-  let(:products) { create_list(:product, 10, tenant_id: tenant.id, user: customer, statuses: [tenant.statuses.first]) }
+  include_context 'initialize'
   describe 'GET #index' do
     subject { get :index, tenant_id: tenant.id }
     it_should_behave_like 'redirect if not logged in'
     context 'logged in' do
-      before(:each) do
-        set_current_tenant(tenant)
-        login(admin_user)
-        products
-      end
+      before { products }
       it 'renders a list of categories' do
         subject
-        expect(assigns(:products)).to match_array(tenant.products)
+        expect(assigns(:products)).to match(tenant.products)
       end
       it { expect(subject).to render_template(:index) }
     end
   end
 
   describe 'GET #show' do
-    let(:product) { products.first }
     subject { get :show, tenant_id: tenant.id, product_id: product.id }
     it_should_behave_like 'redirect if not logged in'
     context 'logged in' do
-      before(:each) do
-        set_current_tenant(tenant)
-        login(admin_user)
-      end
       it 'assigns values to variables' do
         subject
         expect(assigns(:product)).to eq(product)
@@ -44,14 +32,9 @@ RSpec.describe ProductsController do
   end
 
   describe 'GET #new' do
-    let(:product) { products.first }
     subject { get :new, tenant_id: tenant.id }
     it_should_behave_like 'redirect if not logged in'
     context 'logged in' do
-      before(:each) do
-        set_current_tenant(tenant)
-        login(admin_user)
-      end
       it 'assigns values to variables' do
         subject
         expect(assigns(:product).id).to be_nil
@@ -69,10 +52,6 @@ RSpec.describe ProductsController do
     end
     it_should_behave_like 'redirect if not logged in'
     context 'logged in' do
-      before(:each) do
-        set_current_tenant(tenant)
-        login(admin_user)
-      end
       context 'with customer not in db' do
         let(:customer_attributes) { attributes_for(:user, :regular) }
         let(:member_attributes) { attributes_for(:member) }
@@ -97,7 +76,7 @@ RSpec.describe ProductsController do
         end
       end
       context 'with existing customer' do
-        before(:each) { customer }
+        before { customer }
         it 'does not create a new customer' do
           expect { subject }.to change(User, :count).by(0)
         end
@@ -123,14 +102,9 @@ RSpec.describe ProductsController do
   end
 
   describe 'GET #edit' do
-    let(:product) { products.first }
     subject { get :edit, tenant_id: tenant.id, product_id: product.id }
     it_should_behave_like 'redirect if not logged in'
     context 'logged in' do
-      before(:each) do
-        set_current_tenant(tenant)
-        login(admin_user)
-      end
       it 'assigns values to variables' do
         subject
         expect(assigns(:product)).to eq(product)
@@ -143,7 +117,6 @@ RSpec.describe ProductsController do
   end
 
   describe 'PUT #update' do
-    let(:product) { products.first }
     let(:new_completion_date) { 10.days.from_now.to_date }
     let(:new_status) { tenant.statuses.last }
     let(:estimate_attributes) { attributes_for(:estimate) }
@@ -156,11 +129,7 @@ RSpec.describe ProductsController do
     end
     it_should_behave_like 'redirect if not logged in'
     context 'logged in' do
-      before(:each) do
-        set_current_tenant(tenant)
-        login(admin_user)
-        product
-      end
+      before { product }
       it 'does not create a new product' do
         expect { subject }.to change(Product, :count).by(0)
       end
@@ -190,16 +159,11 @@ RSpec.describe ProductsController do
   end
 
   describe 'DELETE #destroy' do
-    let(:product) { products.first }
     let(:estimates_count) { product.estimates.count }
     subject { delete :destroy, tenant_id: tenant.id, product_id: product.id }
     it_should_behave_like 'redirect if not logged in'
     context 'logged in' do
-      before(:each) do
-        set_current_tenant(tenant)
-        login(admin_user)
-        product
-      end
+      before { product }
       it 'does not delete the tenant' do
         expect { subject }.to change(Tenant, :count).by(0)
       end

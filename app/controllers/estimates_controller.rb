@@ -16,6 +16,7 @@ class EstimatesController < ApplicationController
   def edit; end
 
   def create
+    byebug
     @estimate = Estimate.new(estimate_params)
     respond_to do |format|
       if @estimate.save
@@ -53,8 +54,8 @@ class EstimatesController < ApplicationController
   end
 
   def estimate_params
-    params.require(:estimate).permit(:name, :quantity, :price, :value, :tenant_id).tap do |params|
-      params[:value] = params[:price] * params[:quantity]
+    params.require(:estimate).permit(:name, :quantity, :price, :value, :tenant_id).tap do |param|
+      param[:value] = param[:price].to_f * param[:quantity].to_f
     end
   end
 end
