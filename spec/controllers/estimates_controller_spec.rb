@@ -23,8 +23,8 @@ RSpec.describe EstimatesController do
     it { expect(subject).to render_template(:new) }
   end
   describe 'POST #create' do
-    let(:estimate_attributes) { attributes_for(:estimate) }
-    subject { post :create, estimate: estimate_attributes }
+    let(:create_attributes) { attributes_for(:estimate) }
+    subject { post :create, estimate: create_attributes }
     it 'saves a new estimate' do
       expect { subject }.to change(Estimate, :count).by(1)
     end
@@ -57,7 +57,7 @@ RSpec.describe EstimatesController do
     it 'does not save a new estimate' do
       expect { subject }.to change(Estimate, :count).by(0)
     end
-    it 'updates product with new params' do
+    it 'updates estimate with new params' do
       subject
       expect(assigns(:estimate).name).to eq(new_estimate_name)
     end

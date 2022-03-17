@@ -45,9 +45,9 @@ RSpec.describe ProductsController do
   end
 
   describe 'POST #create' do
-    let(:product_attributes) { attributes_for(:product, tenant_id: tenant.id) }
+    let(:create_attributes) { attributes_for(:product, tenant_id: tenant.id) }
     subject do
-      post :create, tenant_id: tenant.id, product: product_attributes, user: { email: customer.email },
+      post :create, tenant_id: tenant.id, product: create_attributes, user: { email: customer.email },
                     status: { id: tenant.statuses.first }
     end
     it_should_behave_like 'redirect if not logged in'
@@ -56,7 +56,7 @@ RSpec.describe ProductsController do
         let(:customer_attributes) { attributes_for(:user, :regular) }
         let(:member_attributes) { attributes_for(:member) }
         subject do
-          post :create, tenant_id: tenant.id, product: product_attributes, user: customer_attributes, member: member_attributes,
+          post :create, tenant_id: tenant.id, product: create_attributes, user: customer_attributes, member: member_attributes,
                         status: { id: tenant.statuses.first }
         end
         it 'creates a new customer' do
