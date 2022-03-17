@@ -37,6 +37,16 @@ class Tenant < ActiveRecord::Base
     tenant
   end
 
+  def create_statuses
+    statuses = [{ name: 'Received', color: '#428bca' }, { name: 'In progress', color: '#d9534f' },
+                { name: 'Completed', color: '#3c763d' }, { name: 'Canceled', color: '#ad2f21' },
+                { name: 'Waiting', color: '#d9cf14' }]
+    statuses.each do |s|
+      status = Status.new(name: s[:name], color: s[:color], tenant_id: id, can_be_deleted: false)
+      status.save
+    end
+  end
+
   # ------------------------------------------------------------------------
   # new_signups_not_permitted? -- returns true if no further signups allowed
   # args: params from user input; might contain a special 'coupon' code
