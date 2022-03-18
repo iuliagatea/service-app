@@ -16,7 +16,6 @@ class EstimatesController < ApplicationController
   def edit; end
 
   def create
-    byebug
     @estimate = Estimate.new(estimate_params)
     respond_to do |format|
       if @estimate.save

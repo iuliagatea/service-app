@@ -9,9 +9,7 @@ RSpec.describe ReviewsController do
   describe 'POST #create' do
     let(:create_attributes) { attributes_for(:review) }
     subject { post :create, review: create_attributes, tenant_id: tenant.id, user_id: customer.id }
-    it 'saves a new estimate' do
-      expect { subject }.to change(Review, :count).by(1)
-    end
+    include_examples "create", Review
   end
   describe 'PATCH #update' do
     let(:new_review_title) { 'New name' }
@@ -28,8 +26,6 @@ RSpec.describe ReviewsController do
   describe 'Delete #destroy' do
     subject { delete :destroy, review_id: review.id, tenant_id: tenant.id }
     before { review }
-    it 'deletes the product' do
-      expect { subject }.to change(Review, :count).by(-1)
-    end
+    include_examples "destroy", Review
   end
 end

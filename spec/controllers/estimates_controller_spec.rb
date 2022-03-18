@@ -8,26 +8,16 @@ RSpec.describe EstimatesController do
   let(:estimate) { create(:estimate) }
   describe 'GET #index' do
     subject { get :index }
-    it 'renders a list of estimates' do
-      subject
-      expect(assigns(:estimates)).to match_array(Estimate.all)
-    end
-    it { expect(subject).to render_template(:index) }
+    include_examples "index", 'estimate'
   end
   describe 'GET #new' do
     subject { get :new }
-    it 'assigns values to variables' do
-      subject
-      expect(assigns(:estimate).id).to be_nil
-    end
-    it { expect(subject).to render_template(:new) }
+    include_examples "new", :estimate
   end
   describe 'POST #create' do
     let(:create_attributes) { attributes_for(:estimate) }
     subject { post :create, estimate: create_attributes }
-    it 'saves a new estimate' do
-      expect { subject }.to change(Estimate, :count).by(1)
-    end
+    include_examples "create", Estimate
   end
   describe 'GET #show' do
     subject { get :show, id: estimate.id }
@@ -65,8 +55,6 @@ RSpec.describe EstimatesController do
   describe 'Delete #destroy' do
     subject { delete :destroy, id: estimate.id }
     before { estimate }
-    it 'deletes the product' do
-      expect { subject }.to change(Estimate, :count).by(-1)
-    end
+    include_examples "destroy", Estimate
   end
 end

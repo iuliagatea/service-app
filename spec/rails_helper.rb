@@ -13,7 +13,7 @@ require 'support/devise'
 require 'devise'
 require 'support/controller_helpers'
 require 'support/shared_context/initialize'
-require 'support/shared_examples/index_examples'
+require 'support/shared_examples/controller_examples'
 
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
@@ -55,7 +55,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
+  # within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
 
