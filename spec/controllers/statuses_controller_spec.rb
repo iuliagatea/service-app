@@ -17,18 +17,12 @@ RSpec.describe StatusesController do
   end
   describe 'GET #new' do
     subject { get :new, tenant_id: tenant.id }
-    it 'assigns values to variables' do
-      subject
-      expect(assigns(:status).id).to be_nil
-    end
-    it { expect(subject).to render_template(:new) }
+    include_examples "new", :status
   end
   describe 'POST #create' do
     let(:create_attributes) { attributes_for(:status) }
     subject { post :create, status: create_attributes, tenant_id: tenant.id }
-    it 'saves a new status' do
-      expect { subject }.to change(Status, :count).by(1)
-    end
+    include_examples "create", Status
   end
   describe 'GET #show' do
     subject { get :show, status_id: status.id, tenant_id: tenant.id }
@@ -66,8 +60,6 @@ RSpec.describe StatusesController do
   describe 'Delete #destroy' do
     subject { delete :destroy, status_id: status.id, tenant_id: tenant.id }
     before { status }
-    it 'deletes the product' do
-      expect { subject }.to change(Status, :count).by(-1)
-    end
+    include_examples "destroy", Status
   end
 end
